@@ -1,0 +1,14 @@
+{
+  "name": "gestion_comunidades",
+  "version": "1.0.0",
+  "description": "Proyecto gestion de comunidades de vecinos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ángel Urosa Nuñez",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}
