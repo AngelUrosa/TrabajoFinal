@@ -29,5 +29,11 @@
         </ul>
         <input type="submit" value="Entrar">
        </form>
+
+       <?php
+       $nombre = $_POST["nombre"];
+       $contraseña = $_POST["contraseña"];
+       $perfil = $_POST["perfil"];
+       ?>
 </body>
 </html>
