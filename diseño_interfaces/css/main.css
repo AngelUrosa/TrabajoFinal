@@ -1,3 +1,67 @@
-.titulo{
-    color:red;
+header{
+    width: 100%;
+    height: auto;
+    background-color: green;
+    display: flex;
+    align-items: center;
+}
+
+#logo{
+    color: black;
+    background-color: red;
+    flex-basis: auto;
+}
+#barraMenu{
+text-align: center;
+flex-basis: auto;
+}
+
+#botonCuenta{
+    flex-basis: auto;
+}
+
+.separador{
+    border-top: 4px solid black;
+    margin-top: -9px;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pie{
+    background-color: blue;
+    height: 220px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.pieAyuda a{
+    text-decoration: none;
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+}
+.pieLogo{
+    font-size: 40px;
+    color: white;
+}
+.pieContacto{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+.card{
+    margin: 30px;
+    border-radius: 30rem solid black;
+}
+.card-title{
+    color: cyan;
+}
+.card-body{
+    text-align: center;
 }
