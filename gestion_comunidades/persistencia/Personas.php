@@ -21,29 +21,28 @@ require_once './pojos/persona.php';
 
 		}
 
-		public function verificarPersona(){
-			//Devuelve un array de objetos de FamiliaProducto
+		public function getSesion($usuario,$contraseña){
 			$error=0;
-			try {
-				$consulta="SELECT nombre, contraseña FROM personas";
+		      try {$consulta="SELECT trabajador FROM personas WHERE usuario=$1, contraseña=$2";             
+				
+	 	 				$query=$this->db->preparar($consulta);            
+		 				$query->bindParam(1,$usuario);          
+					 	$query->bindParam(2,$contraseña);            
+		 				$query->execute();    
+						$tPersonas=$query->fetchall();        
+	  } catch(Exception $e){           
+		    $error=1;         
+		    return $error;        
+	  }     
+			
+	return $tPersonas;   
 
-				$query=$this->db->preparar($consulta);
-				$query->execute();
-
-				$tPersonas=$query->fetchall(); //array bidimensional
-				$error=1;
-			} catch (Exception $e) {
-				$error=1;
-				//echo "Se ha producio un error en getFamiliasProductosTodas";
-			}
-			//Vamos a construir un array de objetos
-			$t=[];
-			foreach ($tEmpleados as $fila) {
-				$fp=new Empleado($fila[0],$fila[1],$fila[2],$fila[3],$fila[4],$fila[5],$fila[6],$fila[7],$fila[8],$fila[9],$fila[10],$fila[11],$fila[12],$fila[13],$fila[14],$fila[15]);//un objeto de la clase FamiliaProducto
-				array_push($t, $fp); //mete $fp en $t
-			}
-			return $t; //devolvemos el array de objetos
-		}
+	if ($tPersonas.length>0){
+		echo "Has entrado";
+	}else {
+		echo "No has entrado";
+	}
+  }
 
     }
 

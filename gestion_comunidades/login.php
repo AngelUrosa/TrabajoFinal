@@ -10,8 +10,8 @@
     <form action="/my-handling-form-page" method="post">
         <ul>
          <li>
-           <label for="nombre">Nombre:</label>
-           <input type="text" id="nombre" name="nombre">
+           <label for="usuario">Usuario:</label>
+           <input type="text" id="usuario" name="usuario">
          </li>
          <li>
            <label for="contraseña">Contraseña:</label>
@@ -31,9 +31,12 @@
        </form>
 
        <?php
-       $nombre = $_POST["nombre"];
+       $usuario = $_POST["usuario"];
        $contraseña = $_POST["contraseña"];
        $perfil = $_POST["perfil"];
+
+       getSesion($usuario, $contraseña);      
+
        ?>
 </body>
 </html>
