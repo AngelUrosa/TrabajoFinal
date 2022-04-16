@@ -1,0 +1,60 @@
+thead {
+    background-color: rgba(104, 15, 104, 0.58);
+}
+th {
+    color:#680f68;
+}
+
+.listado {
+    width: 100%;
+}
+
+.listado tbody tr:nth-child(odd) {
+    background-color: rgba(175, 183, 225, 0.58);
+}
+
+.listado td {
+    padding: 5px;
+}
+
+.mensaje-temporal-info {
+    background-color: #b7f5cb;
+}
+.mensaje-temporal-error {
+    background-color: #e58e8e;
+}
+
+.menu {
+    width: 100%;
+    background-color: rgba(175, 183, 225, 0.58);
+    list-style-type: none;
+    padding: 5px;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu li {
+    display:inline-block;
+    width: auto;
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.titulo {
+    text-align: center;
+    background-color: #b6dbf1;
+}
+
+.contenedor {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
