@@ -8,11 +8,11 @@ public class Usuario {
     private String apellido2;
 
     public Usuario() {
-        this(null,null,null);
+        this(null, null, null);
     }
 
     public Usuario(String nif, String nombre, String apellido1) {
-        this(null, null,null,null);
+        this(null, null, null, null);
     }
 
     public Usuario(String nif, String nombre, String apellido1, String apellido2) {

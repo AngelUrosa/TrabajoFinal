@@ -10,7 +10,9 @@
 <h1 class="titulo">GESTIÓN DE ALUMNOS</h1>
 
 <div class="container">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi corporis dicta doloribus esse, eveniet ipsa molestiae nesciunt nisi nostrum nulla omnis quam quibusdam quidem quos recusandae repellat sapiente, velit voluptatum.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi corporis dicta doloribus esse, eveniet ipsa
+    molestiae nesciunt nisi nostrum nulla omnis quam quibusdam quidem quos recusandae repellat sapiente, velit
+    voluptatum.
 </div>
 
 

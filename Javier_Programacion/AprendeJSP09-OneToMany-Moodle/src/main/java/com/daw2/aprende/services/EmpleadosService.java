@@ -24,7 +24,7 @@ public class EmpleadosService {
         return empleadosService;
     }
 
-    public Empleado requestToClass (HttpServletRequest request) {
+    public Empleado requestToClass(HttpServletRequest request) {
         String nif = request.getParameter("nif") != null ? request.getParameter("nif").trim() : "";
         String nombre = (request.getParameter("nombre") != null) ? request.getParameter("nombre").trim() : "";
         String apellido1 = request.getParameter("apellido1") != null ? request.getParameter("apellido1").trim() : "";
@@ -32,25 +32,25 @@ public class EmpleadosService {
         String telefono = request.getParameter("telefono") != null ? request.getParameter("telefono").trim() : "";
         double sueldo = 0;
         try {
-             sueldo = Double.parseDouble(request.getParameter("sueldo").trim());
-        } catch(Exception ex) {
+            sueldo = Double.parseDouble(request.getParameter("sueldo").trim());
+        } catch (Exception ex) {
             sueldo = 0;
         }
         Date fechaAlta = null;
         try {
             fechaAlta = request.getParameter("telefono") != null ? UtilFecha.yyyy_mm_dd_toDate(request.getParameter("fechaAlta")) : null;
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             sueldo = 0;
         }
-        Departamento dpto=null;
+        Departamento dpto = null;
         try {
             Integer idDpto = Integer.parseInt(request.getParameter("idDpto").trim());
             dpto = new Departamento();
             dpto.setId(idDpto);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
         }
 
-        Empleado empleado = new Empleado(nif, nombre, apellido1, apellido2,telefono,sueldo, fechaAlta,dpto);
+        Empleado empleado = new Empleado(nif, nombre, apellido1, apellido2, telefono, sueldo, fechaAlta, dpto);
         return empleado;
     }
 

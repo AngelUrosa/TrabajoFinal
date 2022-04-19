@@ -11,9 +11,9 @@ import java.sql.SQLException;
 public class ConectaBD {
     final static String DB_URL = "iescastelar.duckdns.org";
     final static int DB_PORT = 33062;
-    final static String DB_NAME = "...";
-    final static String DB_USER = "...";
-    final static String DB_PASSWORD = "...";
+    final static String DB_NAME = "daw2_jsp12";
+    final static String DB_USER = "daw2_jsp12";
+    final static String DB_PASSWORD = "castelar2021";
     private static ConectaBD conectaBD;
     private static DataSource ds;
 

@@ -5,7 +5,8 @@
 <%
     List<Empleado> empleados = (List) request.getAttribute("empleados");
 %>
-<h2 class="text-center mt-4"><%=request.getParameter("titulo")%></h2>
+<h2 class="text-center mt-4"><%=request.getParameter("titulo")%>
+</h2>
 
 <table class="table table-striped">
     <thead>
@@ -35,7 +36,7 @@
         </td>
         <td><%=empleado.getSueldo()%>
         </td>
-        <td><%=UtilFecha.dateTo_dd_mm_yyyy(empleado.getFechaAlta(),'/')%>
+        <td><%=UtilFecha.dateTo_dd_mm_yyyy(empleado.getFechaAlta(), '/')%>
         </td>
     </tr>
     <%}%>

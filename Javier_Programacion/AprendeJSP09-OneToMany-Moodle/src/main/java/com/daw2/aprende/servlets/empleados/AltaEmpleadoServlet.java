@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 
 //urlPatterns={"/usuarios/alta"}
-@WebServlet(value="/empleados/alta")
+@WebServlet(value = "/empleados/alta")
 public class AltaEmpleadoServlet extends HttpServlet {
     private final static Logger LOG = Logger.getLogger(AltaEmpleadoServlet.class.getName());
     private EmpleadosService empleadosService;
@@ -37,7 +37,7 @@ public class AltaEmpleadoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EmpleadosDao empleadosDao = new EmpleadosDaoImpl();
         request.setCharacterEncoding("UTF-8");
-        request.setAttribute("empleado", new Empleado("","","","","",0,new Date()));
+        request.setAttribute("empleado", new Empleado("", "", "", "", "", 0, new Date()));
         request.setAttribute("empleados", empleadosDao.listAllFillDpto());
         request.setAttribute("departamentos", departamentosDao.listAll());
         request.getRequestDispatcher("/empleados/alta.jsp").forward(request, response);
@@ -49,13 +49,13 @@ public class AltaEmpleadoServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Empleado empleado = empleadosService.requestToClass(request);
 
-        Map<String,String> errorsItems = empleadosService.errors(request);
+        Map<String, String> errorsItems = empleadosService.errors(request);
 
         if (errorsItems.isEmpty()) {
-            if (empleadosDao.add(empleado)!=null) {
+            if (empleadosDao.add(empleado) != null) {
                 String mensaje = "El empleado " + empleado.getNombre() + " " + empleado.getApellido1() + " " + empleado.getApellido2() + " ha sido dado de alta.";
                 request.setAttribute("alertSuccess", mensaje);
-                empleado =  new Empleado("","","","","",0,new Date());
+                empleado = new Empleado("", "", "", "", "", 0, new Date());
             } else {
                 String mensaje = "El empleado " + empleado.getNombre() + " " + empleado.getApellido1() + " " + empleado.getApellido2() + " no ha sido dado de alta. Ya existe un usuario con el nif " + empleado.getNif();
                 request.setAttribute("alertDanger", mensaje);

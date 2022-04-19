@@ -22,7 +22,8 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="nombre" class="col-12 col-md-3  col-form-label">Nombre <span class="text-danger text-sm-left">*</span></label>
+            <label for="nombre" class="col-12 col-md-3  col-form-label">Nombre <span
+                    class="text-danger text-sm-left">*</span></label>
             <div class="col-12 col-md-9">
                 <input id="nombre" name="nombre" type="text"
                        value="<%=usuario.getNombre()%>"
@@ -33,7 +34,8 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="apellido1" class="col-12 col-md-3  col-form-label">Apellido 1º <span class="text-danger text-sm-left">*</span></label>
+            <label for="apellido1" class="col-12 col-md-3  col-form-label">Apellido 1º <span
+                    class="text-danger text-sm-left">*</span></label>
             <div class="col-12 col-md-9">
                 <input id="apellido1" name="apellido1" type="text"
                        value="<%=usuario.getApellido1()%>"

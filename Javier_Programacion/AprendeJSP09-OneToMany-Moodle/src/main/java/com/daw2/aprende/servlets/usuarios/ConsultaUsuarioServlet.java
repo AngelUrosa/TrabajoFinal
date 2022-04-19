@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 
 //urlPatterns={"/usuarios/alta"}
-@WebServlet(value="/usuarios/consulta")
+@WebServlet(value = "/usuarios/consulta")
 public class ConsultaUsuarioServlet extends HttpServlet {
     private final static Logger LOG = Logger.getLogger(ConsultaUsuarioServlet.class.getName());
     private UsuariosService usuariosService;
@@ -35,14 +35,14 @@ public class ConsultaUsuarioServlet extends HttpServlet {
         if (request.getParameter("nifBusca") != null) {  // Si se ha seleccionado un nif de busqueda
             String nifBusca = request.getParameter("nifBusca") != null ? request.getParameter("nifBusca").trim() : "";
             usuario = usuariosDao.getByNif(nifBusca);
-            if (usuario==null) {
+            if (usuario == null) {
                 usuario = new Usuario("", "", "", "");
-                request.setAttribute("alertWarning", "No se ha encontrado ningún usuario con el Nif "+request.getParameter("nifBusca"));
+                request.setAttribute("alertWarning", "No se ha encontrado ningún usuario con el Nif " + request.getParameter("nifBusca"));
             } else {
                 request.setAttribute("alertInfo", "Usuario encontrado.");
             }
         } else {
-            usuario = new Usuario("","","","");
+            usuario = new Usuario("", "", "", "");
         }
         request.setAttribute("usuario", usuario);
         request.setAttribute("usuarios", usuariosDao.listAll());

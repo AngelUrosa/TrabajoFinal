@@ -4,7 +4,8 @@
 <%
     List<Alumno> alumnos = (List) request.getAttribute("alumnos");
 %>
-<h2 class="text-center mt-4"><%=request.getParameter("titulo")%></h2>
+<h2 class="text-center mt-4"><%=request.getParameter("titulo")%>
+</h2>
 
 <table class="table table-striped">
     <thead>
@@ -32,7 +33,9 @@
         <td class="text-center"><%=alumno.getPago()%>
         </td>
         <td class="text-center">
-            <a href="alumnos/borra?nifBusca=<%=alumno.getNif()%>"> <button class="btn btn-danger btn-sm">borrar</button></a>
+            <a href="alumnos/borra?nifBusca=<%=alumno.getNif()%>">
+                <button class="btn btn-danger btn-sm">borrar</button>
+            </a>
         </td>
     </tr>
     <%}%>

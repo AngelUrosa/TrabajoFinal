@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 
-@WebServlet(value="/usuarios/listado")
+@WebServlet(value = "/usuarios/listado")
 public class ListadoUsuariosServlet extends HttpServlet {
     private final static Logger LOG = Logger.getLogger(ListadoUsuariosServlet.class.getName());
     private UsuariosService usuariosService;

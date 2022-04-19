@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 
 //urlPatterns={"/usuarios/alta"}
-@WebServlet(value="/alumnos/alta")
+@WebServlet(value = "/alumnos/alta")
 public class AltaAlumnosServlet extends HttpServlet {
     private final static Logger LOG = Logger.getLogger(AltaAlumnosServlet.class.getName());
     private AlumnosService alumnosService;
@@ -34,7 +34,7 @@ public class AltaAlumnosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AlumnosDao alumnosDao = new AlumnosDaoImpl();
         request.setCharacterEncoding("UTF-8");
-        request.setAttribute("alumno", new Alumno("","","","",0));
+        request.setAttribute("alumno", new Alumno("", "", "", "", 0));
         request.setAttribute("alumnos", alumnosDao.listAll());
         request.getRequestDispatcher("/alumnos/alta.jsp").forward(request, response);
     }
@@ -45,13 +45,13 @@ public class AltaAlumnosServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Alumno alumno = alumnosService.requestToClass(request);
 
-        Map<String,String> errorsItems = alumnosService.errors(request);
+        Map<String, String> errorsItems = alumnosService.errors(request);
 
         if (errorsItems.isEmpty()) {
-            if (alumnosDao.add(alumno)!=null) {
+            if (alumnosDao.add(alumno) != null) {
                 String mensaje = "El alumno " + alumno.getNombre() + " " + alumno.getApellido1() + " " + alumno.getApellido2() + " ha sido dado de alta.";
                 request.setAttribute("alertSuccess", mensaje);
-                alumno =  new Alumno("","","",0);
+                alumno = new Alumno("", "", "", 0);
             } else {
                 String mensaje = "Los datos introducidos son erroneos vuelva a intentarlo";
                 request.setAttribute("alertDanger", mensaje);

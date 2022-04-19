@@ -8,11 +8,11 @@
       <jdbc-url>jdbc:mariadb://castelarlamp.duckdns.org:8090/daw2_db12</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="castelarlamp.duckdns.org" uuid="8cf2be0a-b085-4100-9b05-a1fa6d1967e4">
-      <driver-ref>mariadb</driver-ref>
+    <data-source source="LOCAL" name="iescastelar.duckdns.org" uuid="366f70a0-4e08-46ae-a5ce-9a8ee8b59161">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://castelarlamp.duckdns.org:33069/daw2_bd12</jdbc-url>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://iescastelar.duckdns.org:33062/daw2_jsp12</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

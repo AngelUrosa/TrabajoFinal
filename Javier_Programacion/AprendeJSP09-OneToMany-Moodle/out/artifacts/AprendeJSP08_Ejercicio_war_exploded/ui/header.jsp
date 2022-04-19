@@ -46,14 +46,18 @@
 </nav>
 
 <%if (request.getAttribute("alertSuccess") != null) {%>
-<div class="alert alert-success mensaje-temporal"><%=request.getAttribute("alertSuccess")%></div>
+<div class="alert alert-success mensaje-temporal"><%=request.getAttribute("alertSuccess")%>
+</div>
 <%}%>
 <%if (request.getAttribute("alertDanger") != null) {%>
-<div class="alert alert-danger mensaje-temporal"><%=request.getAttribute("alertDanger")%></div>
+<div class="alert alert-danger mensaje-temporal"><%=request.getAttribute("alertDanger")%>
+</div>
 <%}%>
 <%if (request.getAttribute("alertWarning") != null) {%>
-<div class="alert alert-warning mensaje-temporal"><%=request.getAttribute("alertWarning")%></div>
+<div class="alert alert-warning mensaje-temporal"><%=request.getAttribute("alertWarning")%>
+</div>
 <%}%>
 <%if (request.getAttribute("alertInfo") != null) {%>
-<div class="alert alert-info mensaje-temporal"><%=request.getAttribute("alertInfo")%></div>
+<div class="alert alert-info mensaje-temporal"><%=request.getAttribute("alertInfo")%>
+</div>
 <%}%>

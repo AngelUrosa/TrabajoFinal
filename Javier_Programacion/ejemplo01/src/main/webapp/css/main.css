@@ -1,8 +1,9 @@
 thead {
     background-color: rgba(104, 15, 104, 0.58);
 }
+
 th {
-    color:#680f68;
+    color: #680f68;
 }
 
 .listado {
@@ -20,6 +21,7 @@ th {
 .mensaje-temporal-info {
     background-color: #b7f5cb;
 }
+
 .mensaje-temporal-error {
     background-color: #e58e8e;
 }
@@ -36,7 +38,7 @@ th {
 }
 
 .menu li {
-    display:inline-block;
+    display: inline-block;
     width: auto;
     background-color: aliceblue;
     padding: 5px;

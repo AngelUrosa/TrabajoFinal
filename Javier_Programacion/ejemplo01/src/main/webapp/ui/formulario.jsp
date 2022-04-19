@@ -5,8 +5,8 @@
 <%
     Alumno alumno = (Alumno) request.getAttribute("alumno");
     Map errorsItems = (Map) request.getAttribute("errorsItems");
-    String readonly= request.getAttribute("readonly")!=null?(String)request.getAttribute("readonly"):"";
-    boolean showButtonSubmit = request.getAttribute("showButtonSubmit")!=null?(boolean)request.getAttribute("showButtonSubmit"):true;
+    String readonly = request.getAttribute("readonly") != null ? (String) request.getAttribute("readonly") : "";
+    boolean showButtonSubmit = request.getAttribute("showButtonSubmit") != null ? (boolean) request.getAttribute("showButtonSubmit") : true;
 %>
 
 
@@ -28,10 +28,11 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="nombre" class="col-12 col-md-3  col-form-label">Nombre <span class="text-danger text-sm-left">*</span></label>
+            <label for="nombre" class="col-12 col-md-3  col-form-label">Nombre <span
+                    class="text-danger text-sm-left">*</span></label>
             <div class="col-12 col-md-9">
-                <input  id="nombre" name="nombre" type="text"
-                        maxlength="15"
+                <input id="nombre" name="nombre" type="text"
+                       maxlength="15"
                        value="<%=alumno.getNombre()%>"
                        class="form-control"
                         <%=readonly%>/>
@@ -41,7 +42,8 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="apellido1" class="col-12 col-md-3  col-form-label">Apellido 1º <span class="text-danger text-sm-left">*</span></label>
+            <label for="apellido1" class="col-12 col-md-3  col-form-label">Apellido 1º <span
+                    class="text-danger text-sm-left">*</span></label>
             <div class="col-12 col-md-9">
                 <input id="apellido1" name="apellido1" type="text"
                        maxlength="15"
@@ -76,7 +78,8 @@
 
         <%if (showButtonSubmit) {%>
         <div class="row justify-content-end mt-3">
-            <button type="submit" class="btn btn-primary col-12 col-md-4"><%=request.getParameter("tituloBoton")%></button>
+            <button type="submit" class="btn btn-primary col-12 col-md-4"><%=request.getParameter("tituloBoton")%>
+            </button>
         </div>
         <%}%>
 

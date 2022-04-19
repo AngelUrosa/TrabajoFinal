@@ -5,7 +5,7 @@ import com.daw2.aprende.model.entity.Usuario;
 import java.io.Serializable;
 import java.util.List;
 
-public interface Dao<T,PK extends Serializable> {
+public interface Dao<T, PK extends Serializable> {
     PK add(T entity);
 
     boolean add(List<T> list);

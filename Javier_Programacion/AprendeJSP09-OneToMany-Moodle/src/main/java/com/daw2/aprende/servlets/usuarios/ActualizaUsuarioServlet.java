@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 
 //urlPatterns={"/usuarios/alta"}
-@WebServlet(value="/usuarios/actualiza")
+@WebServlet(value = "/usuarios/actualiza")
 public class ActualizaUsuarioServlet extends HttpServlet {
     private final static Logger LOG = Logger.getLogger(ActualizaUsuarioServlet.class.getName());
     private UsuariosService usuariosService;
@@ -36,17 +36,17 @@ public class ActualizaUsuarioServlet extends HttpServlet {
         if (request.getParameter("nifBusca") != null) {  // Si se ha seleccionado un nif de busqueda
             String nifBusca = request.getParameter("nifBusca") != null ? request.getParameter("nifBusca").trim() : "";
             usuario = usuariosDao.getByNif(nifBusca);
-            if (usuario==null) {
+            if (usuario == null) {
                 usuario = new Usuario("", "", "", "");
-                request.setAttribute("alertWarning", "No se ha encontrado ningún usuario con el Nif "+request.getParameter("nifBusca"));
+                request.setAttribute("alertWarning", "No se ha encontrado ningún usuario con el Nif " + request.getParameter("nifBusca"));
             } else {
                 request.setAttribute("alertInfo", "Usuario encontrado. Puede modificarlo ahora");
             }
         } else {
-            usuario = new Usuario("","","","");
+            usuario = new Usuario("", "", "", "");
         }
 
-        if (usuario.getId()!=null) {
+        if (usuario.getId() != null) {
             request.setAttribute("readonly", "");
             request.setAttribute("showButtonSubmit", true);
         } else
@@ -63,13 +63,13 @@ public class ActualizaUsuarioServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Usuario usuario = usuariosService.requestToClass(request);
 
-        Map<String,String> errorsItems = usuariosService.errors(request);
+        Map<String, String> errorsItems = usuariosService.errors(request);
 
         if (errorsItems.isEmpty()) {
             if (usuariosDao.update(usuario)) {
                 String mensaje = "El usuario " + usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2() + " ha sido modificado";
                 request.setAttribute("alertSuccess", mensaje);
-                usuario =  new Usuario("","","","");
+                usuario = new Usuario("", "", "", "");
                 request.setAttribute("readonly", "readonly");
                 request.setAttribute("showButtonSubmit", false);
             } else {

@@ -78,7 +78,7 @@ public class EmpleadosDaoImpl implements EmpleadosDao {
             ps.setString(5, entity.getTelefono());
             ps.setDouble(6, entity.getSueldo());
             ps.setDate(7, utilDateToSqlDate(entity.getFechaAlta()));
-            ps.setInt(8, entity.getDepartamento()!=null?entity.getDepartamento().getId():null);
+            ps.setInt(8, entity.getDepartamento() != null ? entity.getDepartamento().getId() : null);
             ps.setInt(9, entity.getId());
             ps.executeUpdate();
             connection.commit();
@@ -254,9 +254,9 @@ public class EmpleadosDaoImpl implements EmpleadosDao {
         ps.setString(4, entity.getApellido2());
         ps.setString(5, entity.getTelefono());
         ps.setDouble(6, entity.getSueldo());
-       // ps.setDate(7, new java.sql.Date(entity.getFechaAlta().getTime()));
+        // ps.setDate(7, new java.sql.Date(entity.getFechaAlta().getTime()));
         ps.setDate(7, utilDateToSqlDate(entity.getFechaAlta()));
-        ps.setInt(8, entity.getDepartamento()!=null?entity.getDepartamento().getId():null);
+        ps.setInt(8, entity.getDepartamento() != null ? entity.getDepartamento().getId() : null);
         ps.executeUpdate();
         ResultSet rs = ps.getGeneratedKeys();
         if (rs.next()) {
@@ -275,7 +275,7 @@ public class EmpleadosDaoImpl implements EmpleadosDao {
     public List<Empleado> listAllFillDpto() {
         DepartamentosDao dptoDao = new DepartamentosDaoImpl();
         List<Empleado> list = listAll();
-        list.forEach(e->e.setDepartamento(dptoDao.get(e.getDepartamento().getId())));
+        list.forEach(e -> e.setDepartamento(dptoDao.get(e.getDepartamento().getId())));
         return list;
     }
 }

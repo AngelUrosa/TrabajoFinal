@@ -25,7 +25,8 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="nombre" class="col-12 col-md-3  col-form-label">Nombre <span class="text-danger text-sm-left">*</span></label>
+            <label for="nombre" class="col-12 col-md-3  col-form-label">Nombre <span
+                    class="text-danger text-sm-left">*</span></label>
             <div class="col-12 col-md-9">
                 <input id="nombre" name="nombre" type="text"
                        value="<%=empleado.getNombre()%>"
@@ -36,7 +37,8 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="apellido1" class="col-12 col-md-3  col-form-label">Apellido 1º <span class="text-danger text-sm-left">*</span></label>
+            <label for="apellido1" class="col-12 col-md-3  col-form-label">Apellido 1º <span
+                    class="text-danger text-sm-left">*</span></label>
             <div class="col-12 col-md-9">
                 <input id="apellido1" name="apellido1" type="text"
                        value="<%=empleado.getApellido1()%>"
@@ -73,16 +75,17 @@
         <div class="form-group row mt-1">
             <label for="fechaAlta" class="col-12 col-md-3 col-form-label">Fecha de Alta</label>
             <div class="col-12 col-md-3">
-                  <input id="fechaAlta" name="fechaAlta" type="date"
-                         value="<%=UtilFecha.dateTo_yyyy_mm_dd(empleado.getFechaAlta())%>"
-                         class="form-control" size="10" >
+                <input id="fechaAlta" name="fechaAlta" type="date"
+                       value="<%=UtilFecha.dateTo_yyyy_mm_dd(empleado.getFechaAlta())%>"
+                       class="form-control" size="10">
             </div>
             <label for="dpto" class="col-12 col-md-2 col-form-label">Departamento</label>
             <div class="col-12 col-md-4">
                 <select id="dpto" name="idDpto" class="form-select" aria-label="Default select example">
                     <option selected>Seleccione el departamento</option>
-                    <%for (Departamento dpto: departamentos) {%>
-                        <option value="<%=dpto.getId()%>"><%=dpto.getDescripcion()%> </option>
+                    <%for (Departamento dpto : departamentos) {%>
+                    <option value="<%=dpto.getId()%>"><%=dpto.getDescripcion()%>
+                    </option>
                     <%}%>
                 </select>
             </div>

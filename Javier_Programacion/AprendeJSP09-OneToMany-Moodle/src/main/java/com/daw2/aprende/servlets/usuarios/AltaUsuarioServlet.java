@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 
 //urlPatterns={"/usuarios/alta"}
-@WebServlet(value="/usuarios/alta")
+@WebServlet(value = "/usuarios/alta")
 public class AltaUsuarioServlet extends HttpServlet {
     private final static Logger LOG = Logger.getLogger(AltaUsuarioServlet.class.getName());
     private UsuariosService usuariosService;
@@ -31,7 +31,7 @@ public class AltaUsuarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UsuariosDao usuariosDao = new UsuariosDaoImpl();
         request.setCharacterEncoding("UTF-8");
-        request.setAttribute("usuario", new Usuario("","","",""));
+        request.setAttribute("usuario", new Usuario("", "", "", ""));
         request.setAttribute("usuarios", usuariosDao.listAll());
         request.setAttribute("showButtonSubmit", true);
         request.getRequestDispatcher("/usuarios/alta.jsp").forward(request, response);
@@ -43,13 +43,13 @@ public class AltaUsuarioServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Usuario usuario = usuariosService.requestToClass(request);
 
-        Map<String,String> errorsItems = usuariosService.errors(request);
+        Map<String, String> errorsItems = usuariosService.errors(request);
 
         if (errorsItems.isEmpty()) {
-            if (usuariosDao.add(usuario)!=null) {
+            if (usuariosDao.add(usuario) != null) {
                 String mensaje = "El usuario " + usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2() + " ha sido dado de alta.";
                 request.setAttribute("alertSuccess", mensaje);
-                usuario =  new Usuario("","","","");
+                usuario = new Usuario("", "", "", "");
             } else {
                 String mensaje = "El usuario " + usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2() + " no ha sido dado de alta. Ya existe un usuario con el nif " + usuario.getNif();
                 request.setAttribute("alertDanger", mensaje);

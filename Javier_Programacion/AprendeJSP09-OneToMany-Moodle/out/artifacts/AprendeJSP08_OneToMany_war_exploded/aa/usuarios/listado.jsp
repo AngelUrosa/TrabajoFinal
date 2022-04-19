@@ -4,7 +4,8 @@
 <%
     List<Usuario> usuarios = (List) request.getAttribute("usuarios");
 %>
-<h2 class="text-center mt-4"><%=request.getParameter("titulo")%></h2>
+<h2 class="text-center mt-4"><%=request.getParameter("titulo")%>
+</h2>
 
 <table class="table table-striped">
     <thead>

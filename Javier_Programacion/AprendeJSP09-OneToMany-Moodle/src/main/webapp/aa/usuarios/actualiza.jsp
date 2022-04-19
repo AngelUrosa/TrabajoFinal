@@ -8,7 +8,7 @@
 <div class="container">
     <h2 class="text-center mt-4">Actualiza Usuario</h2>
     <jsp:include page="filtro.jsp"></jsp:include>
-<%--    <jsp:include page="formulario_update.jsp"></jsp:include>--%>
+    <%--    <jsp:include page="formulario_update.jsp"></jsp:include>--%>
     <hr/>
 
     <%--Probamos también el paso de parámetros --%>

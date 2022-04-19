@@ -3,7 +3,7 @@ package com.daw2.ejemplo01.model.dao;
 import java.io.Serializable;
 import java.util.List;
 
-public interface Dao<T,PK extends Serializable> {
+public interface Dao<T, PK extends Serializable> {
     PK add(T entity);
 
     boolean add(List<T> list);

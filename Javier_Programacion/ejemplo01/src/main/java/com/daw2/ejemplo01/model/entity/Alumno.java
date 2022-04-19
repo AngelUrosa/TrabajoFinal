@@ -9,11 +9,11 @@ public class Alumno {
     private double pago;
 
     public Alumno() {
-        this(null,null,null,0);
+        this(null, null, null, 0);
     }
 
     public Alumno(String nif, String nombre, String apellido1, int pago) {
-        this(null, null,null,null,0);
+        this(null, null, null, null, 0);
     }
 
     public Alumno(String nif, String nombre, String apellido1, String apellido2, double pago) {
@@ -22,7 +22,7 @@ public class Alumno {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.pago=pago;
+        this.pago = pago;
     }
 
     public Alumno(Integer id, String nif, String nombre, String apellido1, String apellido2, double pago) {
@@ -31,7 +31,7 @@ public class Alumno {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.pago=pago;
+        this.pago = pago;
     }
 
     public Integer getId() {

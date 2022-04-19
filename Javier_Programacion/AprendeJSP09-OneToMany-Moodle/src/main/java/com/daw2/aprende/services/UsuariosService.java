@@ -20,11 +20,12 @@ public class UsuariosService {
         return usuariosService;
     }
 
-    public Usuario requestToClass (HttpServletRequest request) {
+    public Usuario requestToClass(HttpServletRequest request) {
         Integer id = null;
         try {
             id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : null;
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+        }
         String nif = request.getParameter("nif") != null ? request.getParameter("nif").trim() : "";
         String nombre = (request.getParameter("nombre") != null) ? request.getParameter("nombre").trim() : "";
         String apellido1 = request.getParameter("apellido1") != null ? request.getParameter("apellido1").trim() : "";

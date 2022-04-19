@@ -8,15 +8,14 @@
 %>
 
 
+<form method="put" action="usuarios/actualiza">
 
-        <form method="put" action="usuarios/actualiza">
+    <input id="nifBusca" name="nifBusca" type="text"
+           value=""
+           class="form-control"/>
+    <input type="submit" class="btn btn-primary" value="buscar"/>
 
-                <input id="nifBusca" name="nifBusca" type="text"
-                       value=""
-                       class="form-control"/>
-                  <input type="submit" class="btn btn-primary" value="buscar"/>
-
-        </form>
+</form>
 
 
 </div>

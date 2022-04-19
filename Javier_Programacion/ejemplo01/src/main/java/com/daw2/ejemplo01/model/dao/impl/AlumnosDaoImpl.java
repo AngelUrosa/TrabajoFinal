@@ -1,8 +1,6 @@
 package com.daw2.ejemplo01.model.dao.impl;
 
 
-
-
 import com.daw2.ejemplo01.model.dao.AlumnosDao;
 import com.daw2.ejemplo01.model.dao.ConectaBD;
 import com.daw2.ejemplo01.model.entity.Alumno;
