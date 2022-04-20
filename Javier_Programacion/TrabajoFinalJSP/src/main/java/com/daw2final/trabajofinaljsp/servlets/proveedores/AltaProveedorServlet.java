@@ -49,7 +49,7 @@ import java.util.logging.Logger;
 
             if (errorsItems.isEmpty()) {
                 if (proveedoresDao.add(proveedor) != null) {
-                    String mensaje = "El articulo " + proveedor.getNif() + " ha sido dado de alta.";
+                    String mensaje = "El proveedor " + proveedor.getNif() + " ha sido dado de alta.";
                     request.setAttribute("alertSuccess", mensaje);
                     proveedor = new Proveedor("","","","","","","");
                 } else {

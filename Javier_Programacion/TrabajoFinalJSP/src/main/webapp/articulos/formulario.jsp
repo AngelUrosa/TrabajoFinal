@@ -10,6 +10,8 @@
     List<Proveedor> proveedores = (List) request.getAttribute("proveedores");
 %>
 
+<input name="id" type="hidden" value="<%=articulo.getId()%>"/>
+
 <div class="card bg-dark text-white row col-md-8 offset-md-2 mt-4">
     <div class="card-body">
         <div class="form-group row">

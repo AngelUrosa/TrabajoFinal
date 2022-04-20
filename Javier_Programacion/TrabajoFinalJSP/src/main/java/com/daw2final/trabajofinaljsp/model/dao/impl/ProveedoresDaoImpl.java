@@ -1,9 +1,7 @@
 package com.daw2final.trabajofinaljsp.model.dao.impl;
 
-import com.daw2final.trabajofinaljsp.model.dao.ArticulosDao;
 import com.daw2final.trabajofinaljsp.model.dao.ConectaBD;
 import com.daw2final.trabajofinaljsp.model.dao.ProveedoresDao;
-import com.daw2final.trabajofinaljsp.model.entity.Articulo;
 import com.daw2final.trabajofinaljsp.model.entity.Proveedor;
 
 import java.sql.*;
@@ -131,8 +129,8 @@ import java.util.List;
             error = false;
             Proveedor entity = null;
             String sql = "SELECT "
-                    + "id=?, nif =?, nombre=?, apellido1=?, apellido2=?, "
-                    + "telefono=?, razon_social=?, email=? "
+                    + "id, nif , nombre, apellido1, apellido2, "
+                    + "telefono, razon_social, email "
                     + "FROM proveedores WHERE id = ?";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, id);
@@ -161,8 +159,8 @@ import java.util.List;
             Proveedor entity = null;
             List<Proveedor> list = new ArrayList<>();
             String sql = "SELECT "
-                    + "id=?, nif =?, nombre=?, apellido1=?, apellido2=?, "
-                    + "telefono=?, razon_social=?, email=? "
+                    + "id, nif, nombre, apellido1, apellido2, "
+                    + "telefono, razon_social, email "
                     + "FROM proveedores "
                     + "ORDER BY apellido1, apellido2, nombre";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -177,6 +175,7 @@ import java.util.List;
                     entity.setTelefono(rs.getString("telefono"));
                     entity.setRazonSocial(rs.getString("razon_social"));
                     entity.setEmail(rs.getString("email"));
+                    list.add(entity);
                 }
                 rs.close();
             } catch (SQLException ex) {
@@ -212,6 +211,7 @@ import java.util.List;
                     entity.setTelefono(rs.getString("telefono"));
                     entity.setRazonSocial(rs.getString("razon_social"));
                     entity.setEmail(rs.getString("email"));
+                    list.add(entity);
                 }
                 rs.close();
                 if (!list.isEmpty())
@@ -255,6 +255,8 @@ import java.util.List;
             return id;
         }
 
+
+
         /*-------------------------*/
         /* Métodos complementarios */
         /*-------------------------*/
@@ -265,6 +267,55 @@ import java.util.List;
             list.forEach(a -> a.setProveedor(provDao.get(a.getProveedor().getId())));
             return list;
         } */
+
+
+        @Override
+        public Proveedor getByNif(String nif) {
+            error = false;
+            Proveedor entity = null;
+            String sql = "SELECT "
+                    + "id, nif , nombre, apellido1, apellido2, "
+                    + "telefono, razon_social, email "
+                    + "FROM proveedores WHERE nif = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, nif);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    entity = new Proveedor();
+                    entity.setId(rs.getInt("id"));
+                    entity.setNif(rs.getString("nif"));
+                    entity.setNombre(rs.getString("nombre"));
+                    entity.setApellido1(rs.getString("apellido1"));
+                    entity.setApellido2(rs.getString("apellido2"));
+                    entity.setTelefono(rs.getString("telefono"));
+                    entity.setRazonSocial(rs.getString("razon_social"));
+                    entity.setEmail(rs.getString("email"));
+                }
+                rs.close();
+            } catch (Exception ex) {
+                error = true;
+            }
+            return entity;
+        }
+
+        @Override
+        public boolean deleteByNif(String nif) {
+            error = false;
+            String sql = "DELETE FROM proveedores "
+                    + "WHERE nif=?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, nif);
+                ps.executeUpdate();
+                connection.commit();
+            } catch (SQLException ex) {
+                error = true;
+                try {
+                    connection.rollback();
+                } catch (SQLException ex1) {
+                }
+            }
+            return !error;
+        }
 
     }
 

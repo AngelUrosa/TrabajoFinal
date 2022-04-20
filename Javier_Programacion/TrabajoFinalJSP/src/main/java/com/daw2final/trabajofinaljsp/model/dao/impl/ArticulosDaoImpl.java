@@ -130,9 +130,9 @@ import java.util.List;
             error = false;
             Articulo entity = null;
             String sql = "SELECT "
-                    + "id=?, ref =?, descripcion=?, precio=?, stock=?, "
-                    + "id_proveedor=? "
-                    + "FROM empleados WHERE id = ?";
+                    + "id, ref , descripcion, precio, stock, "
+                    + "id_proveedor "
+                    + "FROM articulos WHERE id = ?";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, id);
                 ResultSet rs = ps.executeQuery();
@@ -160,8 +160,8 @@ import java.util.List;
             Articulo entity = null;
             List<Articulo> list = new ArrayList<>();
             String sql = "SELECT "
-                    + "id=?, ref =?, descripcion=?, precio=?, stock=?, "
-                    + "id_proveedor=? "
+                    + "id, ref , descripcion, precio, stock, "
+                    + "id_proveedor "
                     + "FROM articulos "
                     + "ORDER BY ref, precio ";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -234,7 +234,7 @@ import java.util.List;
 
         private Integer _add(Articulo entity) throws SQLException {
             Integer id;
-            String sql = "INSERT INTO empleados "
+            String sql = "INSERT INTO articulos "
                     + "(ref, descripcion, precio, stock, id_proveedor) VALUES "
                     + "(?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
