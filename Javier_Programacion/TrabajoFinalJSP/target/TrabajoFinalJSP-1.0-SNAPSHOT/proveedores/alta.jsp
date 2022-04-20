@@ -15,7 +15,7 @@
 
     <%--Probamos también el paso de parámetros --%>
     <jsp:include page="listado.jsp">
-        <jsp:param name="titulo" value="Listado de proveedores"/>
+        <jsp:param name="titulo" value="Listado de articulos"/>
     </jsp:include>
 
 </div>

@@ -61,18 +61,18 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="razon_social" class="col-12 col-md-3 col-form-label">Razon Social</label>
-            <div class="col-12 col-md-9">
-                <input id="razon_social" name="razon_social" type="text"
-                       value="<%=proveedor.getRazonSocial()%>"
-                       class="form-control"/>
-            </div>
-        </div>
-        <div class="form-group row mt-1">
             <label for="email" class="col-12 col-md-3 col-form-label">Email</label>
             <div class="col-12 col-md-9">
                 <input id="email" name="email" type="email"
                        value="<%=proveedor.getEmail()%>"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row mt-1">
+            <label for="razon_social" class="col-12 col-md-3 col-form-label">Razon Social</label>
+            <div class="col-12 col-md-9">
+                <input id="razon_social" name="razon_social" type="text"
+                       value="<%=proveedor.getRazonSocial()%>"
                        class="form-control"/>
             </div>
         </div>

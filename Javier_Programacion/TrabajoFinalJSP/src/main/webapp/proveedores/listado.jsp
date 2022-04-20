@@ -15,8 +15,8 @@
         <th scope="col">Apellido 1º</th>
         <th scope="col">Apellido 2º</th>
         <th scope="col">Teléfono</th>
-        <th scope="col">Razon Social</th>
         <th scope="col">Email</th>
+        <th scope="col">Razon Social</th>
     </tr>
     </thead>
 
@@ -33,9 +33,9 @@
         </td>
         <td><%=proveedor.getTelefono()%>
         </td>
-        <td><%=proveedor.getRazonSocial()%>
-        </td>
         <td><%=proveedor.getEmail()%>
+        </td>
+        <td><%=proveedor.getRazonSocial()%>
         </td>
     </tr>
     <%}%>

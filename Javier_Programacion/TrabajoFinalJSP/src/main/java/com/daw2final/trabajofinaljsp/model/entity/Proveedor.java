@@ -9,36 +9,36 @@ public class Proveedor {
     private String apellido1;
     private String apellido2;
     private String telefono;
-    private String razonSocial;
     private String email;
+    private String razonSocial;
     protected List<Articulo> articulos;
 
     public Proveedor() {
         this(null,null,null,null,null,null,null,null);
     }
-    public Proveedor(Integer id, String nif, String nombre, String apellido1, double telefono, String razonSocial, String email) {
+    public Proveedor(Integer id, String nif, String nombre, String apellido1, double telefono, String email, String razonSocial) {
         this(null,null,null,null,null,null,null,null);
     }
 
-    public Proveedor(String nif, String nombre, String apellido1, String apellido2, String telefono, String razonSocial, String email) {
+    public Proveedor(String nif, String nombre, String apellido1, String apellido2, String telefono, String email, String razonSocial) {
         this.id = null;
         this.nif = nif;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.telefono = telefono;
-        this.razonSocial = razonSocial;
         this.email = email;
+        this.razonSocial = razonSocial;
     }
-    public Proveedor(Integer id, String nif, String nombre, String apellido1, String apellido2, String telefono, String razonSocial, String email) {
+    public Proveedor(Integer id, String nif, String nombre, String apellido1, String apellido2, String telefono, String email, String razonSocial) {
         this.id = id;
         this.nif = nif;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.telefono = telefono;
-        this.razonSocial = razonSocial;
         this.email = email;
+        this.razonSocial = razonSocial;
     }
 
     public Integer getId() {
@@ -122,8 +122,8 @@ public class Proveedor {
                 ", apellido1='" + apellido1 + '\'' +
                 ", apellido2='" + apellido2 + '\'' +
                 ", telefono=" + telefono +
-                ", razonSocial='" + razonSocial + '\'' +
                 ", email='" + email + '\'' +
+                ", razonSocial='" + razonSocial + '\'' +
                 '}';
     }
 }

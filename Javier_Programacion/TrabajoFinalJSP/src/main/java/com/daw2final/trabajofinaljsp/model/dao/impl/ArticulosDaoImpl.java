@@ -257,6 +257,7 @@ import java.util.List;
         /*-------------------------*/
         /* Métodos complementarios */
         /*-------------------------*/
+
         @Override
         public List<Articulo> listAllFillProv() {
             ProveedoresDao provDao = new ProveedoresDaoImpl();
@@ -264,6 +265,7 @@ import java.util.List;
             list.forEach(a -> a.setProveedor(provDao.get(a.getProveedor().getId())));
             return list;
         }
+
     }
 
 
