@@ -16,7 +16,7 @@ public class Proveedor {
     public Proveedor() {
         this(null,null,null,null,null,null,null,null);
     }
-    public Proveedor(Integer id, String nif, String nombre, String apellido1, double telefono, String email, String razonSocial) {
+    public Proveedor(Integer id, String nif, String nombre, String apellido1, double telefono, String email,String razonSocial) {
         this(null,null,null,null,null,null,null,null);
     }
 
@@ -29,6 +29,8 @@ public class Proveedor {
         this.telefono = telefono;
         this.email = email;
         this.razonSocial = razonSocial;
+
+
     }
     public Proveedor(Integer id, String nif, String nombre, String apellido1, String apellido2, String telefono, String email, String razonSocial) {
         this.id = id;
@@ -39,7 +41,10 @@ public class Proveedor {
         this.telefono = telefono;
         this.email = email;
         this.razonSocial = razonSocial;
+
+
     }
+
 
     public Integer getId() {
         return id;

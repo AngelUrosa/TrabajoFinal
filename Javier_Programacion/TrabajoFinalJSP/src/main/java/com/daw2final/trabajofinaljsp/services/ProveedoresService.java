@@ -38,7 +38,7 @@ import java.util.Map;
             String razon_social = (request.getParameter("razon_social") != null) ? request.getParameter("razon_social").trim() : "";
 
 
-            Proveedor proveedor = new Proveedor(nif, nombre, apellido1, apellido2, telefono,email,razon_social);
+            Proveedor proveedor = new Proveedor(id ,nif, nombre, apellido1, apellido2, telefono,email,razon_social);
             return proveedor;
         }
 

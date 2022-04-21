@@ -30,8 +30,18 @@ import java.util.Map;
             }
             String ref = request.getParameter("ref") != null ? request.getParameter("ref").trim() : "";
             String descripcion = (request.getParameter("descripcion") != null) ? request.getParameter("descripcion").trim() : "";
-            double precio = 0;
-            double stock = 0;
+            double precio;
+            try {
+                precio = Double.parseDouble(request.getParameter("precio").trim());
+            } catch (Exception ex) {
+                precio = 0;
+            }
+            double stock;
+            try {
+                stock = Double.parseDouble(request.getParameter("stock").trim());
+            } catch (Exception ex) {
+                stock = 0;
+            }
 
             Proveedor prov = null;
             try {
@@ -41,21 +51,13 @@ import java.util.Map;
             } catch (Exception ex) {
             }
 
-            Articulo articulo = new Articulo(ref, descripcion, precio, stock, prov);
+            Articulo articulo = new Articulo(id,ref, descripcion, precio, stock, prov);
             return articulo;
         }
 
         public Map errors(HttpServletRequest request) {
             Map errors = new HashMap();
-            if (request.getParameter("nif") == null || request.getParameter("nif").trim().isEmpty()) {
-                errors.put("errorNif", "Debe indicar el NIF");
-            }
-            if (request.getParameter("nombre") == null || request.getParameter("nombre").trim().isEmpty()) {
-                errors.put("errorNombre", "Debe indicar el nombre");
-            }
-            if (request.getParameter("apellido1") == null || request.getParameter("apellido1").trim().isEmpty()) {
-                errors.put("errorApellido1", "Debe indicar el primer apellido");
-            }
+
             return errors;
         }
     }

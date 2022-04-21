@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.daw2final.trabajofinaljsp.model.entity.Articulo" %>
+<%@ page import="com.daw2final.trabajofinaljsp.model.entity.Proveedor" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     List<Articulo> articulos = (List) request.getAttribute("articulos");

@@ -10,7 +10,7 @@
 %>
 
 
-<input name="id" type="hidden" value="<%=proveedor.getId()%>"/>
+<input name="id" id="id" type="hidden" value="<%=proveedor.getId()%>"/>
 
 <div class="card bg-dark text-white row col-md-8 offset-md-2 mt-4">
     <div class="card-body">

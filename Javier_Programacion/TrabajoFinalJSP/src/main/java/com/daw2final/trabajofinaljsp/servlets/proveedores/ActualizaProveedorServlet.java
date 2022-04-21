@@ -11,17 +11,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Logger;
 
 
-    //urlPatterns={"/usuarios/alta"}
-    @WebServlet(value = "/proveedores/borra")
-    public class BorraProveedorServlet extends HttpServlet {
-        private final static Logger LOG = Logger.getLogger(BorraProveedorServlet.class.getName());
+
+
+    @WebServlet(value = "/proveedores/actualiza")
+    public class ActualizaProveedorServlet extends HttpServlet {
+        private final static Logger LOG = Logger.getLogger(ActualizaProveedorServlet.class.getName());
         private ProveedoresService proveedoresService;
 
         public void init() {
-            LOG.info("Inicializando ConsultaUsuarioServlet");
+            LOG.info("Inicializando ActualizaUsuarioServlet");
             proveedoresService = ProveedoresService.getInstance();  // UsuariosService es un Singleton
         }
 
@@ -34,23 +36,27 @@ import java.util.logging.Logger;
                 String nifBusca = request.getParameter("nifBusca") != null ? request.getParameter("nifBusca").trim() : "";
                 proveedor = proveedoresDao.getByNif(nifBusca);
                 if (proveedor == null) {
-                    proveedor = new Proveedor("", "", "", "","","","");
+                    proveedor = new Proveedor(0,"", "", "", "","","","");
                     request.setAttribute("alertWarning", "No se ha encontrado ningún proveedor con el Nif " + request.getParameter("nifBusca"));
-                    request.setAttribute("showButtonSubmit", false);
                 } else {
-                    request.setAttribute("alertInfo", "Proveedor encontrado.");
-                    request.setAttribute("showButtonSubmit", true);
+                    request.setAttribute("alertInfo", "Proveedor encontrado. Puede modificarlo ahora");
                 }
             } else {
-                proveedor = new Proveedor( "", "", "","", "", "", "");
-                request.setAttribute("showButtonSubmit", false);
+                proveedor = new Proveedor(0,"", "", "", "","","","");
             }
+
+            if (proveedor.getId() != null) {
+                request.setAttribute("readonly", "");
+                request.setAttribute("showButtonSubmit", true);
+            } else
+                request.setAttribute("readonly", "readonly");
+
             request.setAttribute("proveedor", proveedor);
             request.setAttribute("proveedores", proveedoresDao.listAll());
-            request.setAttribute("readonly", "readonly");
-            request.getRequestDispatcher("/proveedores/borra.jsp").forward(request, response);
-        }
+            request.getRequestDispatcher("/proveedores/actualiza.jsp").forward(request, response);
 
+
+        }
 
         @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,20 +64,29 @@ import java.util.logging.Logger;
             request.setCharacterEncoding("UTF-8");
             Proveedor proveedor = proveedoresService.requestToClass(request);
 
-            if (proveedoresDao.delete(proveedor.getId())) {
-                String mensaje = "El proveedor " + proveedor.getNombre() + " " + proveedor.getApellido1() + " " + proveedor.getApellido2() + " ha sido modificado";
-                request.setAttribute("alertSuccess", mensaje);
-                proveedor = new Proveedor("", "", "", "","","","");
-                request.setAttribute("readonly", "readonly");
+            Map<String, String> errorsItems = proveedoresService.errors(request);
+
+            if (errorsItems.isEmpty()) {
+                if (proveedoresDao.update(proveedor)) {
+                    String mensaje = "El proveedor " + proveedor.getNombre() + " " + proveedor.getApellido1() + " " + proveedor.getApellido2() + " ha sido modificado";
+                    request.setAttribute("alertSuccess", mensaje);
+                    proveedor = new Proveedor(0, "", "", "","","","","");
+                    request.setAttribute("readonly", "readonly");
+                    request.setAttribute("showButtonSubmit", false);
+                } else {
+                    String mensaje = "El proveedor " + proveedor.getNombre() + " " + proveedor.getApellido1() + " " + proveedor.getApellido2() + " no ha sido dado de alta. Ya existe un usuario con el nif " + proveedor.getNif();
+                    request.setAttribute("alertDanger", mensaje);
+                    request.setAttribute("showButtonSubmit", true);
+                }
             } else {
-                String mensaje = "El proveedor " + proveedor.getNombre() + " " + proveedor.getApellido1() + " " + proveedor.getApellido2() + " no ha sido dado de alta. Ya existe un proveedor con el nif " + proveedor.getNif();
-                request.setAttribute("alertDanger", mensaje);
+                request.setAttribute("alertDanger", "Los datos no son correctos, no se pudo guardar los datos");
+                request.setAttribute("showButtonSubmit", true);
             }
+            request.setAttribute("errorsItems", errorsItems);
             request.setAttribute("proveedor", proveedor);
             request.setAttribute("proveedores", proveedoresDao.listAll());
-            request.getRequestDispatcher("/proveedores/borra.jsp").forward(request, response);
+            request.getRequestDispatcher("/proveedores/actualiza.jsp").forward(request, response);
         }
-
 
         public void destroy() {
         }

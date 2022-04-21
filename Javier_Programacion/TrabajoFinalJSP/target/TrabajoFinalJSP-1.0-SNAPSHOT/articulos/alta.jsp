@@ -9,7 +9,9 @@
     <h2 class="text-center mt-4">Nuevo Articulo</h2>
 
     <form method="post" action="articulos/alta">
-        <jsp:include page="formulario.jsp"></jsp:include>
+        <jsp:include page="formulario.jsp">
+            <jsp:param name="tituloBoton" value='Guardar'/>
+        </jsp:include>
     </form>
     <hr/>
 

@@ -37,6 +37,20 @@
         </td>
         <td><%=proveedor.getRazonSocial()%>
         </td>
+        <td class="text-center">
+            <a href="proveedores/alta">
+                <button class="btn btn-secondary btn-sm">alta</button>
+            </a>
+            <a href="proveedores/consulta?nifBusca=<%=proveedor.getNif()%>">
+                <button class="btn btn-success btn-sm">ver</button>
+            </a>
+            <a href="proveedores/actualiza?nifBusca=<%=proveedor.getNif()%>">
+                <button class="btn btn-info btn-sm">editar</button>
+            </a>
+            <a href="proveedores/borra?nifBusca=<%=proveedor.getNif()%>">
+                <button class="btn btn-danger btn-sm">borrar</button>
+            </a>
+        </td>
     </tr>
     <%}%>
     </tbody>

@@ -27,6 +27,7 @@ import java.util.logging.Logger;
         public void init() {
             LOG.info("Inicializando AltaServlet");
             articulosService = ArticulosService.getInstance();  // UsuariosService es un Singleton
+            proveedoresDao = new ProveedoresDaoImpl();
         }
 
         @Override
