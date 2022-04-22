@@ -259,6 +259,37 @@ import java.util.List;
         /*-------------------------*/
 
         @Override
+        public Articulo getByRef(String ref) {
+            error = false;
+            Articulo entity = null;
+            String sql = "SELECT "
+                    + "id, ref , descripcion, precio, stock, "
+                    + "id_proveedor "
+                    + "FROM articulos WHERE ref = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, ref);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    entity = new Articulo();
+                    entity.setId(rs.getInt("id"));
+                    entity.setRef(rs.getString("ref"));
+                    entity.setDescripcion(rs.getString("descripcion"));
+                    entity.setPrecio(rs.getDouble("precio"));
+                    entity.setStock(rs.getDouble("stock"));
+                    Proveedor prov = new Proveedor();
+                    prov.setId(rs.getInt("id_proveedor"));
+                    entity.setProveedor(prov);
+                }
+                rs.close();
+            } catch (Exception ex) {
+                error = true;
+            }
+            return entity;
+        }
+
+
+
+        @Override
         public List<Articulo> listAllFillProv() {
             ProveedoresDao provDao = new ProveedoresDaoImpl();
             List<Articulo> list = listAll();

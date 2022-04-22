@@ -32,6 +32,20 @@
         </td>
         <td><%=articulo.getProveedor() != null ? articulo.getProveedor().getNif() : ""%>
         </td>
+        <td class="text-center">
+            <a href="articulos/alta">
+                <button class="btn btn-secondary btn-sm">alta</button>
+            </a>
+            <a href="articulos/consulta?refBusca=<%=articulo.getRef()%>">
+                <button class="btn btn-success btn-sm">ver</button>
+            </a>
+            <a href="articulos/actualiza?refBusca=<%=articulo.getRef()%>">
+                <button class="btn btn-info btn-sm">editar</button>
+            </a>
+            <a href="articulos/borra?refBusca=<%=articulo.getRef()%>">
+                <button class="btn btn-danger btn-sm">borrar</button>
+            </a>
+        </td>
     </tr>
     <%}%>
     </tbody>

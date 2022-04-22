@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ArticulosDao extends Dao<Articulo, Integer> {
     List<Articulo> listAllFillProv();
+    Articulo getByRef(String ref);
 }

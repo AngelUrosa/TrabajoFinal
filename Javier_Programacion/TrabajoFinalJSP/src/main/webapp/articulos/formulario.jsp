@@ -9,6 +9,7 @@
     Map errorsItems = (Map) request.getAttribute("errorsItems");
     List<Proveedor> proveedores = (List) request.getAttribute("proveedores");
     String readonly = request.getAttribute("readonly") != null ? (String) request.getAttribute("readonly") : "";
+    String disabled = request.getAttribute("disabled") != null ? (String) request.getAttribute("disabled") : "";
     boolean showButtonSubmit = request.getAttribute("showButtonSubmit") != null ? (boolean) request.getAttribute("showButtonSubmit") : false;
 %>
 
@@ -69,13 +70,13 @@
             </div>
         </div>
         <div class="form-group row mt-1">
-            <label for="proveedor" class="col-12 col-md-3 col-form-label">Proveedores</label>
+            <label for="idProveedor" class="col-12 col-md-3 col-form-label">Proveedores</label>
             <div class="col-12 col-md-9">
-                <select id="proveedor" name="idProveedor" class="form-select"
-                        <%=readonly%> aria-label="Default select example">
+                <select id="idProveedor" name="idProveedor" class="form-select" <%=disabled%>
+                         aria-label="Default select example">
                     <option selected>Seleccione el proveedor</option>
                     <%for (Proveedor prov : proveedores) {%>
-                    <option value="<%=prov.getId()%>"><%=prov.getNombre()%><%=prov.getApellido1()%>
+                    <option value="<%=prov.getId()%>"><%=prov.getNif()%>  <%=prov.getNombre()%>
                     </option>
                     <%}%>
                 </select>
