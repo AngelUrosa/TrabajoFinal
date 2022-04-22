@@ -7,7 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="/my-handling-form-page" method="post">
+    <form action="/my-handling-form-page" id=formulario method="post">
         <ul>
          <li>
            <label for="usuario">Usuario:</label>

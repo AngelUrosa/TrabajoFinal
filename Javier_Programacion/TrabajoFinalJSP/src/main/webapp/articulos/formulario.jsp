@@ -23,7 +23,7 @@
             <div class="col-12 col-md-4">
                 <input id="ref" name="ref" type="text"
                        placeholder=""
-                       value="<%=articulo.getRef()%>"
+                       value="<%=articulo.getRef()!= null?articulo.getRef():""%>"
                        class="form-control"
                         <%=readonly%>/>
                 <small class="form-text text-danger">
@@ -37,7 +37,7 @@
             <div class="col-12 col-md-9">
                 <input id="descripcion" name="descripcion" type="text"
                        placeholder=""
-                       value="<%=articulo.getDescripcion()%>"
+                       value="<%=articulo.getDescripcion()!= null?articulo.getDescripcion():""%>"
                        class="form-control"
                         <%=readonly%>/>
                 <small class="form-text text-danger">
@@ -74,9 +74,9 @@
             <div class="col-12 col-md-9">
                 <select id="idProveedor" name="idProveedor" class="form-select" <%=disabled%>
                          aria-label="Default select example">
-                    <option selected>Seleccione el proveedor</option>
+                    <option>Seleccione el proveedor</option>
                     <%for (Proveedor prov : proveedores) {%>
-                    <option value="<%=prov.getId()%>"><%=prov.getNif()%>  <%=prov.getNombre()%>
+                    <option <%=articulo.getProveedor()!= null && articulo.getProveedor().getId()==prov.getId()?"selected":""%> value="<%=prov.getId()%>"><%=prov.getNif()%>  <%=prov.getNombre()%>
                     </option>
                     <%}%>
                 </select>

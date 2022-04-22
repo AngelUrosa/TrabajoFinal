@@ -34,7 +34,7 @@ import java.util.logging.Logger;
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             ArticulosDao articulosDao = new ArticulosDaoImpl();
             request.setCharacterEncoding("UTF-8");
-            request.setAttribute("articulo", new Articulo("", "",0,0));
+            request.setAttribute("articulo", new Articulo("", "",0,0,null));
             request.setAttribute("articulos", articulosDao.listAllFillProv());
             request.setAttribute("proveedores", proveedoresDao.listAll());
             request.setAttribute("showButtonSubmit", true);
@@ -53,7 +53,7 @@ import java.util.logging.Logger;
                 if (articulosDao.add(articulo) != null) {
                     String mensaje = "El articulo " + articulo.getRef() + " ha sido dado de alta.";
                     request.setAttribute("alertSuccess", mensaje);
-                    articulo = new Articulo("", "", 0, 0);
+                    articulo = new Articulo("", "", 0, 0,null);
                 } else {
                     String mensaje = "El usuario " + articulo.getRef() + " no ha sido dado de alta. Ya existe un usuario con el nif ";
                     request.setAttribute("alertDanger", mensaje);

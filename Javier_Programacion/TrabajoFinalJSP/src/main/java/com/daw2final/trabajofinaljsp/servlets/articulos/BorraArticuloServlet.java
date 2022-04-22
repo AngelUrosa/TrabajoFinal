@@ -55,6 +55,7 @@ import java.util.logging.Logger;
             request.setAttribute("articulos", articulosDao.listAllFillProv());
             request.setAttribute("proveedores", proveedoresDao.listAll());
             request.setAttribute("readonly", "readonly");
+            request.setAttribute("disabled", "disabled");
             request.getRequestDispatcher("/articulos/borra.jsp").forward(request, response);
         }
 

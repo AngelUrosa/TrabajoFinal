@@ -36,7 +36,6 @@ import java.util.logging.Logger;
             ArticulosDao articulosDao = new ArticulosDaoImpl();
             request.setCharacterEncoding("UTF-8");
             request.setAttribute("articulos", articulosDao.listAllFillProv());
-            request.setAttribute("proveedores", proveedoresDao.listAll());
             request.getRequestDispatcher("/articulos/listar.jsp").forward(request, response);
         }
 

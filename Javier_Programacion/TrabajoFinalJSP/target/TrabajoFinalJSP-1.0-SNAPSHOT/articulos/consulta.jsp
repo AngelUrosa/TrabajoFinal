@@ -12,6 +12,7 @@
     </form>
     <jsp:include page="formulario.jsp">
         <jsp:param name="readonly" value='readonly'/>
+        <jsp:param name="disabled" value='disabled'/>
     </jsp:include>
     <hr/>
 

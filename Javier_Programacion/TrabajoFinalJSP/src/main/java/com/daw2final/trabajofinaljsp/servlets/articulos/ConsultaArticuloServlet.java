@@ -58,6 +58,7 @@ import java.util.logging.Logger;
             request.setAttribute("articulos", articulosDao.listAllFillProv());
             request.setAttribute("proveedores", proveedoresDao.listAll());
             request.setAttribute("readonly", "readonly");
+            request.setAttribute("disabled", "disabled");
             request.setAttribute("showButtonSubmit", false);
             request.getRequestDispatcher("/articulos/consulta.jsp").forward(request, response);
         }
