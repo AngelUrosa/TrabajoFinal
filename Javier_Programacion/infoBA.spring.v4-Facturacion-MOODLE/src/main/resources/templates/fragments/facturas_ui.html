@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="form" (titleSubmit)>
+
+<!--    <input type="hidden" th:field="*{id}">-->
+<!--    <input type="hidden" th:field="*{createAt}">-->
+
+    <div class="bg-light p-1">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="form-floating">
+                    <input id="numFactura" name="numFactura" type="text"
+                           th:field="*{numFactura}"
+                           class="form-control"
+                           th:readonly="${readonly}"
+                           placeholder="Nº de Factura">
+                    <label for="numFactura">Nº de Factura <span class="text-danger">*</span></label>
+                </div>
+                <small class="form-text text-danger"
+                       th:if="${#fields.hasErrors('numFactura')}" th:errors="*{numFactura}"></small>
+            </div>
+            <div class="col-12 offset-md-4 col-md-4">
+                <div class="form-floating">
+                    <input id="fecha" name="fecha" type="date"
+                           th:field="*{fecha}"
+                           class="form-control"
+                           th:readonly="${readonly}"
+                           placeholder="Fecha">
+                    <label for="fecha">Fecha de la factura <span class="text-danger">*</span></label>
+                </div>
+                <small class="form-text text-danger"
+                       th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="form-floating">
+                    <select th:field="*{cliente.id}" class="form-select"
+                            th:disabled="${readonly}">
+                        <option value="" selected>Seleccione el cliente</option>
+                        <option th:each="c: ${clientes}"
+                                th:text="${c.nif} + ' - ' + ${c.razonSocial}"
+                                th:value="${c.id}"></option>
+                    </select>
+                    <label>Cliente <span class="text-danger">*</span></label>
+                </div>
+                <small class="form-text text-danger"
+                       th:if="${#fields.hasErrors('cliente')}" th:errors="*{cliente}"></small>
+            </div>
+            <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
+                <button type="submit" class="btn boton-guardar me-1" name="btSubmit"
+                        th:if="${showSubmit}">
+                    <i class="bi bi-save"></i> <span th:text="${titleSubmit}"></span>
+                </button>
+                <button type="submit" class="btn boton-cancelar" name="btCancel"
+                        th:if="${showSubmit}">
+                    <i class="bi bi-x-octagon-fill"></i> <span th:text="Cancelar"></span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+</div>
+
+<!-- ------------------------------------------------------------ -->
+
+<div th:fragment="filterClave">
+
+</div>
+<!-- ------------------------------------------------------------ -->
+
+<div th:fragment="filter">
+    <div class="card">
+        <div class="bg-light p-1">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="numFactura" type="text" name="numFactura"
+                               th:value="${numFactura}"
+                               placeholder="Nº Factura"
+                               class="form-control">
+                        <label for="numFactura">Nº Factura</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="nif" type="text" name="nif"
+                               th:value="${nif}"
+                               placeholder="Nif"
+                               class="form-control">
+                        <label for="nif">Nif</label>
+                    </div>
+                </div>
+                <div class="col-auto align-middle">
+                    <button type="submit" class="btn boton-buscar" title="Buscar"><i
+                            class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------------------------------------------------------ -->
+
+<div th:fragment="listado">
+    <table class="table table-striped">
+        <thead>
+        <tr scope="row">
+            <th scope="col">Nº Factura</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr scope="row" th:each="factura: ${facturas}">
+            <td th:text="${factura.numFactura}"></td>
+            <td th:text="${factura.cliente.nif} +' - '+ ${factura.cliente.nombre}+' '+${factura.cliente.apellido1}+' '+${factura.cliente.apellido2}"></td>
+            <td th:text="${#dates.format(factura.fecha, 'dd/MM/yyyy')}"></td>
+            <td th:text="${facturasService.totalFacturaById(factura.id)}"></td>
+<!--            <td th:text="${@facturasServiceImpl.totalFacturaById(factura.id)}"></td>-->
+            <td>
+                <a th:href="@{/admin/facturas/show/{numFactura}(numFactura = ${factura.numFactura})}" title="mostrar"
+                   class="btn btn-sm boton-consultar"><i class="bi bi-eye"></i></a>
+                <a th:href="@{/admin/facturas/delete/{numFactura}(numFactura = ${factura.numFactura})}" title="borrar"
+                   class="btn btn-sm boton-borrar"><i class="bi bi-trash"></i></a>
+                <a th:href="@{/admin/facturas/update/{numFactura}(numFactura = ${factura.numFactura})}" title="editar"
+                   class="btn btn-sm boton-actualizar"><i class="bi bi-pencil"></i></a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<!-- ------------------------------------------------------------ -->
+
+<div th:fragment="detalle">
+
+    <input th:type="hidden" id="detalleEditado" name="detalleEditado">
+
+    <table class="table table-striped">
+        <thead>
+        <tr scope="row">
+            <th scope="col">#</th>
+            <th scope="col">Articulo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col" style="max-width: 75px">Precio</th>
+            <th scope="col" style="max-width: 75px">Unidades</th>
+            <th scope="col" style="max-width: 75px">Descuento</th>
+            <th scope="col" style="max-width: 75px">Total</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr scope="row" th:each="detalle, stat: ${factura.detalleFacturas}">
+            <td class="align-middle fw-bold">
+                <span th:text="${stat.index}+1"></span>
+            </td>
+
+            <td>
+                <select id="idArticulo" th:field="*{detalleFacturas[__${stat.index}__].articulo.ref}"
+                        class="form-select"
+                        th:disabled="${readonly}"
+                        th:onchange="'envioSeleccionArticulo('+${stat.index}+');submit();'">
+                    <option selected value="">Seleccione el artículo</option>
+                    <option th:each="articulo: ${articulos}"
+                            th:text="${articulo.ref} + ' - ' + ${articulo.descripcion}"
+                            th:value="${articulo.ref}"></option>
+                </select>
+            </td>
+
+            <td>
+                <input type="text" th:value="${detalle.articulo.descripcion}" class="form-control" readonly>
+            </td>
+
+            <td>
+                <input type="text" th:id="'precio'+${stat.index}" th:value="${detalle.articulo.precio}"
+                       size="5" class="form-control" readonly>
+            </td>
+
+            <td>
+                <input type="text" th:id="'unidades'+${stat.index}"
+                       th:field="*{detalleFacturas[__${stat.index}__].unidades}" class="form-control"
+                       th:onchange="'calculaTotales();'"
+                       size="5"  th:readonly="${readonly}">
+            </td>
+
+            <td>
+                <input type="text" th:id="'dto'+${stat.index}"
+                       th:field="*{detalleFacturas[__${stat.index}__].dto}"
+                       th:onchange="'calculaTotales();'"
+                       class="form-control"
+                       size="5"  th:readonly="${readonly}">
+            </td>
+
+            <td>
+                <input type="text" th:id="'total'+${stat.index}"
+                       size="5" class="form-control float-end text-end"
+                       readonly>
+            </td>
+
+            <td>
+                <button type="submit" name="btDeleteArticulo" class="btn boton-borrar me-1"
+                        th:value="${stat.index}"
+                        th:disabled="${readonly}"><i class="bi bi-trash"></i></button>
+                <button type="submit" name="btAddArticulo" class="btn boton-add"
+                        th:if="${stat.index}==${stat.size}-1"
+                        th:disabled="${readonly}">+
+                </button>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="6"></td>
+            <td><input type="text" th:id="'totalFactura'" size="5" class="form-control float-end text-end" readonly>
+            </td>
+            <td></td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+    <script>
+
+        function envioSeleccionArticulo(pos) {
+            document.getElementById("detalleEditado").value = pos;
+        }
+
+        // Calculo del total al cambiar dto o unidades
+        function calculaTotal(indice) {
+            precio = document.getElementById("precio" + indice).value;
+            dto = document.getElementById("dto" + indice).value;
+            unidades = document.getElementById("unidades" + indice).value;
+            let totalDetalle = (precio * unidades) * (1 - dto / 100);
+            document.getElementById("total" + indice).value = totalDetalle.toFixed(2); // Dos decimales
+            return totalDetalle;
+        }
+
+        function calculaTotales() {
+            let numRows = [[${factura.detalleFacturas.size()}]];
+            var total = 0;
+            for (var indice = 0; indice < numRows; indice++) {
+                total += calculaTotal(indice);
+            }
+            document.getElementById("totalFactura").value = total.toFixed(2); // Dos decimales
+        }
+
+    </script>
+
+
+    <script>
+        // Para que en la carga de la página se calculen los totales
+        calculaTotales();
+    </script>
+
+</div>
+
+</html>
