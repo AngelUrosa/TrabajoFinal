@@ -4,7 +4,9 @@ const inputs = document.querySelectorAll(".confi");
 
 const usuario = document.getElementById("usuario");
 
-const constraseña = document.getElementById("constrasena");
+const error = document.getElementById("error");
+
+const constraseña = document.getElementById("constraseña");
 
 const perfil = document.getElementById("perfil");
 
@@ -66,7 +68,7 @@ function cambio(event) {
             
         
     }
-    if (event.currentTarget.id=="contraseña1") { //rojo si numero
+    if (event.currentTarget.id=="contraseña") { //rojo si numero
 
         if(event.currentTarget.value.includes(mayusculas && minusculas && numeros && event.currentTarget.value.length > 4 && simbolos)){
                
@@ -90,76 +92,3 @@ function cambio(event) {
 
 
 </script>
-
-<?php
-session_start();
-
-$nombre = $_POST['user'];
-$password = $_POST['password'];
-
-
-require_once ‘conexion.php’;
-
-// se asume conexion en $conn incluido desde conexion.php, ejemlo:
-
-// $conn= mysqli_connect("server", "mi_usuario", "mi_contraseña", "mi_bd");
-
-
-// añadiría un limit 1 a la consulta pues solo esperamos un registro
-
-
-$consulta = mysqli_query ($conn, "SELECT * FROM sesion WHERE user = '$nombre' AND pass = '$password'");
-
-
-// esto válida si la consulta se ejecuto correctamente o no
-
-// pero en ningún caso válida si devolvió algún registro
-
-
-if(!$consulta){
-
-// echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " .
-
-
-echo mysqli_error($mysqli);
-
-// si la consulta falla es bueno evitar que el código se siga ejecutando
-exit;
-
-
-}
-
-// este else sobra
-
-
-//else {
-
-
-//print "Bienvenido";
-//}
-
-
-// validemos pues si se obtuvieron resultados
-
-
-// Obtenemos los resultados con mysqli_fetch_assoc
-
-
-// si no hay resultados devolverá NULL que al convertir a boleano para ser evaluado en el
-
-if será FALSE
-
-if($user = mysqli_fetch_assoc($consulta)) {
-
-
-// el usuario y la pwd son correctas
-
-
-} else {
-
-// Usuario incorrecto o no existe
-
-}
-
-?>
-

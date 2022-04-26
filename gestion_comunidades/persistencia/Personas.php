@@ -23,13 +23,37 @@ require_once './pojos/persona.php';
 
 		public function getSesion($usuario,$contraseña){
 			$error=0;
-		      try {$consulta="SELECT trabajador FROM personas WHERE usuario=$1, contraseña=$2";             
+
+			$u=null;
+		      try {$consulta="SELECT * FROM personas WHERE usuario=? AND contraseña=?";             
 				
 	 	 				$query=$this->db->preparar($consulta);            
 		 				$query->bindParam(1,$usuario);          
 					 	$query->bindParam(2,$contraseña);            
 		 				$query->execute();    
-						$tPersonas=$query->fetchall();        
+
+						 //Carga en un vector
+						$tPersona=$query->fetchall(); 
+						
+						if (isset($tPersona[0])) {
+
+							if ($perfil == 1 && $tPersona[0]['trabajador'] == true) || $perfil == 2{
+								//Solicito acceso administrador
+
+
+							} else{
+
+								$u=new Persona($tPersona[0]['id_persona'],$tPersona[0]['id_comunidad'],$tPersona[0]['nif'],$tPersona[0]['usuario'],
+								$tPersona[0]['contraseña'],$tPersona[0]['email'],$tPersona[0]['trabajador']);
+							}
+
+							
+						}
+						
+						
+						
+						
+
 	  } catch(Exception $e){           
 		    $error=1;         
 		    return $error;        

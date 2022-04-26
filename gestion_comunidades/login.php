@@ -1,3 +1,45 @@
+<?php
+
+require_once "autoload.php";
+
+?>
+
+
+
+<?php
+ 
+session_start();
+echo "Entra";
+
+//if (isset($_SESSION['autorizado'])) {
+//  header('Location: index.php');
+//}
+
+
+ $mensaje_error = "";
+
+ if (isset($_POST['submit'])) {
+   echo "Entra";
+  $usuario = $_POST["usuario"];
+  $contraseña = $_POST["contraseña"];
+  $perfil = $_POST["perfil"];
+
+  $tPersona=Personas::singletonPersonas();
+  $p = $tPersona->getSesion($usuario,$contraseña,$perfil);
+  if ($p != null) {
+
+   // echo ($usuario);
+   // echo ($contraseña);
+    $_SESSION['autorizado'] = true;
+    $_SESSION['perfil'] = $perfil;
+    header("Location: index.php");
+
+  } else {
+    $mensaje_error = "Error en el login";
+  }
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +49,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="/my-handling-form-page" id=formulario method="post">
+    <form name="formulario" id="formulario" method="post">
         <ul>
          <li>
            <label for="usuario">Usuario:</label>
@@ -21,22 +63,24 @@
             <label for="perfiles">Escoge perfil:</label>
 
             <select name="perfil" id="perfil">
-              <option value="opcion 0">Escoge una opcion</option>
-              <option value="opcion 1">Administrador</option>
-              <option value="opcion 2">Usuario</option>
+              <option value="0">Escoge una opcion</option>
+              <option value="1">Administrador</option>
+              <option value="2">Usuario</option>
             </select>
          </li>
         </ul>
-        <input type="submit" value="Entrar">
+        <div id="error">
+        <?php
+        
+          echo $mensaje_error;
+
+        ?>
+        </div>
+
+        <input type="submit" name="submit" value="Entrar">
        </form>
 
-       <?php
-       $usuario = $_POST["usuario"];
-       $contraseña = $_POST["contraseña"];
-       $perfil = $_POST["perfil"];
 
-       getSesion($usuario, $contraseña);      
 
-       ?>
 </body>
 </html>
