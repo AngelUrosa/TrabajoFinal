@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/plantilla_admin :: head"></head>
+
+<body>
+
+<header th:replace="fragments/plantilla_admin :: header"></header>
+
+<div class="container py-3">
+    <form th:action="@{/admin/clientes/add}" th:object="${cliente}" method="get">
+        <div th:replace="fragments/clientes_ui :: filterClave"></div>
+    </form>
+    <form th:action="@{/admin/clientes/add}" th:object="${cliente}" method="post">
+        <div th:replace="fragments/clientes_ui :: form (titlePage='Nuevo Cliente', titleSubmit='Guardar')"></div>
+    </form>
+</div>
+
+<hr>
+
+<div class="container-fluid">
+    <h4 class="text-center">Últimos clientes añadidos</h4>
+    <div th:replace="fragments/clientes_ui:: listado"></div>
+</div>
+
+<footer th:replace="fragments/plantilla_admin :: footer"></footer>
+
+</body>
+</html>
+
+
