@@ -58,3 +58,48 @@ main{
 .card-body{
     text-align: center;
 }
+
+.card-title-login{
+    color: black;
+    font-size: 50px;
+}
+
+
+#fondo{
+    width: 100%;
+    height: 1000px;
+    background-color: rgb(34, 87, 122);
+    margin-top: -50px;
+}
+
+#Usuario{
+    background-color: rgb(199, 249, 204);
+    text-decoration: none;
+    border:0px transparent solid;
+    font-size: bold;
+    width: 35%;
+    height: 30px;
+    margin: 2px;
+}
+#Contraseña{
+    background-color: rgb(199, 249, 204);
+    text-decoration: none;
+    border:0px transparent solid;
+    font-size: bold;
+    width: 35%;
+    height: 30px;
+    margin: 2px;
+}
+
+.btnAceeder {
+    transition-duration: 0.4s;
+    background-color: rgb(56, 163, 165);
+    color: white;
+    text-decoration: none;
+    border:0px transparent solid;
+    font-size: 20px;
+  }
+  
+  .btnAceeder:hover {
+    font-size: 25px;
+  }
