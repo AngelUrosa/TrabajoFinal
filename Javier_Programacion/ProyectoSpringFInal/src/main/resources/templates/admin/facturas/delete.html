@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/plantilla_admin :: head"></head>
+
+<body>
+
+<header th:replace="fragments/plantilla_admin :: header"></header>
+
+<div class="container py-3">
+    <form th:action="@{/admin/facturas/delete}" th:object="${factura}" method="post">
+        <div th:replace="fragments/facturas_ui :: form (titlePage='Borra Factura', titleSubmit='Borrar', readonly=true)"></div>
+        <h4 class="text-center">Detalle de la Factura</h4>
+        <div th:replace="fragments/facturas_ui:: detalle (readonly=true)"></div>
+    </form>
+</div>
+
+<footer th:replace="fragments/plantilla_admin :: footer"></footer>
+
+</body>
+</html>
+
+

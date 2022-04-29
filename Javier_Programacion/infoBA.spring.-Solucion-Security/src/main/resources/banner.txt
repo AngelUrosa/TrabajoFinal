@@ -1,0 +1,16 @@
+  iiii                      ffffffffffffffff                BBBBBBBBBBBBBBBBB               AAA
+ i::::i                    f::::::::::::::::f               B::::::::::::::::B             A:::A
+  iiii                    f::::::::::::::::::f              B::::::BBBBBB:::::B           A:::::A
+                          f::::::fffffff:::::f              BB:::::B     B:::::B         A:::::::A
+iiiiiiinnnn  nnnnnnnn     f:::::f       ffffffooooooooooo     B::::B     B:::::B        A:::::::::A
+i:::::in:::nn::::::::nn   f:::::f           oo:::::::::::oo   B::::B     B:::::B       A:::::A:::::A
+ i::::in::::::::::::::nn f:::::::ffffff    o:::::::::::::::o  B::::BBBBBB:::::B       A:::::A A:::::A
+ i::::inn:::::::::::::::nf::::::::::::f    o:::::ooooo:::::o  B:::::::::::::BB       A:::::A   A:::::A
+ i::::i  n:::::nnnn:::::nf::::::::::::f    o::::o     o::::o  B::::BBBBBB:::::B     A:::::A     A:::::A
+ i::::i  n::::n    n::::nf:::::::ffffff    o::::o     o::::o  B::::B     B:::::B   A:::::AAAAAAAAA:::::A
+ i::::i  n::::n    n::::n f:::::f          o::::o     o::::o  B::::B     B:::::B  A:::::::::::::::::::::A
+ i::::i  n::::n    n::::n f:::::f          o::::o     o::::o  B::::B     B:::::B A:::::AAAAAAAAAAAAA:::::A
+i::::::i n::::n    n::::nf:::::::f         o:::::ooooo:::::oBB:::::BBBBBB::::::BA:::::A             A:::::A
+i::::::i n::::n    n::::nf:::::::f         o:::::::::::::::oB:::::::::::::::::BA:::::A               A:::::A
+i::::::i n::::n    n::::nf:::::::f          oo:::::::::::oo B::::::::::::::::BA:::::A                 A:::::A
+iiiiiiii nnnnnn    nnnnnnfffffffff            ooooooooooo   BBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAA

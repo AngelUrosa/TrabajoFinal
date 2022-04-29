@@ -6,9 +6,10 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
+import java.util.List;
 
 
-    @Entity
+@Entity
     @Table(name="usuarios")
     public class Usuario {
         @Id
@@ -34,6 +35,8 @@ import java.util.Date;
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         @Temporal(TemporalType.TIMESTAMP)
         private Date createAt;
+        private boolean activo;
+        private List<Rol> roles;
 
 
         @PrePersist

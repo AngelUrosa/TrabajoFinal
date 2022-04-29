@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/plantilla_admin :: head"></head>
+
+<body>
+
+<header th:replace="fragments/plantilla_admin :: header"></header>
+
+<div class="container py-3">
+    <form th:action="@{/admin/proveedores/update}" th:object="${proveedor}" method="post">
+        <div th:replace="fragments/proveedores_ui :: form (titlePage='Actualiza Proveedor', titleSubmit='Actualizar')"></div>
+    </form>
+</div>
+
+<hr>
+
+<div class="container-fluid">
+    <h4 class="text-center">Articulos del proveedor</h4>
+    <div th:replace="fragments/articulos_ui:: listado"></div>
+</div>
+
+<footer th:replace="fragments/plantilla_admin :: footer"></footer>
+
+</body>
+</html>
+
+

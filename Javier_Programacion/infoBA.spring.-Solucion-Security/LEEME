@@ -1,0 +1,128 @@
+Creación del Proyecto
+    • Name: infoBA.spring
+    • Location: ..\infoBA.spring
+    • Group com.daw2
+    • Artifact: infoba
+    • Package: com.daw2.infoba
+    • Packaging: Jar
+
+Dependencies:
+    • Developer Tools:  DevTools
+    • Web:  Spring Web
+    • Template Engines:  Thymeleaf
+    • SQL:  Spring Data JPA, H2 Database, Mysql Driver
+    • I/O:  Validation
+
+Paquetes:
+    • configuration
+    • controller
+        ◦ rest
+    • model
+        ◦ entity
+        ◦ repository
+    • service
+        ◦ impl
+    • util
+
+Entities:
+    • Proveedor
+    • Articulo
+    • Por ahora no añadiremos
+        ◦ Cliente
+        ◦ Factura
+        ◦ DetalleFactura
+
+Directorios/archivos:
+    • static/css
+        ◦ main.css
+    • static/js:
+        ◦ main.js
+    • static/images
+        ◦ templates/admin/proveedores
+        ◦ templates/admin/articulos
+        ◦ Por ahora no añadiremos
+            ▪ templates/admin/clientes
+            ▪ templates/admin/facturas
+        ◦ templates/admin/fragments
+            ▪ plantilla_admin.html
+            ▪ proveedores_ui.html
+        ◦ templates/index.html (Ponemos <h1>infoBA</h1>)
+        ◦ templates/admin/index.html (Ponemos <h1>infoBA -  Administración</h1>)
+        ◦ templates/error/404.html (Ponemos <h1>RECURSO NO ENCONTRADO</h1>)
+
+Controllers:
+    • HomeController (path="/")
+          ruta por defecto para mostrar index
+    • AdminController (path="/admin")
+          ruta por defecto para mostrar admin/index
+
+
+EJECUTAMOS Y PROBAMOS QUE FUNCIONAN LAS DOS RUTAS
+
+
+Archivos de configuración (En directorio resources):
+    • application.properties (o aplication.yaml si queremos incluir UTF-8)
+Configuramos el acceso a la BD H2 (miBD). Configuramos también IntelliJ para acceder a la BD
+        ◦ Creamos messages.properties	(convertimos a UTF-8)
+		Definimos el título de la aplicación:
+			app.title= Informática Badajoz
+        ◦ Creamos banner.txt (NO es necesario)
+		Podemos generarlo desde:
+	    https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+
+Bootstrap:
+    • Descargamos boostrap 5 (Compiled CSS and JS):
+		https://getbootstrap.com/docs/5.0/getting-started/download/
+
+    • Descomprimimos y compiamos solo:
+        ◦ bootstrap.min.css al directorio css
+        ◦ bootstrap.min.js al directorio js
+
+    • Para probar si funciona. Editamos  los index y ejecutamos:
+			<!DOCTYPE html>
+			<html lang="es" xmlns:th="http://www.thymeleaf.org">
+			<head>
+			    <meta charset="UTF-8">
+			    <title>Title</title>
+			    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+			    <link rel="stylesheet" th:href="@{css/main.css}"/>
+			</head>
+			<body>
+				...
+				<script th:src="@{/js/bootstrap.min.js}"></script>
+				<script th:src="@{/js/main.js}"></script>
+			</body>
+			</html>
+
+
+
+EMPEZAMOS LA CODIFICACIÓN PROPIA DEL PROYECTO:
+----------------------------------------------
+
+    • Aunque es pronto, toda aplicación/empresa va a tener un logotipo. En el caso de aplicaciones web suele ser el mismo.
+        ◦ Prepararemos la imagen logotipo. Es conveniente que el fondo sea transparente. Es probable que nos interesen varios tamaños:
+                • Tamaño adaptado para ponerlo en la barra de menu/footer. El tamaño de la imagen del footer puede ser más grande, pero vale la misma imagen.
+                • Tamaño adaptado para el contenido de la página
+        ◦ Convertimos una imagen en .ico y con el nombre favicon.ico
+		Lo podemos hacer online. Ej. https://favicon.io/favicon-converter/
+        ◦ Copiamos el favicon.ico debajo de static (static/favicon.ico)
+        ◦ Copiamos una imagen con el logotipo (logo.png) en static/images
+
+    • Editamos la plantilla fragments/plantilla_admin.html
+        ◦ Añadimos el fragment head
+		Utilizaremos app.title definido en messages.properties
+        ◦ Añadimos el fragment header
+        ◦ Añadimos el fragment footer
+
+    • Cambiamos los index para que reutilicen la plantilla (aunque el index principal tendrá posteriormente otra plantilla)
+
+
+    • Configuramos proveedores-ui para que tenga un formulario, un filtro y un listado
+
+    • Creamos la página /admin/proveedores/add
+
+    • Creamos el controlador AdminProveedoresController con la ruta /admin/proveedores
+        ◦ Configuramos la rutas /admin/proveedores/add
+		@Getmapping
+		@Postmapping
+

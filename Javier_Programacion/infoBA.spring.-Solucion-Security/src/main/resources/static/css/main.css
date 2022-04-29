@@ -1,0 +1,43 @@
+.mensaje-temporal {
+    z-index: 11;
+}
+
+.boton-guardar {
+    color: #ffffff;
+    background-color: #6495EDFF;
+}
+
+.boton-buscar {
+    color: #071fbe;
+    background-color: #e7a457;
+}
+
+.boton-consultar {
+    color: #ffffff;
+    background-color: #2b468a;
+}
+
+.boton-borrar{
+    color: #ffffff;
+    background-color: #bd102f;
+}
+
+.boton-actualizar {
+    color: #ffffff;
+    background-color: #d93396;
+}
+.boton-add {
+    color: #000000;
+    background-color: #74d2ee;
+}
+
+.boton-cancelar {
+    color: #000000;
+    background-color: #d2dfe3;
+}
+
+.boton-detalle {
+    color: #000000;
+    background-color: #EFD71FFF;
+}
+

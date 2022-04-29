@@ -1,0 +1,188 @@
+<div th:fragment="form" (titleSubmit)>
+
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{imagen}"/>
+
+    <div class="card">
+        <h4 class="card-title ps-2" th:text="${titlePage}">Nuevo Artículo</h4>
+        <div class="bg-light p-1">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="ref" type="text"
+                               th:field="*{ref}" th:readonly="true"
+                               placeholder="Referencia"
+                               class="form-control">
+                        <label for="ref">Referencia <span class="text-danger">*</span></label>
+                    </div>
+                    <small class="form-text text-danger"
+                           th:if="${#fields.hasErrors('ref')}" th:errors="*{ref}"></small>
+                </div>
+                <div class="col-12 col-md-4 align-self-center">
+                    <input class="form-control" type="file" id="ficheroImagen" name="file" title="Subir imagen del artículo">
+                </div>
+                <div class="col-12 col-md-4 d-flex justify-content-end ">
+                    <img th:if="*{not #strings.isEmpty(imagen)}"
+                         th:src="@{'/articulosImages/'+ *{imagen}}"
+                         class="img-thumbnail rounded"
+                         style="max-width: 150px;max-height: 75px"
+                         alt="Imagen del artículo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input id="descripcion" type="text"
+                               th:field="*{descripcion}" th:readonly="${readonly}"
+                               placeholder="Descripcion"
+                               class="form-control">
+                        <label for="descripcion">Descripcion <span class="text-danger">*</span></label>
+                    </div>
+                    <small class="form-text text-danger"
+                           th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    <div class="form-floating">
+                        <input id="precio" type="number"
+                               th:field="*{precio}" th:readonly="${readonly}"
+                               placeholder="Precio"
+                               class="form-control">
+                        <label for="precio">Precio <span class="text-danger">*</span></label>
+                    </div>
+                    <small class="form-text text-danger"
+                           th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="form-floating">
+                        <input id="stock" type="number"
+                               th:field="*{stock}" th:readonly="${readonly}"
+                               placeholder="Stock"
+                               class="form-control">
+                        <label for="stock">Stock</label>
+                    </div>
+                    <small class="form-text text-danger"
+                           th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></small>
+                </div>
+                <div  class="col-12 col-md-8">
+                    <div class="form-floating">
+                        <select id="proveedor" th:field="*{proveedor.id}" class="form-select" th:disabled="${readonly}">
+                            <option selected th:value="${null}">Seleccione el proveedor</option>
+                            <option th:each="prov: ${proveedores}"
+                                    th:text="${prov.nif} + ' - ' + ${prov.razonSocial}"
+                                    th:value="${prov.id}"></option>
+                        </select>
+                        <label for="proveedor">Proveedor <span class="text-danger">*</span></label>
+                    </div>
+                    <small class="form-text text-danger"
+                           th:if="${#fields.hasErrors('proveedor')}" th:errors="*{proveedor}"></small>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end m-2" th:if="${showSubmit}">
+                <button type="submit" class="btn boton-guardar">
+                    <i class="bi bi-save"></i> <span th:text="${titleSubmit}"></span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ------------------------------------------------------------ -->
+
+<div th:fragment="filterClave">
+
+    <div class="card">
+        <div class="bg-light p-1">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="referencia" type="text" name="referencia"
+                               th:value="${referencia}"
+                               placeholder="Referencia"
+                               class="form-control">
+                        <label for="referencia">Referencia</label>
+                    </div>
+                </div>
+                <div class="col-auto align-middle">
+                    <button type="submit" class="btn boton-buscar" title="Buscar"><i
+                            class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------------------------------------------------------ -->
+
+<div th:fragment="filter">
+
+    <div class="card">
+        <div class="bg-light p-1">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="referencia" type="text" name="referencia"
+                               th:value="${referencia}"
+                               placeholder="Referencia"
+                               class="form-control">
+                        <label for="referencia">Referencia</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="descripcion" type="text" name="descripcion"
+                               th:value="${descripcion}"
+                               placeholder="Descripción"
+                               class="form-control">
+                        <label for="descripcion">Descripción</label>
+                    </div>
+                </div>
+                <div class="col-auto align-middle">
+                    <button type="submit" class="btn boton-buscar" title="Buscar"><i
+                            class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------------------------------------------------------ -->
+
+<div th:fragment="listado">
+    <table class="table table-striped" >
+        <thead>
+        <tr scope="row">
+            <th scope="col">Referencia</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Proveedor</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr scope="row" th:each="articulo: ${articulos}">
+            <td th:text="${articulo.ref}"></td>
+            <td th:text="${articulo.descripcion}"></td>
+            <td th:text="${articulo.precio}"></td>
+            <td th:text="${articulo.stock}"></td>
+            <td th:text="${articulo.proveedor.nif}+ ' - ' + ${articulo.proveedor.razonSocial}"></td>
+            <td>
+                <a th:href="@{/admin/articulos/show/{ref}(ref = ${articulo.ref})}" title="Mostrar"
+                   class="btn btn-sm boton-consultar"><i class="bi bi-eye"></i></a>
+                <a th:href="@{/admin/articulos/delete/{ref}(ref = ${articulo.ref})}" title="Borrar"
+                   class="btn btn-sm boton-borrar"><i class="bi bi-trash"></i></a>
+                <a th:href="@{/admin/articulos/update/{ref}(ref = ${articulo.ref})}" title="Editar"
+                   class="btn btn-sm boton-actualizar"><i class="bi bi-pencil"></i></a>
+                <a th:href="@{/admin/pedidos/add/{ref}(ref = ${articulo.ref})}" title="Pedido"
+                   class="btn btn-sm boton-detalle"><i class="bi bi-plus-square-fill"></i></a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
