@@ -10,42 +10,195 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">LOGO</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <header>
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+      <div class="container-fluid">
+        <div class="row">
+
+          <a class="navbar-brand" href="login.html" id="logo">LOGO</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-fill w-100">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+                <a class="nav-link bg-secondary" aria-current="page" href="#" id="barraMenu">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="comunidades.html">Comunidades</a>
+                <a class="nav-link bg-secondary" href="comunidades.html" id="barraMenu">Comunidades</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Ubicaciones</a>
+                <a class="nav-link bg-secondary" href="#" id="barraMenu">Ubicaciones</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">Personas</a>
+                <a class="nav-link bg-primary active" href="personas.html" id="barraMenu">Personas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Incidencias</a>
+                <a class="nav-link bg-secondary" href="incidencias.html" id="barraMenu">Incidencias</a>
               </li>
             </ul>
           </div>
+          <div class="dropdown" id="botonCuenta">
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="img/cuenta.png" height="15px" width="15px">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+            </ul>
+          </div>
         </div>
-      </nav>
+      </div>
+
+    </div>
+  </header>
+
+  <nav class="navbar navbar-light bg-light border border-info">
+    <div class="container-fluid w-auto h-50">
+      <form class="d-flex w-100">
+        <label for="search">Buscar por comunidad</label>
+        <input class="form-control me-2" type="search" aria-label="Search">
+        <label for="incidencias">¿Tiene Incidencias?</label>
+        <select>
+          <option>Seleccionar</option>
+          <option>Si</option>
+          <option>No</option>
+        </select>
+      </form>
+    </div>
+  </nav>
+  <br>
+    <hr class="separador">
+
+    <main>
+      <table class="table caption-top">
+        <thead>
+          <tr>
+            <th scope="col">Nº</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Comunidad</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-success">Success</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td>  <button type="button" class="btn btn-danger">Danger</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-success">Success</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-success">Success</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-danger">Danger</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-success">Success</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-success">Success</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-success">Success</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td><img src="/img/foto_cliente.jpg" class="fotosPerfil"> Zsazsa mcCleverty <br> zmcclert@souncloud.com</td>
+            <td><a href="#">Comunidad Aguila Real</a></td>
+            <td> <button type="button" class="btn btn-success">Success</button> </td>
+            <td><button type="button" class="btn btn-primary">Ojo</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+    </main>
 
 
 
+    <footer class="pie">
 
-
-
-
-
-
+      <div class="pieAyuda">
+      <a href="#" >Aviso legal</a> <br>
+      <a href="#" >Política Privacidad</a> <br>
+      <a href="#" >Condiciones del Servicio</a> <br>
+      </div>
+      <div class="pieLogo">
+        <p>LOGO</p>
+      </div>
+      <div class="pieContacto">
+        <p>+34 666 555 444</p>
+        <p>info@gescomunidades.com</p>
+      </div>
+    </footer>
 
 
 
