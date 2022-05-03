@@ -1,14 +1,25 @@
 header{
     width: 100%;
     height: auto;
-    background-color: green;
-    
 }
 
 #logo{
     color: black;
 }
 
+.nav-link{
+    background-color: #4BB4B6;
+    padding:1.5em 0;
+    
+}
+
+.nav-link:hover{
+    background-color:#22577A;
+}
+.nav-link.active{
+        background-color:#22577A;
+}
+        
 #botonCuenta{
     flex-basis: auto;
 }
@@ -34,19 +45,6 @@ main{
     left: 0;
     bottom: 0;
     width: 100%;
-}
-.pieIncidencias{
-    background-color: blue;
-    height: 120px;
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    position: fixed;
 }
 .pieAyuda a{
     text-decoration: none;
