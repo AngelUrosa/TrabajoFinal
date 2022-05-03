@@ -17,6 +17,10 @@ import java.util.List;
         private Integer id;
         @Column(unique = true,nullable = false,length = 12)
         private String nif;
+        @Column(unique = true,nullable = false,length = 25)
+        private String username;
+        @Column(length=60, nullable=false)
+        private String password;
         @NotBlank
         @Column(nullable = false,length = 20)
         private String nombre;
@@ -52,7 +56,39 @@ import java.util.List;
             this.id = id;
         }
 
-        public String getNif() {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
+
+    public String getNif() {
             return nif;
         }
 
@@ -107,6 +143,20 @@ import java.util.List;
         public void setCreateAt(Date createAt) {
             this.createAt = createAt;
         }
+
+    @ManyToMany
+    @JoinTable(name="usuarios_roles",
+            joinColumns= @JoinColumn(name="id_usuario"),
+            inverseJoinColumns=@JoinColumn(name="id_rol"),
+            uniqueConstraints= {@UniqueConstraint
+                    (columnNames= {"id_usuario", "id_rol"})})
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
 
     }
 

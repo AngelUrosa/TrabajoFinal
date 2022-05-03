@@ -12,4 +12,5 @@ public interface UsuariosRepository extends JpaRepository<Usuario, Integer> {
     @Query("select u from Usuario u order by u.createAt desc")
     List<Usuario> findLastRows(Pageable page);
     List<Usuario> findByNif(String nif);
+    Usuario findByNombre(String nombre);
 }

@@ -37,6 +37,7 @@ CREATE TABLE usuarios
 (
     id        INT         NOT NULL,
     nif       VARCHAR(12) NOT NULL,
+    username       VARCHAR(25) NOT NULL,
     nombre    VARCHAR(20) NOT NULL,
     apellido1 VARCHAR(20) NOT NULL,
     apellido2 VARCHAR(20) NULL,
