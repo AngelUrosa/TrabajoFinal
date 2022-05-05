@@ -63,7 +63,6 @@ main{
     font-weight: bold;
 }
 .card{
-    margin: 30px;
     border-radius: 30rem solid black;
 }
 .card-title{
@@ -128,4 +127,25 @@ main{
   #opcion :hover{
     background-color: rgb(179, 76, 182);
     text-decoration: none;
+}
+
+.nombrePersonas{
+display:flex;
+}
+
+.contenedorImagen{
+    height:100%;
+    width:auto;
+    flex-direction: column;
+    margin-right: 15px;
+}
+.nombre{
+    text-decoration: underline;
+    font-weight: bold;
+}
+.correo{
+    color: grey;
+}
+.negrita{
+    font-weight: bold;
 }
