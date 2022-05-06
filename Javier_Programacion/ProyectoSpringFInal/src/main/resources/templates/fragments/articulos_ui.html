@@ -172,12 +172,14 @@
             <td th:text="${articulo.stock}"></td>
             <td th:text="${articulo.proveedor.nif}+ ' - ' + ${articulo.proveedor.razonSocial}"></td>
             <td>
-                <a th:href="@{/admin/articulos/show/{ref}(ref = ${articulo.ref})}" title="mostrar"
+                <a th:href="@{/admin/articulos/show/{ref}(ref = ${articulo.ref})}" title="Mostrar"
                    class="btn btn-sm boton-consultar"><i class="bi bi-eye"></i></a>
-                <a th:href="@{/admin/articulos/delete/{ref}(ref = ${articulo.ref})}" title="borrar"
+                <a th:href="@{/admin/articulos/delete/{ref}(ref = ${articulo.ref})}" title="Borrar"
                    class="btn btn-sm boton-borrar"><i class="bi bi-trash"></i></a>
-                <a th:href="@{/admin/articulos/update/{ref}(ref = ${articulo.ref})}" title="editar"
+                <a th:href="@{/admin/articulos/update/{ref}(ref = ${articulo.ref})}" title="Editar"
                    class="btn btn-sm boton-actualizar"><i class="bi bi-pencil"></i></a>
+                <a th:href="@{/admin/pedidos/add/{ref}(ref = ${articulo.ref})}" title="Pedido"
+                   class="btn btn-sm boton-detalle"><i class="bi bi-plus-square-fill"></i></a>
             </td>
         </tr>
         </tbody>

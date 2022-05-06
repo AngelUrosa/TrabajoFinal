@@ -1,10 +1,9 @@
-/*
 package com.daw2.proyectospringfinal.controller;
 
 import com.daw2.proyectospringfinal.components.FacturaComponent;
 import com.daw2.proyectospringfinal.model.entity.Factura;
 import com.daw2.proyectospringfinal.service.ArticulosService;
-import com.daw2.proyectospringfinal.service.UsuariosService;
+import com.daw2.proyectospringfinal.service.ClientesService;
 import com.daw2.proyectospringfinal.service.FacturasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,16 +22,19 @@ public class AdminFacturasController {
     @Autowired
     private FacturasService facturasService;
     @Autowired
-    private UsuariosService usuariosService;
+    private ClientesService clientesService;
     @Autowired
     private ArticulosService articulosService;
     @Autowired
     private FacturaComponent facturaComponent;
 
     @GetMapping("/add")
-    public String add(Model model) {
+    public String add(@RequestParam(required = false) String numFactura, Model model) {
         model.addAttribute("showSubmit", true);
         model.addAttribute("factura", facturaComponent.getFactura());
+//        model.addAttribute("articulos", articulosService.listAll());
+//        model.addAttribute("clientes", clientesService.listAll());
+
         return "admin/facturas/add";
     }
 
@@ -41,16 +43,18 @@ public class AdminFacturasController {
                       String btSubmit, String btCancel, String btAddArticulo, String btDeleteArticulo,
                       Integer detalleEditado,
                       RedirectAttributes flash, Model model) {
+        if (factura.getCliente().getId() == null)
+            result.rejectValue("cliente", "NotNull", "debe indicar el cliente");
 
+        if (result.hasErrors()) {
+            model.addAttribute("showSubmit", true);
+            // model.addAttribute("articulos", articulosService.listAll());
+            // model.addAttribute("clientes", clientesService.listAll());
+            flash.addFlashAttribute("org.springframework.validation.BindingResult.cliente", result);
+            return "admin/facturas/add";
+        }
         facturaComponent.setFactura(factura);
         if (btSubmit != null) {
-            if (factura.getCliente().getId() == null)
-                result.rejectValue("cliente", "NotNull", "debe indicar el cliente");
-
-            if (result.hasErrors()) {
-                model.addAttribute("showSubmit", true);
-                return "admin/facturas/add";
-            }
             try {
                 facturasService.saveWithDetalle(facturaComponent.getFactura());
                 flash.addFlashAttribute("alertSuccess", "Factura nº " + factura.getNumFactura() + " guardada");
@@ -59,8 +63,12 @@ public class AdminFacturasController {
                 flash.addFlashAttribute("alertDanger", "Factura nº " + factura.getNumFactura() + " NO guardada");
             }
         } else if (btCancel != null) {
+            try {
                 flash.addFlashAttribute("alertInfo", "Factura nº" + factura.getNumFactura() + " cancelada");
                 facturaComponent.init();
+            } catch (Exception ex) {
+                flash.addFlashAttribute("alertDanger", "Factura nº" + factura.getNumFactura() + " NO guardada");
+            }
         } else if (btAddArticulo != null) {
             facturaComponent.addDetalle();
         } else if (btDeleteArticulo != null) {
@@ -82,7 +90,24 @@ public class AdminFacturasController {
             model.addAttribute("factura", facturaComponent.getFactura());
             model.addAttribute("alertWarning", "Factura nº " + numFactura + " NO encontrada");
         }
+//        model.addAttribute("clientes", clientesService.listAll());
+//        model.addAttribute("articulos", articulosService.listAll());
         return "admin/facturas/show";
+    }
+
+    @GetMapping("/disabled/{numFactura}")
+    public String disabled(@PathVariable String numFactura, RedirectAttributes flash) {
+        Factura factura = facturasService.getByNumFactura(numFactura);
+        if (factura != null) {
+            //facturasService.disabled(factura.id(), true);
+            facturasService.disabled(factura.getId(), !factura.isAnulada());
+            flash.addFlashAttribute("alertSuccess",
+                    "Factura nº "+ factura.getNumFactura() + " anulada");
+        } else {
+            flash.addFlashAttribute("alertWarning",
+                    "Factura nº "+ factura.getNumFactura() + " NO anulada");
+        }
+        return "redirect:/admin/facturas";
     }
 
     @GetMapping("/delete/{numFactura}")
@@ -98,13 +123,15 @@ public class AdminFacturasController {
             model.addAttribute("factura", facturaComponent.getFactura());
             model.addAttribute("alertDanger", "Factura nº " + numFactura + " NO encontrada");
         }
+//        model.addAttribute("clientes", clientesService.listAll());
+//        model.addAttribute("articulos", articulosService.listAll());
         return "admin/facturas/delete";
     }
 
     @PostMapping("/delete")
     public String delete(Factura factura, RedirectAttributes flash) {
         try {
-            facturasService.deleteWithDetalle(factura);
+            facturasService.delete(factura.getId());
             flash.addFlashAttribute("alertSuccess", "Factura nº " + factura.getNumFactura() + " borrada");
             flash.addFlashAttribute("factura", new Factura());
             flash.addFlashAttribute("showSubmit", false);
@@ -152,7 +179,7 @@ public class AdminFacturasController {
 
         if (btSubmit != null) {
             try {
-              //  facturasService.deleteDetalle(facturaComponent.getDetalleBorrados());
+                //  facturasService.deleteDetalle(facturaComponent.getDetalleBorrados());
                 facturasService.updateWithDetalle(facturaComponent.getFactura(),facturaComponent.getDetalleBorrados());
                 facturaComponent.inicializaDetalleBorrados();
                 flash.addFlashAttribute("alertSuccess", "Factura nº " + factura.getNumFactura() + " actualizada");
@@ -186,7 +213,7 @@ public class AdminFacturasController {
     @GetMapping({"","/list"})
     public String list(Model model) {
         if (model.getAttribute("facturas") == null)
-            model.addAttribute("facturas", facturasService.listAll()); // Hay que paginar
+            model.addAttribute("facturas", facturasService.listByAnulada(false)); // Hay que paginar
         model.addAttribute("facturasService", facturasService);
         return "admin/facturas/list";
     }
@@ -206,12 +233,20 @@ public class AdminFacturasController {
         return "redirect:/admin/facturas";
     }
 
+    @GetMapping("/anuladas")
+    public String listAnuladas(Model model) {
+        if (model.getAttribute("facturas") == null)
+            model.addAttribute("facturas", facturasService.listByAnulada(true)); // Hay que paginar
+        model.addAttribute("facturasService", facturasService);
+        return "admin/facturas/anuladas";
+    }
+
+
     //-----------------
     @ModelAttribute
     public void addAttributes(Model model) {
-        model.addAttribute("usuarios", usuariosService.listAll());
+        model.addAttribute("clientes", clientesService.listAll());
         model.addAttribute("articulos", articulosService.listAll());
     }
 
 }
-*/

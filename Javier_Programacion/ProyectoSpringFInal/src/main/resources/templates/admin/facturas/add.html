@@ -8,7 +8,10 @@
 <header th:replace="fragments/plantilla_admin :: header"></header>
 
 <div class="container py-3">
-    <form id="form" th:action="@{/admin/facturas/add}" th:object="${factura}" method="post">
+<!--    <form th:action="@{/admin/facturas/add}" th:object="${factura}" method="get">-->
+<!--        <div th:replace="fragments/facturas_ui :: filterClave"></div>-->
+<!--    </form>-->
+    <form th:action="@{/admin/facturas/add}" th:object="${factura}" method="post">
         <div th:replace="fragments/facturas_ui :: form (titlePage='Nueva Factura', titleSubmit='Guardar')"></div>
         <h4 class="text-center">Detalle de la Factura</h4>
         <div th:replace="fragments/facturas_ui:: detalle"></div>
@@ -16,6 +19,11 @@
 </div>
 
 <hr>
+
+<div class="container-fluid">
+<!--    <h4 class="text-center">Detalle de la Factura</h4>-->
+<!--    <div th:replace="fragments/facturas_ui:: detalle"></div>-->
+</div>
 
 <footer th:replace="fragments/plantilla_admin :: footer"></footer>
 

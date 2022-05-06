@@ -23,7 +23,7 @@ public interface ArticulosRepository extends JpaRepository<Articulo, Integer> {
 // articulosRepository.findByDescripcionContainsIgnoreCase(descripcion);
 // articulosRepository.findByDescripcionNotContainsIgnoreCase(descripcion);
 // articulosRepository.findByDescripcionLikeIgnoreCase(descripcion);   // ej. findByDescripcionLikeIgnoreCase("%mar%"")
-// @Query("SELECT a FROM Articulo a WHERE a.descripcion LIKE %:descripcion%")
-// List<Articulo> findByDescripcion(@Param("descripcion")String descripcion)
-// @Query("SELECT a FROM Articulo a WHERE a.descripcion LIKE %:$1%")
-// List<Articulo> findByDescripcion(String descripcion)
+//@Query("SELECT m FROM Movie m WHERE m.title LIKE %:descripcion%")
+//List<Articulo> findByDescripcion(@Param("descripcion")String descripcion)
+//@Query("SELECT m FROM Movie m WHERE m.title LIKE %:$1%")
+//List<Articulo> findByDescripcion(String descripcion)

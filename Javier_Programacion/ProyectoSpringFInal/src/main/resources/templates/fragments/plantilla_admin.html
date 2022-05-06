@@ -13,13 +13,13 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/}">
-                <img th:src="@{/images/logo.png}" style="width: 50px;" alt="Logo"/>Tienda</a>
+                <img th:src="@{/images/logo.png}" style="width: 50px;" alt="Logo"/>infoBA</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
                     </li>
@@ -31,11 +31,35 @@
                         <ul class="dropdown-menu" aria-labelledby="adminDropdown">
                             <li><a class="dropdown-item" th:href="@{/admin/proveedores}">Proveedores</a></li>
                             <li><a class="dropdown-item" th:href="@{/admin/articulos}">Articulos</a></li>
-                            <li><a class="dropdown-item" th:href="@{/templates/admin/usuarios}">Clientes</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/clientes}">Clientes</a></li>
                             <li><a class="dropdown-item" th:href="@{/admin/facturas}">Facturas</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/facturas/anuladas}">Facturas anuladas</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/pedidos}">Pedidos</a></li>
                         </ul>
                     </li>
                 </ul>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li sec:authorize="!isAuthenticated()">
+                        <a class="btn btn-outline-dark btn-lg" th:href="@{/login}">
+                            <i class="bi bi-person-fill text-danger"></i> Entrar
+                        </a>
+                    </li>
+                    <li class="small" sec:authorize="isAuthenticated()">
+                        <form id="formLogout" th:action="@{/logout}" method="post">
+                            <span sec:authentication="name"></span>
+                            [
+                            <th:block th:each="rol, iteraccion:${#authentication.getAuthorities()}">
+                                <span class="small" th:text="${rol.getAuthority().replaceFirst('ROLE_', '')}"></span>
+                                <th:block th:if="${!iteraccion.last}">, </th:block>
+                            </th:block>]
+                            <button class="btn btn-outline-dark btn-lg" type="submit">
+                                <i class="bi bi-person-fill text-success"></i> Salir
+                            </button>
+                        </form>
+                </ul>
+
+
             </div>
         </div>
     </nav>
@@ -56,6 +80,7 @@
             </div>
         </div>
     </div>
+
 </header>
 
 <footer th:fragment="footer">
@@ -68,3 +93,6 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
 </footer>
+
+
+</div>

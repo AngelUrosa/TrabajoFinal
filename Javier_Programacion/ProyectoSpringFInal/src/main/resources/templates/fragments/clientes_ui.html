@@ -3,7 +3,7 @@
     <input type="hidden" th:field="*{id}"/>
 
     <div class="card">
-        <h4 class="card-title ps-2" th:text="${titlePage}">Nuevo Usuario</h4>
+        <h4 class="card-title ps-2" th:text="${titlePage}">Nuevo Cliente</h4>
         <div class="bg-light p-1">
             <div class="row">
                 <div class="col-12 col-md-4">
@@ -55,6 +55,17 @@
             </div>
 
             <div class="row">
+                <div class="col-12 col-md-10">
+                    <div class="form-floating">
+                        <input id="razonSocial" type="text"
+                               th:field="*{razonSocial}" th:readonly="${readonly}"
+                               placeholder="Razón Social"
+                               class="form-control">
+                        <label for="razonSocial">Razón Social <span class="text-danger">*</span></label>
+                    </div>
+                    <small class="form-text text-danger"
+                           th:if="${#fields.hasErrors('razonSocial')}" th:errors="*{razonSocial}"></small>
+                </div>
                 <div class="col-12 col-md-2">
                     <div class="form-floating">
                         <input id="telefono" type="text"
@@ -138,6 +149,15 @@
                         <label for="nif">Nif</label>
                     </div>
                 </div>
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="razonSocial" type="text" name="razonSocial"
+                               th:value="${razonSocial}"
+                               placeholder="Razón social"
+                               class="form-control">
+                        <label for="razonSocial">Razón social</label>
+                    </div>
+                </div>
                 <div class="col-auto align-middle">
                     <button type="submit" class="btn boton-buscar" title="Buscar"><i
                             class="bi bi-search"></i></button>
@@ -155,6 +175,7 @@
         <tr scope="row">
             <th scope="col">NIF</th>
             <th scope="col">Nombre</th>
+            <th scope="col">Razón social</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Email</th>
             <th scope="col"></th>
@@ -162,17 +183,18 @@
         </thead>
 
         <tbody>
-        <tr scope="row" th:each="usuario: ${usuarios}">
-            <td th:text="${usuario.nif}"></td>
-            <td th:text="${usuario.nombre}+' '+${usuario.apellido1}+' '+${usuario.apellido2}"></td>
-            <td th:text="${usuario.telefono}"></td>
-            <td th:text="${usuario.email}"></td>
+        <tr scope="row" th:each="cliente: ${clientes}">
+            <td th:text="${cliente.nif}"></td>
+            <td th:text="${cliente.nombre}+' '+${cliente.apellido1}+' '+${cliente.apellido2}"></td>
+            <td th:text="${cliente.razonSocial}"></td>
+            <td th:text="${cliente.telefono}"></td>
+            <td th:text="${cliente.email}"></td>
             <td>
-                <a th:href="@{/admin/usuarios/show/{nif}(nif = ${usuario.nif})}" title="mostrar"
+                <a th:href="@{/admin/clientes/show/{nif}(nif = ${cliente.nif})}" title="mostrar"
                    class="btn btn-sm boton-consultar"><i class="bi bi-eye"></i></a>
-                <a th:href="@{/admin/usuarios/delete/{nif}(nif = ${usuario.nif})}" title="borrar"
+                <a th:href="@{/admin/clientes/delete/{nif}(nif = ${cliente.nif})}" title="borrar"
                    class="btn btn-sm boton-borrar"><i class="bi bi-trash"></i></a>
-                <a th:href="@{/admin/usuarios/update/{nif}(nif = ${usuario.nif})}" title="editar"
+                <a th:href="@{/admin/clientes/update/{nif}(nif = ${cliente.nif})}" title="editar"
                    class="btn btn-sm boton-actualizar"><i class="bi bi-pencil"></i></a>
             </td>
         </tr>

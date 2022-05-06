@@ -1,13 +1,12 @@
 package com.daw2.proyectospringfinal.model.entity;
 
-
 import javax.persistence.*;
 
 @Entity
 @Table(name="detalle_facturas")
-public class DetalleFactura {
+public class   DetalleFactura {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private double precio;
     private double unidades;
@@ -31,6 +30,14 @@ public class DetalleFactura {
         return precio;
     }
 
+    public double getDto() {
+        return dto;
+    }
+
+    public void setDto(double dto) {
+        this.dto = dto;
+    }
+
     public void setPrecio(double precio) {
         this.precio = precio;
     }
@@ -43,13 +50,7 @@ public class DetalleFactura {
         this.unidades = unidades;
     }
 
-    public double getDto() {
-        return dto;
-    }
 
-    public void setDto(double dto) {
-        this.dto = dto;
-    }
 
     public Factura getFactura() {
         return factura;
@@ -66,5 +67,5 @@ public class DetalleFactura {
     public void setArticulo(Articulo articulo) {
         this.articulo = articulo;
     }
-}
 
+}

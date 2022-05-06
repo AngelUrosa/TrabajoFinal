@@ -9,8 +9,10 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "proveedores")
-public class Proveedor {
+//@Table(name="clientes",
+//        uniqueConstraints= {@UniqueConstraint (columnNames= {"nombre", "apellido1"})})
+@Table(name="clientes")
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -37,8 +39,9 @@ public class Proveedor {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createAt;
 
-    @OneToMany(mappedBy = "proveedor")
-    private List<Articulo> articulos;
+    @OneToMany(mappedBy = "cliente")
+    private List<Factura> facturas;
+
 
     @PrePersist
     public void init() {
@@ -117,12 +120,12 @@ public class Proveedor {
         this.createAt = createAt;
     }
 
-    public List<Articulo> getArticulos() {
-        return articulos;
+    public List<Factura> getFacturas() {
+        return facturas;
     }
 
-    public void setArticulos(List<Articulo> articulos) {
-        this.articulos = articulos;
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
     }
 }
 

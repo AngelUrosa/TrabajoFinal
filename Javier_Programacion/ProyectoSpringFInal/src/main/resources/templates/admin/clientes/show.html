@@ -8,16 +8,16 @@
 <header th:replace="fragments/plantilla_admin :: header"></header>
 
 <div class="container py-3">
-    <form th:action="@{/templates/admin/usuarios/delete}" th:object="${usuario}" method="post">
-        <div th:replace="fragments/usuarios_ui :: form (titlePage='Borra Usuario', titleSubmit='Borrar', readonly=true)"></div>
+    <form th:object="${cliente}" >
+        <div th:replace="fragments/clientes_ui :: form (titlePage='Consulta Cliente', titleSubmit='', showSubmit=false, readonly=true)"></div>
     </form>
 </div>
 
 <hr>
 
 <div class="container-fluid">
-    <h4 class="text-center">Facturas del usuario</h4>
-    <div th:replace="fragments/usuarios_ui:: listado"></div>
+    <h4 class="text-center">Facturas del cliente</h4>
+    <div th:replace="fragments/articulos_ui:: listado"></div>
 </div>
 
 <footer th:replace="fragments/plantilla_admin :: footer"></footer>

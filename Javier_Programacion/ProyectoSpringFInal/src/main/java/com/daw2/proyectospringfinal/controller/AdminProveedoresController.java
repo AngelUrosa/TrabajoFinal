@@ -1,4 +1,3 @@
-/*
 package com.daw2.proyectospringfinal.controller;
 
 import com.daw2.proyectospringfinal.model.entity.Proveedor;
@@ -111,7 +110,7 @@ public class AdminProveedoresController {
             flash.addFlashAttribute("showSubmit", true);
         }
         flash.addFlashAttribute("readonly", true);
-        return "redirect:/admin/proveedores/list";
+        return "redirect:/admin/proveedores";
     }
 
     @GetMapping("/update/{nif}")
@@ -133,7 +132,11 @@ public class AdminProveedoresController {
     }
 
     @PostMapping("/update")
-    public String update(Proveedor proveedor, RedirectAttributes flash) {
+    public String update(@Valid Proveedor proveedor, BindingResult result, RedirectAttributes flash, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("showSubmit", true);
+            return "admin/proveedores/add";
+        }
         try {
             proveedoresService.save(proveedor);
             flash.addFlashAttribute("alertSuccess", "Proveedor actualizado");
@@ -166,8 +169,7 @@ public class AdminProveedoresController {
         flash.addFlashAttribute("referencia", nif);
         flash.addFlashAttribute("descripcion", razonSocial);
         flash.addFlashAttribute("proveedores", proveedores);
-        return "redirect:/admin/proveedores/list";
+        return "redirect:/admin/proveedores";
     }
 
 }
-*/

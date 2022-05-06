@@ -29,14 +29,14 @@ public class FacturasServiceImpl implements FacturasService {
     @Override
     public Factura saveWithDetalle(Factura factura) {
         factura.setModifiedAt(new Date());
-        Factura facturaGuardada = facturasRepository.save(factura);
+        Factura facturaGurdada = facturasRepository.save(factura);
         factura.getDetalleFacturas().forEach(detalle -> {
             if (detalle.getArticulo().getId() != null) {
-                detalle.setFactura(facturaGuardada);
+                detalle.setFactura(facturaGurdada);
                 detalleRepository.save(detalle);
             }
         });
-        return facturaGuardada;
+        return facturaGurdada;
     }
 
     @Transactional
@@ -107,12 +107,16 @@ public class FacturasServiceImpl implements FacturasService {
 
     @Transactional
     @Override
-    public void deleteWithDetalle(Factura factura) {
-        factura = facturasRepository.getById(factura.getId());
-        if (factura.getDetalleFacturas()!=null)
-            factura.getDetalleFacturas().forEach(detalle-> detalleRepository.delete(detalle));
-        facturasRepository.delete(factura);
+    public void disabled(int id, boolean anulada) {
+        Factura factura = facturasRepository.getById(id);
+        factura.setAnulada(anulada);
+        factura.setFechaAnulación(new Date());
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Factura> listByAnulada(boolean anulada) {
+        return facturasRepository.findByAnulada(anulada);
     }
 
 }
-

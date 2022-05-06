@@ -1,7 +1,6 @@
 package com.daw2.proyectospringfinal.service;
 
 import com.daw2.proyectospringfinal.model.entity.Proveedor;
-
 import java.util.List;
 
 public interface ProveedoresService {

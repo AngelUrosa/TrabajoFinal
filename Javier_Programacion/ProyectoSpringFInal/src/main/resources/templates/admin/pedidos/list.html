@@ -7,11 +7,15 @@
 
 <header th:replace="fragments/plantilla_admin :: header"></header>
 
-<div class="container py-3">
-    <h1>infoBA -  Administración</h1>
+<div class="container-fluid py-3">
+    <h3 class="text-center">Listado de Pedidos</h3>
+
+    <div th:replace="fragments/pedidos_ui:: listado"></div>
 </div>
 
 <footer th:replace="fragments/plantilla_admin :: footer"></footer>
 
 </body>
 </html>
+
+

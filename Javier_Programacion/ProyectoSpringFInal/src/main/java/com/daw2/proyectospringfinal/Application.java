@@ -7,13 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class ProyectoSpringFInalApplication implements CommandLineRunner {
-
+public class Application implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     public static void main(String[] args) {
-        SpringApplication.run(ProyectoSpringFInalApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.daw2.proyectospringfinal.service;
 
-
 import com.daw2.proyectospringfinal.model.entity.DetalleFactura;
 import com.daw2.proyectospringfinal.model.entity.Factura;
 
@@ -16,9 +15,9 @@ public interface FacturasService {
     void delete(int id);
     Factura saveWithDetalle(Factura factura);
     Factura updateWithDetalle(Factura factura, List<DetalleFactura> borrados);
-    void deleteWithDetalle(Factura factura);
     double totalFacturaById(int id);
     void deleteDetalleById(int id);
     void deleteDetalle(List<DetalleFactura> detalleFacturas);
-
+    void disabled(int id, boolean anulada);
+    List<Factura> listByAnulada(boolean anulada);
 }

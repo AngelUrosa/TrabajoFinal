@@ -87,14 +87,10 @@ public class FacturaComponent {
     }
 
     public DetalleFactura getDetalle(int pos) {
-        DetalleFactura detalle = null;
         if (pos < factura.getDetalleFacturas().size())
-            detalle = factura.getDetalleFacturas().get(pos);
-        return detalle;
-//        if (pos < factura.getDetalleFacturas().size())
-//            return factura.getDetalleFacturas().get(pos);
-//        else {
-//            return null;
+            return factura.getDetalleFacturas().get(pos);
+        else
+            return null;
     }
 
     public List<DetalleFactura> listDetalles() {

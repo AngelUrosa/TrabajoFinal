@@ -8,16 +8,16 @@
 <header th:replace="fragments/plantilla_admin :: header"></header>
 
 <div class="container py-3">
-    <form th:action="@{/templates/admin/usuarios/update}" th:object="${usuario}" method="post">
-        <div th:replace="fragments/usuarios_ui :: form (titlePage='Actualiza Usuario', titleSubmit='Actualizar')"></div>
+    <form th:action="@{/admin/articulos/update}" th:object="${articulo}" method="post"  enctype="multipart/form-data">
+        <div th:replace="fragments/articulos_ui :: form (titlePage='Actualiza Artículo', titleSubmit='Actualizar')"></div>
     </form>
 </div>
 
 <hr>
 
 <div class="container-fluid">
-    <h4 class="text-center">Facturas del usuario</h4>
-    <div th:replace="fragments/usuarios_ui:: listado"></div>
+    <h4 class="text-center">Articulos del mismo proveedor</h4>
+    <div th:replace="fragments/articulos_ui:: listado"></div>
 </div>
 
 <footer th:replace="fragments/plantilla_admin :: footer"></footer>

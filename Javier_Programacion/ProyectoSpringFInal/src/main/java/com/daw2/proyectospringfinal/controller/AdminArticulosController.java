@@ -1,4 +1,3 @@
-/*
 package com.daw2.proyectospringfinal.controller;
 
 import com.daw2.proyectospringfinal.model.entity.Articulo;
@@ -64,9 +63,7 @@ public class AdminArticulosController {
             model.addAttribute("proveedores", proveedoresService.listAll());
             return "admin/articulos/add";
         }
-        */
-/*cargaImagen(articulo,imagen,flash);*//*
-
+        cargaImagen(articulo, imagen, flash);
         try {
             articulosService.save(articulo);
             flash.addFlashAttribute("readonly", true);
@@ -128,7 +125,7 @@ public class AdminArticulosController {
             flash.addFlashAttribute("showSubmit", true);
         }
         flash.addFlashAttribute("readonly", true);
-        return "redirect:/admin/articulos/list";
+        return "redirect:/admin/articulos";
     }
 
     @GetMapping("/update/{ref}")
@@ -151,8 +148,17 @@ public class AdminArticulosController {
     }
 
     @PostMapping("/update")
-    public String update(Articulo articulo, RedirectAttributes flash, @RequestParam("file") MultipartFile imagen) {
-        cargaImagen(articulo,imagen,flash);
+    public String update(@Valid Articulo articulo, BindingResult result, RedirectAttributes flash,
+                         @RequestParam("file") MultipartFile imagen, Model model) {
+        cargaImagen(articulo, imagen, flash);
+        if (articulo.getProveedor().getId() == null)
+            result.rejectValue("proveedor", "NotNull", "Debe indicar el provedor");
+
+        if (result.hasErrors()) {
+            model.addAttribute("showSubmit", true);
+            model.addAttribute("proveedores", proveedoresService.listAll());
+            return "admin/articulos/add";
+        }
         try {
             articulosService.save(articulo);
             flash.addFlashAttribute("alertSuccess", "Articulo actualizado");
@@ -163,13 +169,13 @@ public class AdminArticulosController {
             flash.addFlashAttribute("articulo", articulo);
             flash.addFlashAttribute("showSubmit", true);
         }
-        return "redirect:/admin/articulos/update/"+articulo.getRef();
+        return "redirect:/admin/articulos/update/" + articulo.getRef();
     }
 
 
-    @GetMapping( {"","/list"} )
+    @GetMapping({"","/list"})
     public String list(Model model) {
-        if (model.getAttribute("articulos")==null)
+        if (model.getAttribute("articulos") == null)
             model.addAttribute("articulos", articulosService.listAll()); // Hay que paginar
         return "admin/articulos/list";
     }
@@ -184,7 +190,7 @@ public class AdminArticulosController {
         flash.addFlashAttribute("referencia", referencia);
         flash.addFlashAttribute("descripcion", descripcion);
         flash.addFlashAttribute("articulos", articulos);
-        return "redirect:/admin/articulos/list";
+        return "redirect:/admin/articulos";
     }
 
 //---------------
@@ -194,14 +200,14 @@ public class AdminArticulosController {
         if (!imagen.isEmpty()) {
             if (articulo.getId() != null && articulo.getId() > 0 && articulo.getImagen() != null
                     && articulo.getImagen().length() > 0) {
-                uploadFileService.delete(UploadFileService.DestinoUpload.ARTICULOS,articulo.getImagen());
+                uploadFileService.delete(UploadFileService.DestinoUpload.ARTICULOS, articulo.getImagen());
             }
             String uniqueFilename = null;
             try {
                 uniqueFilename = uploadFileService.copy(UploadFileService.DestinoUpload.ARTICULOS, imagen);
-                flash.addFlashAttribute("alertInfo", "Guarda la imagen: "+uploadFileService.getFilenameSource(uniqueFilename));
+                flash.addFlashAttribute("alertInfo", "Guarda la imagen: " + uploadFileService.getFilenameSource(uniqueFilename));
             } catch (IOException e) {
-                flash.addFlashAttribute("alertWarning", "No se pudo subir la imagen: "+uploadFileService.getFilenameSource(uniqueFilename));
+                flash.addFlashAttribute("alertWarning", "No se pudo subir la imagen: " + uploadFileService.getFilenameSource(uniqueFilename));
             }
             articulo.setImagen(uniqueFilename);
         }
@@ -209,4 +215,3 @@ public class AdminArticulosController {
 
 
 }
-*/

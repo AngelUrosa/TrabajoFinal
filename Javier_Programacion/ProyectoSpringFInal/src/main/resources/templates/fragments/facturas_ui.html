@@ -3,8 +3,10 @@
 
 <div th:fragment="form" (titleSubmit)>
 
-    <!--    <input type="hidden" th:field="*{id}">-->
-    <!--    <input type="hidden" th:field="*{createAt}">-->
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{createAt}"/>
+
+    <input name="id" type="hidden" value="<%=factura.getId()%>"/>
 
     <div class="bg-light p-1">
         <div class="row">
@@ -68,7 +70,25 @@
 <!-- ------------------------------------------------------------ -->
 
 <div th:fragment="filterClave">
-
+    <div class="card">
+        <div class="bg-light p-1">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="form-floating">
+                        <input id="numFactura" type="text" name="numFactura"
+                               th:value="${numFactura}"
+                               placeholder="Nº factura"
+                               class="form-control">
+                        <label for="numFactura">Nº Factura</label>
+                    </div>
+                </div>
+                <div class="col-auto align-middle">
+                    <button type="submit" class="btn boton-buscar" title="Buscar"><i
+                            class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- ------------------------------------------------------------ -->
 
@@ -123,7 +143,6 @@
             <td th:text="${factura.cliente.nif} +' - '+ ${factura.cliente.nombre}+' '+${factura.cliente.apellido1}+' '+${factura.cliente.apellido2}"></td>
             <td th:text="${#dates.format(factura.fecha, 'dd/MM/yyyy')}"></td>
             <td th:text="${facturasService.totalFacturaById(factura.id)}"></td>
-            <!--            <td th:text="${@facturasServiceImpl.totalFacturaById(factura.id)}"></td>-->
             <td>
                 <a th:href="@{/admin/facturas/show/{numFactura}(numFactura = ${factura.numFactura})}" title="mostrar"
                    class="btn btn-sm boton-consultar"><i class="bi bi-eye"></i></a>
@@ -131,6 +150,8 @@
                    class="btn btn-sm boton-borrar"><i class="bi bi-trash"></i></a>
                 <a th:href="@{/admin/facturas/update/{numFactura}(numFactura = ${factura.numFactura})}" title="editar"
                    class="btn btn-sm boton-actualizar"><i class="bi bi-pencil"></i></a>
+                <a th:href="@{/admin/facturas/disabled/{numFactura}(numFactura = ${factura.numFactura})}" title="Anular"
+                   class="btn btn-sm boton-anular"><i class="bi bi-trash2"></i></a>
             </td>
         </tr>
         </tbody>
@@ -141,9 +162,7 @@
 <!-- ------------------------------------------------------------ -->
 
 <div th:fragment="detalle">
-
     <input th:type="hidden" id="detalleEditado" name="detalleEditado">
-
     <table class="table table-striped">
         <thead>
         <tr scope="row">
@@ -154,7 +173,7 @@
             <th scope="col" style="max-width: 75px">Unidades</th>
             <th scope="col" style="max-width: 75px">Descuento</th>
             <th scope="col" style="max-width: 75px">Total</th>
-            <th scope="col"></th>
+            <th scope="col" style="width: 110px"></th>
         </tr>
         </thead>
 
@@ -162,8 +181,8 @@
         <tr scope="row" th:each="detalle, stat: ${factura.detalleFacturas}">
             <td class="align-middle fw-bold">
                 <span th:text="${stat.index}+1"></span>
+                <input type="hidden" th:field="*{detalleFacturas[__${stat.index}__].id}">
             </td>
-
             <td>
                 <select id="idArticulo" th:field="*{detalleFacturas[__${stat.index}__].articulo.ref}"
                         class="form-select"
@@ -175,45 +194,33 @@
                             th:value="${articulo.ref}"></option>
                 </select>
             </td>
-
             <td>
                 <input type="text" th:value="${detalle.articulo.descripcion}" class="form-control" readonly>
             </td>
-
             <td>
                 <input type="text" th:id="'precio'+${stat.index}" th:value="${detalle.articulo.precio}"
                        size="5" class="form-control" readonly>
             </td>
-
             <td>
+                <!--                th:onchange="'calculaTotal(' + ${stat.index} + ');'"-->
                 <input type="text" th:id="'unidades'+${stat.index}"
                        th:field="*{detalleFacturas[__${stat.index}__].unidades}" class="form-control"
-                       th:onchange="'calculaTotales();'"
-                       size="5"  th:readonly="${readonly}">
+                       size="5" th:onchange="'calculaTotales();'" th:readonly="${readonly}">
             </td>
-
             <td>
-                <input type="text" th:id="'dto'+${stat.index}"
-                       th:field="*{detalleFacturas[__${stat.index}__].dto}"
-                       th:onchange="'calculaTotales();'"
+                <input type="text" th:id="'dto'+${stat.index}" th:field="*{detalleFacturas[__${stat.index}__].dto}"
                        class="form-control"
-                       size="5"  th:readonly="${readonly}">
+                       size="5" th:onchange="'calculaTotales();'" th:readonly="${readonly}">
             </td>
-
             <td>
-                <input type="text" th:id="'total'+${stat.index}"
-                       size="5" class="form-control float-end text-end"
+                <input type="text" th:id="'total'+${stat.index}" size="5" class="form-control float-end text-end"
                        readonly>
             </td>
-
             <td>
-                <button type="submit" name="btDeleteArticulo" class="btn boton-borrar me-1"
-                        th:value="${stat.index}"
+                <button type="submit" name="btDeleteArticulo" class="btn boton-borrar me-1" th:value="${stat.index}"
                         th:disabled="${readonly}"><i class="bi bi-trash"></i></button>
-                <button type="submit" name="btAddArticulo" class="btn boton-add"
-                        th:if="${stat.index}==${stat.size}-1"
-                        th:disabled="${readonly}">+
-                </button>
+                <button type="submit" name="btAddArticulo" class="btn boton-add" th:if="${stat.index}==${stat.size}-1"
+                        th:disabled="${readonly}"><i class="bi bi-plus"></i></button>
             </td>
         </tr>
         </tbody>
@@ -227,11 +234,12 @@
         </tfoot>
     </table>
 
-
     <script>
 
-        function envioSeleccionArticulo(pos) {
-            document.getElementById("detalleEditado").value = pos;
+        function envioSeleccionArticulo(lineaDetalle) {
+            document.getElementById('detalleEditado').value=lineaDetalle;
+            // Si se quiere hacer el submit aquí, hay que poner id al form(Ej: id="form" y poner la siguiente linea
+            //document.getElementById('form').submit();
         }
 
         // Calculo del total al cambiar dto o unidades

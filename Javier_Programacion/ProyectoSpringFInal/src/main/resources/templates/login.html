@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/plantilla_admin :: head"></head>
+
+<body>
+
+<header th:replace="fragments/plantilla_admin :: header"></header>
+
+<div class="container">
+
+    <div class="card border-primary" p-2 my-4>
+        <div class="card-header bg-secondary text-center text-white font-weight-bold">
+            Acceso al Sistema
+        </div>
+
+        <div class="card-body bg-dark">
+            <form th:action="@{/login}" method="post">
+                <div class="form-group col-12">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username"
+                           class="form-control" placeholder="usuario"
+                           required autofocus>
+                </div>
+                <div class="form-group col">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" class="form-control"
+                           placeholder="contraseña" required>
+                </div>
+                <div class="">
+                    <input type="submit" value="Acceder" class="btn btn-primary btn-block col-6">
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<footer th:replace="fragments/plantilla_admin :: footer"></footer>
+
+</body>
+</html>

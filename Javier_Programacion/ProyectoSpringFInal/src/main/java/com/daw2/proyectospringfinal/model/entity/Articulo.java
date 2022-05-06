@@ -1,7 +1,7 @@
 package com.daw2.proyectospringfinal.model.entity;
 
-
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,21 +9,23 @@ import java.util.List;
 @Table(name = "articulos")
 public class Articulo implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank
     @Column(unique = true, nullable = false, length=15)
     private String ref;
+    @NotBlank
     @Column(nullable = false, length=75)
     private String descripcion;
     private Double precio;
     private Double stock;
     private String imagen;
-    @OneToMany(mappedBy = "articulo")
-    private List<DetalleFactura> detalleFacturas;
 
     @ManyToOne
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
+    @OneToMany(mappedBy = "articulo")
+    private List<DetalleFactura> detalleFacturas;
 
     public Integer getId() {
         return id;
@@ -80,5 +82,13 @@ public class Articulo implements Serializable {
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
-}
 
+    public List<DetalleFactura> getDetalleFacturas() {
+        return detalleFacturas;
+    }
+
+    public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
+        this.detalleFacturas = detalleFacturas;
+    }
+
+}

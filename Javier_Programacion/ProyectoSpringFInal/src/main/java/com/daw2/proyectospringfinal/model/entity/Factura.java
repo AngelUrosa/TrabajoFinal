@@ -1,6 +1,5 @@
 package com.daw2.proyectospringfinal.model.entity;
 
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import java.util.List;
 @Table(name="facturas")
 public class Factura {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotBlank
     @Column(length = 15, unique = true, nullable = false)
@@ -32,10 +31,16 @@ public class Factura {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedAt;
     @ManyToOne
-    @JoinColumn(name="id_usuario")
-    private Usuario usuario;
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
     @OneToMany(mappedBy = "factura")
     private List<DetalleFactura> detalleFacturas;
+
+    @Column(nullable = false)
+    private boolean anulada;
+    @Column(name = "fecha_anulacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAnulación;
 
     @PrePersist
     public void init() {
@@ -75,20 +80,12 @@ public class Factura {
         this.createAt = createAt;
     }
 
-    public Date getModifiedAt() {
-        return modifiedAt;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setModifiedAt(Date modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
-    public Usuario getCliente() {
-        return usuario;
-    }
-
-    public void setCliente(Usuario usuario) {
-        this.usuario = usuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public List<DetalleFactura> getDetalleFacturas() {
@@ -98,5 +95,28 @@ public class Factura {
     public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
         this.detalleFacturas = detalleFacturas;
     }
-}
 
+    public Date getModifiedAt() {
+        return modifiedAt;
+    }
+
+    public void setModifiedAt(Date modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
+
+    public boolean isAnulada() {
+        return anulada;
+    }
+
+    public void setAnulada(boolean anulada) {
+        this.anulada = anulada;
+    }
+
+    public Date getFechaAnulación() {
+        return fechaAnulación;
+    }
+
+    public void setFechaAnulación(Date fechaAnulación) {
+        this.fechaAnulación = fechaAnulación;
+    }
+}
