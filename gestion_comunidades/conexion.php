@@ -10,7 +10,7 @@ class Conexion {
   {
       try {
           $host="localhost";
-          $database="proyecto recuperacion";
+          $database="finges";
           $usuario="root";
           $password="";
           

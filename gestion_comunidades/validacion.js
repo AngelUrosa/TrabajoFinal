@@ -1,5 +1,3 @@
-<script type="text/javascript">
-
 const inputs = document.querySelectorAll(".confi");
 
 const usuario = document.getElementById("usuario");
@@ -17,7 +15,7 @@ let numeros = [0,1,2,3,4,5,6,7,8,9];
 
 let mayusculas =["A", "B", "C", "D", "E", "F", "G", "H","I","J", "K", "L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-Let minusculas = ["a", "b", "c", "d", "e", "f","g", "h", "i", "j", "k", "l", "m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+let minusculas = ["a", "b", "c", "d", "e", "f","g", "h", "i", "j", "k", "l", "m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 let final = [".es", ".com", ".inf", ".org", ".edu", ".pro", ".soy", ".me"];
 
@@ -88,7 +86,3 @@ function cambio(event) {
 
 
 }
-
-
-
-</script>

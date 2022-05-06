@@ -16,7 +16,7 @@ class Persona{
         $this->nif = $nif;
         $this->idComunidad = $idComunidad;
         $this->usuario = $usuario;
-        $this->contraseña, = $contraseña,;
+        $this->contraseña = $contraseña;
         $this->email = $email;
         $this->trabajador = $trabajador;
     }

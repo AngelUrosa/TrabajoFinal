@@ -27,12 +27,12 @@ echo "Entra";
   $tPersona=Personas::singletonPersonas();
   $p = $tPersona->getSesion($usuario,$contraseña,$perfil);
   if ($p != null) {
-
+    $mensaje_error="hola";
    // echo ($usuario);
    // echo ($contraseña);
     $_SESSION['autorizado'] = true;
     $_SESSION['perfil'] = $perfil;
-    header("Location: index.php");
+   // header("Location: index.php");
 
   } else {
     $mensaje_error = "Error en el login";
@@ -46,10 +46,13 @@ echo "Entra";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="validacion.js" defer></script>
+    <script type="text/javascript" src="mensajes.js" defer></script>
     <title>Login</title>
+  
 </head>
 <body>
-    <form name="formulario" id="formulario" method="post">
+    <form name="formulario" id="formulario" method="post" action="login.php">
         <ul>
          <li>
            <label for="usuario">Usuario:</label>
