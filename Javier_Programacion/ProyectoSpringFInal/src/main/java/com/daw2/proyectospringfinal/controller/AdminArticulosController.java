@@ -5,6 +5,7 @@ import com.daw2.proyectospringfinal.service.ArticulosService;
 import com.daw2.proyectospringfinal.service.ProveedoresService;
 import com.daw2.proyectospringfinal.service.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/articulos")
+@Secured("ROLE_ADMIN")
 public class AdminArticulosController {
     @Autowired
     private ArticulosService articulosService;

@@ -9,6 +9,9 @@ VALUES ('Pepito1', 'Pérez', 'López','usuario1',
 INSERT INTO usuarios_roles (id_usuario,id_rol) VALUES (1,1);
 INSERT INTO usuarios_roles (id_usuario,id_rol) VALUES (1,3);
 
+INSERT INTO usuarios_roles (id_usuario,id_rol) VALUES (2,2);
+INSERT INTO usuarios_roles (id_usuario,id_rol) VALUES (2,3);
+
 CREATE TABLE roles
 (
     id          INT AUTO_INCREMENT NOT NULL,
