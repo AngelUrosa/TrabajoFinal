@@ -66,24 +66,19 @@
             </nav>
         </div>
     </header>
+
     <div class="container-fluid">
         <div class="row">
-            <nav class="navbar navbar-light bg-secondary">
-                <div class="container-fluid">
-                    <form class="d-flex">
-                        <label for="search">Buscar por comunidad</label>
-                        <input class="form-control me-2" type="search" aria-label="Search">
-                        <label for="incidencias">Filtrar por estado</label>
-                        <select>
-                            <option id="opcion">Seleccionar estado</option>
-                            <option id="opcion">Contactar empresa de servicios</option>
-                            <option id="opcion">Pendiente aprobacion Propietarios</option>
-                            <option id="opcion">Muy Urgente</option>
-                            <option id="opcion">En reparacion</option>
-                        </select>
-                    </form>
-                </div>
-            </nav>
+            <div class="bg-secondary p-3">
+                <form class="row g-3">
+                    <div class="col-2">
+                      <label>Buscar por comunidad</label>
+                    </div>
+                    <div class="col-4">
+                      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                    </div>
+                  </form>           
+            </div>
         </div>
     </div>
     <br>
@@ -94,121 +89,120 @@
         <div class="container-fluid">
             <div class="justify-content-center p-4">
                 <div class="card border border-2 border-info mb-3">
-                    <div class="row p-4">
+                    <div class="row">
 
-                        <div class="col-lg-3 col-md-12 ">
-                            <img src="./img/ubicaciones.png" class="imagenUbicaciones">
+                        <div class="col-lg-3 col-md-12">
+                            <img src="./img/ubicaciones.png" class="card-img-top">
                         </div>
-                        <div class="col-lg-4 col-md-12 d-none	d-none d-lg-block">
+                        <div class="col-lg-4 col-md-12 d-none d-none d-lg-block p-3">
                             <a href="#" class="text-decoration-none fs-4 fw-bold">Comunidad Aguila Real</a> <br>
                             Ubicacion: <span class="negrita">Jardin comunitario</span> <br><br> Ultima revision: <span
                                 class="negrita">28 abril de 2022</span>
                         </div>
-                        <div class="col-lg-3 col-md-12  mx-auto d-flex align-items-center justify-content-center">
+                        <div class="col-lg-2 col-md-12  mx-auto d-flex align-items-center justify-content-center p-4">
                             <span class="badge rounded-pill bg-success text-white m-4 fs-6">Ubicacion revisada</span>
                         </div>
                         <div
-                            class="col-lg-2 col-md-12 d-flex align-items-center justify-content-center justify-content-lg-end">
-                            <button type="button" class="btn btn-secondary mt-3 me-5">Incidencias <span
-                                    class="bg-white text-dark p-1 rounded">4</span></button>
-                            <button type="button" class="btn btn-info mt-3">Detalles</button>
+                            class="col-lg-3 col-md-12 d-flex align-items-center justify-content-evenly ">
+                            <a href="#" class="btn btn-secondary">Incidencias <span
+                                    class="bg-white text-dark p-1 rounded">4</span></a>
+                            <button type="button" class="btn btn-info">Detalles</button>
                         </div>
 
                     </div>
                 </div>
                 <div class="card border border-2 border-info mb-3">
-                    <div class="row p-4">
+                    <div class="row">
 
-                        <div class="col-lg-3 col-md-12 ">
-                            <img src="./img/ubicaciones.png" class="imagenUbicaciones">
+                        <div class="col-lg-3 col-md-12">
+                            <img src="./img/ubicaciones.png" class="card-img-top">
                         </div>
-                        <div class="col-lg-4 col-md-12 d-none	d-none d-lg-block">
+                        <div class="col-lg-4 col-md-12 d-none d-none d-lg-block p-3">
                             <a href="#" class="text-decoration-none fs-4 fw-bold">Comunidad Aguila Real</a> <br>
                             Ubicacion: <span class="negrita">Jardin comunitario</span> <br><br> Ultima revision: <span
                                 class="negrita">28 abril de 2022</span>
                         </div>
-                        <div class="col-lg-3 col-md-12  mx-auto d-flex align-items-center justify-content-center">
+                        <div class="col-lg-2 col-md-12  mx-auto d-flex align-items-center justify-content-center p-4">
+                            <span class="badge rounded-pill bg-danger text-white m-4 fs-6">Revision Urgente</span>
+                        </div>
+                        <div
+                            class="col-lg-3 col-md-12 d-flex align-items-center justify-content-evenly ">
+                            <a href="#" class="btn btn-secondary">Incidencias <span
+                                    class="bg-white text-dark p-1 rounded">4</span></a>
+                            <button type="button" class="btn btn-info">Detalles</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card border border-2 border-info mb-3">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-12">
+                            <img src="./img/ubicaciones.png" class="card-img-top">
+                        </div>
+                        <div class="col-lg-4 col-md-12 d-none d-none d-lg-block p-3">
+                            <a href="#" class="text-decoration-none fs-4 fw-bold">Comunidad Aguila Real</a> <br>
+                            Ubicacion: <span class="negrita">Jardin comunitario</span> <br><br> Ultima revision: <span
+                                class="negrita">28 abril de 2022</span>
+                        </div>
+                        <div class="col-lg-2 col-md-12  mx-auto d-flex align-items-center justify-content-center p-4">
                             <span class="badge rounded-pill bg-warning text-white m-4 fs-6">Mejoras necesarias</span>
                         </div>
                         <div
-                            class="col-lg-2 col-md-12 d-flex align-items-center justify-content-center justify-content-lg-end">
-                            <button type="button" class="btn btn-secondary mt-3 me-5">Incidencias <span
-                                    class="bg-white text-dark p-1 rounded">4</span></button>
-                            <button type="button" class="btn btn-info mt-3">Detalles</button>
+                            class="col-lg-3 col-md-12 d-flex align-items-center justify-content-evenly ">
+                            <a href="#" class="btn btn-secondary">Incidencias <span
+                                    class="bg-white text-dark p-1 rounded">4</span></a>
+                            <button type="button" class="btn btn-info">Detalles</button>
                         </div>
 
                     </div>
                 </div>
                 <div class="card border border-2 border-info mb-3">
-                    <div class="row p-4">
+                    <div class="row">
 
-                        <div class="col-lg-3 col-md-12 ">
-                            <img src="./img/ubicaciones.png" class="imagenUbicaciones">
+                        <div class="col-lg-3 col-md-12">
+                            <img src="./img/ubicaciones.png" class="card-img-top">
                         </div>
-                        <div class="col-lg-4 col-md-12 d-none	d-none d-lg-block">
+                        <div class="col-lg-4 col-md-12 d-none d-none d-lg-block p-3">
                             <a href="#" class="text-decoration-none fs-4 fw-bold">Comunidad Aguila Real</a> <br>
                             Ubicacion: <span class="negrita">Jardin comunitario</span> <br><br> Ultima revision: <span
                                 class="negrita">28 abril de 2022</span>
                         </div>
-                        <div class="col-lg-3 col-md-12  mx-auto d-flex align-items-center justify-content-center">
-                            <span class="badge rounded-pill bg-danger text-white m-4 fs-6">Pendiente revision</span>
-                        </div>
-                        <div
-                            class="col-lg-2 col-md-12 d-flex align-items-center justify-content-center justify-content-lg-end">
-                            <button type="button" class="btn btn-secondary mt-3 me-5">Incidencias <span
-                                    class="bg-white text-dark p-1 rounded">4</span></button>
-                            <button type="button" class="btn btn-info mt-3">Detalles</button>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="card border border-2 border-info mb-3">
-                    <div class="row p-4">
-
-                        <div class="col-lg-3 col-md-12 ">
-                            <img src="./img/ubicaciones.png" class="imagenUbicaciones">
-                        </div>
-                        <div class="col-lg-4 col-md-12 d-none	d-none d-lg-block">
-                            <a href="#" class="text-decoration-none fs-4 fw-bold">Comunidad Aguila Real</a> <br>
-                            Ubicacion: <span class="negrita">Jardin comunitario</span> <br><br> Ultima revision: <span
-                                class="negrita">28 abril de 2022</span>
-                        </div>
-                        <div class="col-lg-3 col-md-12  mx-auto d-flex align-items-center justify-content-center">
+                        <div class="col-lg-2 col-md-12  mx-auto d-flex align-items-center justify-content-center p-4">
                             <span class="badge rounded-pill bg-success text-white m-4 fs-6">Ubicacion revisada</span>
                         </div>
                         <div
-                            class="col-lg-2 col-md-12 d-flex align-items-center justify-content-center justify-content-lg-end">
-                            <button type="button" class="btn btn-secondary mt-3 me-5">Incidencias <span
-                                    class="bg-white text-dark p-1 rounded">4</span></button>
-                            <button type="button" class="btn btn-info mt-3">Detalles</button>
+                            class="col-lg-3 col-md-12 d-flex align-items-center justify-content-evenly ">
+                            <a href="#" class="btn btn-secondary">Incidencias <span
+                                    class="bg-white text-dark p-1 rounded">4</span></a>
+                            <button type="button" class="btn btn-info">Detalles</button>
                         </div>
 
                     </div>
                 </div>
                 <div class="card border border-2 border-info mb-3">
-                    <div class="row p-4">
+                    <div class="row">
 
-                        <div class="col-lg-3 col-md-12 ">
-                            <img src="./img/ubicaciones.png" class="imagenUbicaciones">
+                        <div class="col-lg-3 col-md-12">
+                            <img src="./img/ubicaciones.png" class="card-img-top">
                         </div>
-                        <div class="col-lg-4 col-md-12 d-none	d-none d-lg-block">
+                        <div class="col-lg-4 col-md-12 d-none d-none d-lg-block p-3">
                             <a href="#" class="text-decoration-none fs-4 fw-bold">Comunidad Aguila Real</a> <br>
                             Ubicacion: <span class="negrita">Jardin comunitario</span> <br><br> Ultima revision: <span
                                 class="negrita">28 abril de 2022</span>
                         </div>
-                        <div class="col-lg-3 col-md-12  mx-auto d-flex align-items-center justify-content-center">
+                        <div class="col-lg-2 col-md-12  mx-auto d-flex align-items-center justify-content-center p-4">
                             <span class="badge rounded-pill bg-success text-white m-4 fs-6">Ubicacion revisada</span>
                         </div>
                         <div
-                            class="col-lg-2 col-md-12 d-flex align-items-center justify-content-center justify-content-lg-end">
-                            <button type="button" class="btn btn-secondary mt-3 me-5">Incidencias <span
-                                    class="bg-white text-dark p-1 rounded">4</span></button>
-                            <button type="button" class="btn btn-info mt-3">Detalles</button>
+                            class="col-lg-3 col-md-12 d-flex align-items-center justify-content-evenly ">
+                            <a href="#" class="btn btn-secondary">Incidencias <span
+                                    class="bg-white text-dark p-1 rounded">4</span></a>
+                            <button type="button" class="btn btn-info">Detalles</button>
                         </div>
 
                     </div>
                 </div>
-
 
             </div>
         </div>
