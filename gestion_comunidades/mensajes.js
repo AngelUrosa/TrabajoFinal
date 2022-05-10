@@ -18,7 +18,7 @@ switch (modo) {
         break;
 
     case MME_MODAL:
-        monstrarMensajeErrorModal()
+        monstrarMensajeErrorModal(mensaje)
         break;
 
     case MME_SELECTOR:
@@ -39,8 +39,23 @@ function monstrarMensajeErrorAlert(mensaje) {
     alert (mensaje);
 }
 
-function monstrarMensajeErrorModal() {
+function monstrarMensajeErrorModal(mensaje) {
     
+
+    if (!$('#modalMensaje').length){
+
+        // $( "#result" ).load( "ajax/test.html #container" );
+        $("#dialogoModal").load( "mensaje.html", () => {
+
+     $('#modalMensaje .modal-title').html("ERROR POR VIA MODAL");
+
+    $('#modalMensaje .modal-body').html(mensaje);
+
+    $('#modalMensaje').show('show');
+
+
+    });
+  }
 }
 
 function monstrarMensajeErrorSelector(mensaje, selector) {
@@ -59,4 +74,6 @@ function monstrarMensajeErrorSelector(mensaje, selector) {
 
 //monstrarMensajeError('hola',null,MME_ALERT);
 
-monstrarMensajeError('error en un div',null,MME_SELECTOR,'#error');
+//monstrarMensajeError('error en un div',null,MME_SELECTOR,'#error');
+
+monstrarMensajeError('error modal',null,MME_MODAL,'#error');

@@ -26,7 +26,9 @@ require_once './pojos/persona.php';
 
 			$u=null;
 
-		      try {$consulta="SELECT * FROM personas WHERE usuario=? AND contraseña=?";             
+	
+			try {
+				  		$consulta="SELECT * FROM personas WHERE usuario=? AND contraseña=?";             
 				
 	 	 				$query=$this->db->preparar($consulta);            
 		 				$query->bindParam(1,$usuario);          
@@ -48,20 +50,18 @@ require_once './pojos/persona.php';
 							}
 
 							
-						}
-						
-						
-						
-						
+						}	
+	
 					}
-	   catch(Exception $e){           
-		    $error=1;         
-		    return $error;        
-	  }     
+					} catch(Exception $e){           
+		    
+						$error=1;         
+		    			return $error;        
+					}     
 			
-	return $u;   
+					return $u;   
 
-    }
+   	 }
 		}
-			}
+			
     ?>

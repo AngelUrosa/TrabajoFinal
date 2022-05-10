@@ -14,7 +14,7 @@ class Conexion {
           $usuario="root";
           $password="";
           
-          $this->dbh=new PDO("mysql:host=$host;dbname=$database;port=3360", //He añadido lo del puerto
+          $this->dbh=new PDO("mysql:host=$host;dbname=$database;port=3306", //He añadido lo del puerto
                   $usuario,$password,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)); //este último parámetro ayuda a encontrar errores en la conexión y en las consultas posteriores, si nos falta algún parámetro o no coinciden los tipos.
           if ($this->dbh)
           {
