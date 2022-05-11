@@ -7,6 +7,7 @@
 
 <header th:replace="fragments/plantilla_admin :: header"></header>
 
+
 <div class="container py-3">
     <h1>Tienda Urosa</h1>
 
@@ -19,7 +20,7 @@
                 <div class="card-body bg-light">
                     <h5 class="card-title" th:text="${articulo.precio}+'€'"></h5>
                     <p class="card-text" th:text="${articulo.ref}"></p>
-                    <p class="card-text" th:text="${articulo.descripcion}"></p>
+                    <h3 class="card-text" th:text="${articulo.descripcion}"></h3>
                     <a th:href="@{/carrito/add(ref=${articulo.ref})}" class="btn btn-primary">Carrito</a>
                 </div>
             </div>
