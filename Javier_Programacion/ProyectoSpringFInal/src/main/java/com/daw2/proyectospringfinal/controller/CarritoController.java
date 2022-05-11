@@ -1,6 +1,9 @@
+
+/*
 package com.daw2.proyectospringfinal.controller;
 
 import com.daw2.proyectospringfinal.components.FacturaComponent;
+import com.daw2.proyectospringfinal.model.entity.Articulo;
 import com.daw2.proyectospringfinal.model.entity.Factura;
 import com.daw2.proyectospringfinal.service.ArticulosService;
 import com.daw2.proyectospringfinal.service.ClientesService;
@@ -9,13 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/carrito")
@@ -30,56 +32,28 @@ public class CarritoController {
     @Autowired
     private FacturaComponent facturaComponent;
 
-    @GetMapping("/add")
-    public String add(@RequestParam(required = false) String numFactura, Model model) {
-        model.addAttribute("showSubmit", true);
-        model.addAttribute("factura", facturaComponent.getFactura());
-        model.addAttribute("articulos", articulosService.listAll());
-        model.addAttribute("clientes", clientesService.listAll());
 
-        return "admin/facturas/add";
+
+    @PostMapping(value = "/add")
+    public String agregarAlCarrito(@ModelAttribute Articulo articulo, HttpServletRequest request, RedirectAttributes redirectAttrs) {
+
+       // ArrayList<Articulo> carrito = this.obtenerCarrito(request);
+
+        Articulo articulo1 = articulosService.getByRef(articulo.getRef());
+
+        boolean encontrado = false;
+        for (articulo1 productoParaVenderActual : carrito) {
+            if (productoParaVenderActual.getCodigo().equals(productoBuscadoPorCodigo.getCodigo())) {
+                productoParaVenderActual.aumentarCantidad();
+                encontrado = true;
+                break;
+            }
+        }
+        if (!encontrado) {
+            carrito.add(new ProductoParaVender(productoBuscadoPorCodigo.getNombre(), productoBuscadoPorCodigo.getCodigo(), productoBuscadoPorCodigo.getPrecio(), productoBuscadoPorCodigo.getExistencia(), productoBuscadoPorCodigo.getId(), 1f));
+        }
+        this.guardarCarrito(carrito, request);
+        return "redirect:/vender/";
     }
 
-    @PostMapping("/add")
-    public String add(@Valid Factura factura, BindingResult result,
-                      String btSubmit, String btCancel, String btAddArticulo, String btDeleteArticulo,
-                      Integer detalleEditado,
-                      RedirectAttributes flash, Model model) {
-        if (factura.getCliente().getId() == null)
-            result.rejectValue("cliente", "NotNull", "debe indicar el cliente");
-
-        if (result.hasErrors()) {
-            model.addAttribute("showSubmit", true);
-            // model.addAttribute("articulos", articulosService.listAll());
-            // model.addAttribute("clientes", clientesService.listAll());
-            flash.addFlashAttribute("org.springframework.validation.BindingResult.cliente", result);
-            return "admin/facturas/add";
-        }
-        facturaComponent.setFactura(factura);
-        if (btSubmit != null) {
-            try {
-                facturasService.saveWithDetalle(facturaComponent.getFactura());
-                flash.addFlashAttribute("alertSuccess", "Factura nº " + factura.getNumFactura() + " guardada");
-                facturaComponent.init();
-            } catch (Exception ex) {
-                flash.addFlashAttribute("alertDanger", "Factura nº " + factura.getNumFactura() + " NO guardada");
-            }
-        } else if (btCancel != null) {
-            try {
-                flash.addFlashAttribute("alertInfo", "Factura nº" + factura.getNumFactura() + " cancelada");
-                facturaComponent.init();
-            } catch (Exception ex) {
-                flash.addFlashAttribute("alertDanger", "Factura nº" + factura.getNumFactura() + " NO guardada");
-            }
-        } else if (btAddArticulo != null) {
-            facturaComponent.addDetalle();
-        } else if (btDeleteArticulo != null) {
-            facturaComponent.deleteDetalle(Integer.parseInt(btDeleteArticulo));
-        } else {  // Submit por change en select Articulo
-            facturaComponent.completaDetalle(detalleEditado);
-        }
-
-        return "redirect:/admin/facturas/add";
-    }
-
-}
+} */

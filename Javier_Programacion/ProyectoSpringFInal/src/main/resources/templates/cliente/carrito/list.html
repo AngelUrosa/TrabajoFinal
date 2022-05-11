@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/plantilla_admin :: head"></head>
+
+<body>
+
+<header th:replace="fragments/plantilla_admin :: header"></header>
+
+<div class="container-fluid py-3">
+
+    <h3 class="text-center">Carrito</h3>
+    <form th:action="@{/carrito/list}" method="post">
+        <div th:replace="fragments/facturas_ui :: filter"></div>
+    </form>
+    <div th:replace="fragments/facturas_ui:: listado"></div>
+</div>
+
+<footer th:replace="fragments/plantilla_admin :: footer"></footer>
+
+</body>
+</html>
