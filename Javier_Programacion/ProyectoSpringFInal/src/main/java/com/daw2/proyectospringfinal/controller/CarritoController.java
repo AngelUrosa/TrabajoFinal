@@ -1,6 +1,6 @@
-
 /*
 package com.daw2.proyectospringfinal.controller;
+
 
 import com.daw2.proyectospringfinal.components.FacturaComponent;
 import com.daw2.proyectospringfinal.model.entity.Articulo;
@@ -32,28 +32,6 @@ public class CarritoController {
     @Autowired
     private FacturaComponent facturaComponent;
 
+ */
 
 
-    @PostMapping(value = "/add")
-    public String agregarAlCarrito(@ModelAttribute Articulo articulo, HttpServletRequest request, RedirectAttributes redirectAttrs) {
-
-       // ArrayList<Articulo> carrito = this.obtenerCarrito(request);
-
-        Articulo articulo1 = articulosService.getByRef(articulo.getRef());
-
-        boolean encontrado = false;
-        for (articulo1 productoParaVenderActual : carrito) {
-            if (productoParaVenderActual.getCodigo().equals(productoBuscadoPorCodigo.getCodigo())) {
-                productoParaVenderActual.aumentarCantidad();
-                encontrado = true;
-                break;
-            }
-        }
-        if (!encontrado) {
-            carrito.add(new ProductoParaVender(productoBuscadoPorCodigo.getNombre(), productoBuscadoPorCodigo.getCodigo(), productoBuscadoPorCodigo.getPrecio(), productoBuscadoPorCodigo.getExistencia(), productoBuscadoPorCodigo.getId(), 1f));
-        }
-        this.guardarCarrito(carrito, request);
-        return "redirect:/vender/";
-    }
-
-} */

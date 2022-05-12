@@ -47,6 +47,11 @@ public class HomeController {
 
         return "login";
     }
+    @PostMapping("carrito/add/{ref}")
+    public String addCarrito(){
 
+        return "/cliente/carrito/list.html";
+
+    }
 
 }
