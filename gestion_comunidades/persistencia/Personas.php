@@ -21,7 +21,7 @@ require_once './pojos/persona.php';
 
 		}
 
-		public function getSesion($usuario,$contraseña){
+		public function getSesion($usuario,$contraseña,$perfil){
 			$error=0;
 
 			$u=null;
@@ -32,7 +32,7 @@ require_once './pojos/persona.php';
 				
 	 	 				$query=$this->db->preparar($consulta);            
 		 				$query->bindParam(1,$usuario);          
-					 	$query->bindParam(2,$contraseña);            
+					 	$query->bindParam(2,$contraseña);    
 		 				$query->execute();    
 
 						 //Carga en un vector

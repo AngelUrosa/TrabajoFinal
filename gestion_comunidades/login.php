@@ -32,7 +32,7 @@ echo "Entra";
    // echo ($contraseña);
     $_SESSION['autorizado'] = true;
     $_SESSION['perfil'] = $perfil;
-   // header("Location: index.php");
+    header("Location: index.php");
 
   } else {
     $mensaje_error = "Error en el login";
@@ -81,6 +81,7 @@ echo "Entra";
          </li>
         </ul>
         <div id="error">
+          
         <?php
         
           echo $mensaje_error;
