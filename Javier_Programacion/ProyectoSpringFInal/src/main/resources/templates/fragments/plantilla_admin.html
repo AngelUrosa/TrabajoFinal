@@ -50,7 +50,7 @@
 
 
                         <form id="formLogout" th:action="@{/logout}" method="post">
-                            <button type="button" class="btn btn-outline-success"><a class="text-decoration-none text-dark" th:href="@{/admin/c}">Carrito</a></button>
+                            <button type="button" class="btn btn-outline-success"><a class="text-decoration-none text-dark" th:href="@{/carrito/list}">Carrito</a></button>
                             <span sec:authentication="name"></span>
                             [
                             <th:block th:each="rol, iteraccion:${#authentication.getAuthorities()}">
