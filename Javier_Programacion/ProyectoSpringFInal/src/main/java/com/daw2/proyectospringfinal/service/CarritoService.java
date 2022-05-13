@@ -1,19 +1,15 @@
-/*
 package com.daw2.proyectospringfinal.service;
-package edu.uancv.service;
 
-import edu.uancv.domain.Compra;
+import com.daw2.proyectospringfinal.model.entity.Articulo;
+import com.daw2.proyectospringfinal.model.entity.Carrito;
+import com.daw2.proyectospringfinal.model.entity.Usuario;
 
 import java.util.List;
 
-    public interface CarritoService {
+public interface CarritoService{
+    Carrito save(Carrito carrito);
+    List<Carrito> listAll();
+    Carrito getById(int id);
+    Carrito notConfirm (Usuario usuario);
 
-        public List<Compra> getAll();
-
-        public Compra getById(Long idCompra);
-
-        public Compra save(Compra compra);
-
-    }
-
-*/
+}

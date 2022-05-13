@@ -91,7 +91,7 @@ function toggleDataSeries1(e){
 var chart2 = new CanvasJS.Chart("graficoCircular", {
 	animationEnabled: true,
 	title: {
-		text: "Desktop Search Engine Market Share - 2016"
+		text: "Gastos de la comunidad"
 	},
 	data: [{
 		type: "pie",
@@ -99,11 +99,11 @@ var chart2 = new CanvasJS.Chart("graficoCircular", {
 		yValueFormatString: "##0.00\"%\"",
 		indexLabel: "{label} {y}",
 		dataPoints: [
-			{y: 79.45, label: "Google"},
-			{y: 7.31, label: "Bing"},
-			{y: 7.06, label: "Baidu"},
-			{y: 4.91, label: "Yahoo"},
-			{y: 1.26, label: "Others"}
+			{y: 54.25, label: "Electricidad"},
+			{y: 17.31, label: "Agua"},
+			{y: 15.20, label: "Gas"},
+			{y: 7.06, label: "Servicios"},
+			{y: 6.17, label: "Reuniones"},
 		]
 	}]
 });

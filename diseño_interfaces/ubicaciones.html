@@ -67,20 +67,26 @@
         </div>
     </header>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="bg-secondary p-3">
-                <form class="row g-3">
-                    <div class="col-2">
-                      <label>Buscar por comunidad</label>
-                    </div>
-                    <div class="col-4">
-                      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-                    </div>
-                  </form>           
-            </div>
-        </div>
-    </div>
+    <div class="card  border border-3 border-primary m-2 p-3 bg-secondary text-light ">
+        <form class="d-flex">
+          <div class="col-3 col-md-2">
+            <label  class="col-form-label p-2">Busque por comunidades</label>
+          </div>
+          <div class="col-3 col-md-2">
+            <input type="text"  class="form-control p-2" aria-describedby="Busqueda por comunidades">
+          </div>
+          <div class="col-3 col-md-2 "> 
+          <label class="col-form-label p-2 ps-3">Seleccione comunidad</label>
+        </div> 
+          <select class="form-select" >
+      
+            <option selected>Seleccionar</option>
+            <option value="1">Comunidad 1</option>
+            <option value="2">Comunidad 2</option>
+            <option value="3">Comunidad 3</option>
+          </select>
+        </form>
+      </div>
     <br>
 
 
