@@ -21,7 +21,7 @@ public class HomeController {
     public String home(Model model) {
 
 
-        //   model.addAttribute("articulos", articulosService.top3());
+        model.addAttribute("articulos", articulosService.top3());
         model.addAttribute("articulos", articulosService.listAll());
 
         return "index";
