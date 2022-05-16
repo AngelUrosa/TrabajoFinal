@@ -52,6 +52,15 @@ public class ArticulosServiceImpl implements ArticulosService {
     public List<Articulo> listByProveedor(int idProveedor) {
         return articulosRepository.findByProveedorId(idProveedor);
     }
+    @Override
+    public  List<Object[]> top3(){
+       return articulosRepository.top3();
+    }
+
+    @Override
+    public List<Articulo> findArticuloByCarritoTrue(){
+       return articulosRepository.findArticuloByCarritoTrue();
+    }
 
 
 }

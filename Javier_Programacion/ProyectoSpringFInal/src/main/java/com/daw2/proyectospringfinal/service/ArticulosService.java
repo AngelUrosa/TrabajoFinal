@@ -13,4 +13,8 @@ public interface ArticulosService {
     List<Articulo> listLastRows(int rows);
     void delete(int id);
     List<Articulo> listByProveedor(int idProveedor);
+
+    List<Object[]> top3();
+
+    List<Articulo> findArticuloByCarritoTrue();
 }

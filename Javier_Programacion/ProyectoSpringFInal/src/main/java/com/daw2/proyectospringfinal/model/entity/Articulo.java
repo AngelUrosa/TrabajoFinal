@@ -21,6 +21,8 @@ public class Articulo implements Serializable {
     private Double stock;
     private String imagen;
 
+    private boolean carrito;
+
     @ManyToOne
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
@@ -91,4 +93,11 @@ public class Articulo implements Serializable {
         this.detalleFacturas = detalleFacturas;
     }
 
+    public boolean isCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(boolean carrito) {
+        this.carrito = carrito;
+    }
 }

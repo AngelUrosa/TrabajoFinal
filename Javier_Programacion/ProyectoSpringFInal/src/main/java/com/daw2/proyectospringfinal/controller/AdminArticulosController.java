@@ -177,8 +177,10 @@ public class AdminArticulosController {
 
     @GetMapping({"","/list"})
     public String list(Model model) {
-        if (model.getAttribute("articulos") == null)
+        if (model.getAttribute("articulos") == null) {
             model.addAttribute("articulos", articulosService.listAll()); // Hay que paginar
+            model.addAttribute("top3", articulosService.top3());
+        }
         return "admin/articulos/list";
     }
 

@@ -23,6 +23,8 @@ public interface ArticulosRepository extends JpaRepository<Articulo, Integer> {
           "group by id_articulo order by total desc limit 3", nativeQuery = true)
     List<Object[]> top3();
 
+  List<Articulo> findArticuloByCarritoTrue();
+
 //    select id_articulo, sum(precio*unidades) as total
 //    from detalle_facturas group by id_articulo order by total desc limit 3;
 
