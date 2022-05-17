@@ -48,7 +48,7 @@ main{
 }
 .pieAyuda a{
     text-decoration: none;
-    font-size: 10px;
+    font-size: 20px;
     color: white;
     font-weight: bold;
 }
@@ -157,4 +157,7 @@ display:flex;
     margin-top: -25px;
     height:150px;
     margin-bottom: -25px;
+}
+.tarjetaFelicidades{
+    background-color:linear-gradient(red, yellow);
 }
