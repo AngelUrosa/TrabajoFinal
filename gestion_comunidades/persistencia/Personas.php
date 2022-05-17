@@ -62,6 +62,66 @@ require_once './pojos/persona.php';
 					return $u;   
 
    	 }
+
+		public function addUnaPersona(Persona $p){
+			//Esta función da de alta una familia nueva en la tabla familias_productos
+			try {
+				$consulta="INSERT INTO personas (nif,id_comunidad, usuario, contraseña, email, trabajador) VALUES (?,?,?,?,?,?)";
+				$nif=$c->getNif();
+				$idComunidad=$c->getIdComunidad();
+				$usuario=$c->getUsuario();
+				$contraseña=$c->getContraseña();
+				$email=$c->getEmail();
+				$trabajador=$c->getTrabajador();
+
+
+				$query=$this->db->preparar($consulta);
+				$query->bindParam(1,$nif);
+				$query->bindParam(2,$idComunidad);
+				$query->bindParam(3,$usuario);
+				$query->bindParam(4,$contraseña);
+				$query->bindParam(5,$email);
+				$query->bindParam(6,$trabajador);
+
+				$query->execute(); //ejecuta la consulta
+
+				$insertado=true; //
+				
+				$p->setIdPersona(PDO::lastInsertId());
+
+				
+
+
+			} catch (Exception $e) {
+				//echo "Se ha producido un error";
+				$insertado=false;	
+			}
+			return $insertado;
 		}
+
+		public function getPersona(){
+		
+			$error=0;
+			try {
+				$consulta="SELECT id_persona, nif, id_comunidad, usuario, contraseña, email, trabajador FROM personas";
+
+				$query=$this->db->preparar($consulta);
+				$query->execute();
+
+				$tPersonas=$query->fetchall(); //array bidimensional
+				$error=1;
+			} catch (Exception $e) {
+				$error=1;
+				//echo "Se ha producio un error en getFamiliasProductosTodas";
+			}
+			//Vamos a construir un array de objetos
+			$t=[];
+			foreach ($tPersonas as $fila) {
+				$fp=new Cliente($fila[0],$fila[1],$fila[2],$fila[3],$fila[4],$fila[5],$fila[6]);
+				array_push($t, $fp); //mete $fp en $t
+			}
+			return $t; //devolvemos el array de objetos
+		}
+	}
 			
     ?>
