@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/plantilla_admin :: head"></head>
+
+<body>
+
+<header th:replace="fragments/plantilla_admin :: header"></header>
+
+
+<div class="container py-3">
+    <h1>Tienda Urosa</h1>
+
+        <div class="row">
+            <h3>TOP 3</h3>
+            <div class="col-3 p-1" th:each="articulo:${articulos}">
+                <div class="card m-1" >
+                    <img th:src="@{'/articulosImages/'+ ${articulo.imagen}}" class="card-img-top; img-fluid mx-auto d-block"
+                         style="width:250px;height:200px"
+                         th:alt="${articulo.descripcion}">
+                    <div class="card-body bg-light">
+                        <h5 class="card-title" th:text="${articulo.precio}+'€'"></h5>
+                        <p class="card-text" th:text="${articulo.ref}"></p>
+                        <h3 class="card-text" th:text="${articulo.descripcion}"></h3>
+                        <a th:href="@{/carrito/add(ref=${articulo.ref})}" class="btn btn-primary">Carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--    th:each="top3,iterStat: ${}" th:if="${iterStat.index} <3">-->
+
+</div>
+
+<footer th:replace="fragments/plantilla_admin :: footer"></footer>
+
+</body>
+</html>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,11 +22,23 @@ public class HomeController {
     public String home(Model model) {
 
 
-        model.addAttribute("articulos", articulosService.top3());
+
         model.addAttribute("articulos", articulosService.listAll());
 
         return "index";
     }
+
+
+    @GetMapping("/masVendidos")
+    public String masVendidos(Model model) {
+
+
+
+        model.addAttribute("articulos", articulosService.top3());
+
+        return "masVendidos";
+    }
+
 
     @PostMapping("/add")
     public String addCarrito(Articulo articulo, RedirectAttributes attributes) {

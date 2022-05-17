@@ -18,10 +18,10 @@ public interface ArticulosRepository extends JpaRepository<Articulo, Integer> {
 
   /*  @Query(value="select id_articulo, sum(precio*unidades) as total" +
             " from detalle_facturas group by id_articulo order by total desc limit 3", nativeQuery = true)*/
-  @Query(value="select dt.id_articulo, a.descripcion, sum(dt.precio*dt.unidades) as total" +
-          " from detalle_facturas dt inner join articulos a on   dt.id_articulo=a.id " +
-          "group by id_articulo order by total desc limit 3", nativeQuery = true)
-    List<Object[]> top3();
+  @Query(value="select dt.id_articulo, a.descripcion,a.precio,a.imagen,a.ref, sum(dt.precio*dt.unidades) as total" +
+          "        from detalle_facturas dt inner join articulos a on   dt.id_articulo=a.id" +
+          "        group by id_articulo order by total desc limit 3", nativeQuery = true)
+  List<Object> top3();
 
   List<Articulo> findArticuloByCarritoTrue();
 
