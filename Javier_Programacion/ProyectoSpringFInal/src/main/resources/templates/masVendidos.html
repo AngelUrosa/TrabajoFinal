@@ -13,16 +13,17 @@
 
         <div class="row">
             <h3>TOP 3</h3>
-            <div class="col-3 p-1" th:each="articulo:${articulos}">
+            <div class="col-3 p-1" th:each="top:${topArticulos}">
                 <div class="card m-1" >
-                    <img th:src="@{'/articulosImages/'+ ${articulo.imagen}}" class="card-img-top; img-fluid mx-auto d-block"
+                    <img th:src="@{'/articulosImages/'+ ${top.articulo.imagen}}" class="card-img-top; img-fluid mx-auto d-block"
                          style="width:250px;height:200px"
-                         th:alt="${articulo.descripcion}">
+                         th:alt="${top. articulo.descripcion}">
                     <div class="card-body bg-light">
-                        <h5 class="card-title" th:text="${articulo.precio}+'€'"></h5>
-                        <p class="card-text" th:text="${articulo.ref}"></p>
-                        <h3 class="card-text" th:text="${articulo.descripcion}"></h3>
-                        <a th:href="@{/carrito/add(ref=${articulo.ref})}" class="btn btn-primary">Carrito</a>
+                        <h5 class="card-title" th:text="${top.articulo.precio}+'€'"></h5>
+                        <p class="card-text" th:text="${top.articulo.ref}"></p>
+                        <h3 class="card-text" th:text="${top.articulo.descripcion}"></h3>
+      <h3 class="card-text" th:text="${top.total}"></h3>
+                        <a th:href="@{/carrito/add(ref=${top.articulo.ref})}" class="btn btn-primary">Carrito</a>
                     </div>
                 </div>
             </div>

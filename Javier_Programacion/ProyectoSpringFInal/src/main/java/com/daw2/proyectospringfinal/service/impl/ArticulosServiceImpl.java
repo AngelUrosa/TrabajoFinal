@@ -24,6 +24,11 @@ public class ArticulosServiceImpl implements ArticulosService {
     }
 
     @Override
+    public Articulo getById(int id) {
+        return articulosRepository.getById(id);
+    }
+
+    @Override
     public Articulo getByRef(String ref) {
         return articulosRepository.getByRef(ref);
     }
@@ -53,7 +58,7 @@ public class ArticulosServiceImpl implements ArticulosService {
         return articulosRepository.findByProveedorId(idProveedor);
     }
     @Override
-    public List<Object> top3(){
+    public List<Object[]> top3(){
        return articulosRepository.top3();
     }
 
