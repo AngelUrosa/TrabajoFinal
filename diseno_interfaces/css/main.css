@@ -1,0 +1,163 @@
+header{
+    width: 100%;
+    height: auto;
+}
+
+#logo{
+    color: black;
+}
+
+.nav-link{
+    background-color: #4BB4B6;
+    padding:1.5em 0;
+    
+}
+
+.nav-link:hover{
+    background-color:#22577A;
+}
+.nav-link.active{
+        background-color:#22577A;
+}
+        
+#botonCuenta{
+    flex-basis: auto;
+}
+
+.separador{
+    border-top: 4px solid black;
+    margin-top: -9px;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pie{
+    
+    height: 220px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.pieAyuda a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+.pieLogo{
+    font-size: 40px;
+    color: white;
+}
+.pieContacto{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+.card{
+    border-radius: 30rem solid black;
+}
+.card-title{
+    color: cyan;
+}
+.card-body{
+    text-align: center;
+}
+
+.card-title-login{
+    color: black;
+    font-size: 50px;
+}
+
+
+#fondo{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(34, 87, 122);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Usuario{
+    background-color: rgb(199, 249, 204);
+    text-decoration: none;
+    border:0px transparent solid;
+    font-size: bold;
+    width: 35%;
+    height: 30px;
+    margin: 2px;
+}
+#Contraseña{
+    background-color: rgb(199, 249, 204);
+    text-decoration: none;
+    border:0px transparent solid;
+    font-size: bold;
+    width: 35%;
+    height: 30px;
+    margin: 2px;
+}
+
+.btnAceeder {
+    transition-duration: 0.4s;
+    background-color: rgb(56, 163, 165);
+    color: white;
+    text-decoration: none;
+    border:0px transparent solid;
+    font-size: 20px;
+  }
+  
+  .btnAceeder:hover {
+    font-size: 25px;
+  }
+  .fotosPerfil{
+    width:50px;
+    height:50px;
+    border-radius:150px;
+  }
+  #opcion{
+      background-color: rgb(230, 226, 235);
+  }
+  #opcion :hover{
+    background-color: rgb(179, 76, 182);
+    text-decoration: none;
+}
+
+.nombrePersonas{
+display:flex;
+}
+
+.contenedorImagen{
+    height:100%;
+    width:auto;
+    flex-direction: column;
+    margin-right: 15px;
+}
+.nombre{
+    text-decoration: underline;
+    font-weight: bold;
+}
+.correo{
+    color: grey;
+}
+.negrita{
+    font-weight: bold;
+    font-size: large;
+}
+.imagenUbicaciones{
+    margin-left: -25px;
+    margin-top: -25px;
+    height:150px;
+    margin-bottom: -25px;
+}
+.tarjetaFelicidades{
+    background-color:linear-gradient(red, yellow);
+}

@@ -1,0 +1,18 @@
+{
+  "name": "diseno_interfaces",
+  "version": "1.0.0",
+  "description": "Trabajo interfaces",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u001b[A\u001b[B\u001b[D"
+  },
+  "author": "Angel",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}
