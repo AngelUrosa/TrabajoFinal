@@ -16,6 +16,7 @@ public class Usuario {
     private boolean activo;
     private List<Rol> roles;
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
@@ -89,6 +90,8 @@ public class Usuario {
         this.activo = activo;
     }
 
+
+
     @ManyToMany
     @JoinTable(name="usuarios_roles",
             joinColumns= @JoinColumn(name="id_usuario"),
@@ -102,4 +105,8 @@ public class Usuario {
     public void setRoles(List<Rol> roles) {
         this.roles = roles;
     }
+
+
+
 }
+

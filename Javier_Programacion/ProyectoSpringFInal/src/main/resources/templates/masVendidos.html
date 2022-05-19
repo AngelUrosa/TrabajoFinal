@@ -21,9 +21,11 @@
                     <div class="card-body bg-light">
                         <h5 class="card-title" th:text="${top.articulo.precio}+'€'"></h5>
                         <p class="card-text" th:text="${top.articulo.ref}"></p>
-                        <h3 class="card-text" th:text="${top.articulo.descripcion}"></h3>
-      <h3 class="card-text" th:text="${top.total}"></h3>
-                        <a th:href="@{/carrito/add(ref=${top.articulo.ref})}" class="btn btn-primary">Carrito</a>
+                        <h3 class="card-text" th:text="${top.articulo.descripcion}"></h3> <br>
+                        <h2>Ingresos</h2> <h3 class="card-text" th:text="${top.total}"></h3>
+                        <form th:action="@{/carrito/add(ref=${top.articulo.ref})}" method="post">
+                            <button type="submit" class="btn btn-primary">Carrito</button>
+                        </form>
                     </div>
                 </div>
             </div>

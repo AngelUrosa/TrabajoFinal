@@ -1,5 +1,6 @@
 package com.daw2.proyectospringfinal.service.impl;
 
+import com.daw2.proyectospringfinal.model.entity.Articulo;
 import com.daw2.proyectospringfinal.model.entity.Rol;
 import com.daw2.proyectospringfinal.model.entity.Usuario;
 import com.daw2.proyectospringfinal.model.repository.UsuariosRepository;
@@ -54,4 +55,10 @@ public class UsuariosServiceImpl implements UsuariosService {
                 usuario.isActivo(), true,
                 true, true, authorities);
     }
+
+    @Override
+    public Usuario findByUsername(String username) {
+        return usuariosRepository.findByUsername(username);
+    }
+
 }

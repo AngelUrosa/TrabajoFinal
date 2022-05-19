@@ -30,27 +30,36 @@ public class CarritoController {
     private ArticulosService articulosService;
 
     @Autowired
-    private CarritoService carritoService;
+    private UsuariosService usuariosService;
+
+    @Autowired
+    private UsuariosArticulosService usuariosArticulosService;
 
 
 
     @GetMapping({"/list"})
     public String listCarrito(@ModelAttribute("articuloCarrito") Articulo articulo, RedirectAttributes attributes ,Model model) {
 
+        Usuario usuario = usuariosService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
+        List<ArticulosUsuarios> carrito = usuariosArticulosService.getAllByUsuario(usuario);
 
-        List<Articulo> articulosList= articulosService.listAll();
+        model.addAttribute("carrito", carrito);
 
-        for (Articulo a : articulosList
-        ) {
-            if (!a.isCarrito()){
-                articulosList.remove(a);
-            }
-        }
+        return "cliente/carrito/list";
+    }
 
-        model.addAttribute("articulos", articulosList);
+    @PostMapping("/add")
+    public String addCarrito(@RequestParam String ref){
 
-        return "redirect:/carrito/list";
+        Usuario usuario = usuariosService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        Articulo articulo= articulosService.getByRef(ref);
+
+        usuariosArticulosService.add(usuario,articulo);
+
+        return "redirect:/";
+
     }
 
 }
