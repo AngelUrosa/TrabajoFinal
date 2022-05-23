@@ -22,10 +22,7 @@ import java.util.List;
 @RequestMapping("/carrito")
 public class CarritoController {
 
-    @Autowired
-    private FacturasService facturasService;
-    @Autowired
-    private ClientesService clientesService;
+
     @Autowired
     private ArticulosService articulosService;
 
