@@ -1,0 +1,49 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+$headings-line-height: 2;
+$display-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem
+);
+
+$display-font-weight: 300;
+$display-line-height: $headings-line-height;
+
+$body-bg: #FFFFFF;
+$body-color: #242629;
+
+$nav-link-color: #8d8d8d;
+$nav-link-hover-color: #0E4679;
+$nav-tabs-link-active-color: #0087FF;
+
+$enable-rounded: true;
+$enable-negative-margins: true;
+
+$theme-colors: (
+    "primary": #0087FF,
+    "secondary": #065CA7,
+    "tertiary": #0E4678,
+    "warning": #ffc107,
+    "danger": #dc3545,
+    "success": #198754,
+    "light": #FFFFFF,
+    "dark": #242629,
+    "white": #cfcfcf,
+    "lightgrey": #DCDDDE,
+    "black": #0E0E0E
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
