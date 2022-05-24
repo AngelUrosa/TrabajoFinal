@@ -102,9 +102,7 @@ https://www.codeply.com/go/ji5ijk6yJ4/bootstrap-4-dropdown-submenu-on-hover-(nav
 
                     <a class ="bg-warning" href="Intefaz\listadoPersonas.php"> Personas jQuery </a>
 
-                    <a class ="bg-warning" href="Intefaz\listadoPersonas.php"> Personas DOM </a>
-
-                    <a  class ="bg-warning" href="#"> Comunidades </a>
+                    <a class ="bg-warning" href="Intefaz\listadoPersonasTodos.php"> Personas DOM </a>
 
                 
            

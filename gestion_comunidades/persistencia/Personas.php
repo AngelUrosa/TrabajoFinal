@@ -1,7 +1,7 @@
 <?php 
 
-require_once 'Conexion.php';
-require_once './pojos/persona.php';
+require_once '..\conexion.php';
+require_once '../pojos/persona.php';
 
 	class Personas {
 		private static $instancia;
@@ -12,13 +12,11 @@ require_once './pojos/persona.php';
 		}
 
 		public static function singletonPersonas(){
-			if (!isset(self::$instancia)){
+			if(!isset(self::$instancia)){
 				$miclase = __CLASS__;
 				self::$instancia = new $miclase;
-
 			}
-			return self::$instancia; //this->$instancia
-
+			return self::$instancia;
 		}
 
 		public function getSesion($usuario,$contraseña,$perfil){
@@ -66,38 +64,37 @@ require_once './pojos/persona.php';
 		public function addUnaPersona(Persona $p){
 			//Esta función da de alta una familia nueva en la tabla familias_productos
 			try {
-				$consulta="INSERT INTO personas (nif,id_comunidad, usuario, contraseña, email, trabajador) VALUES (?,?,?,?,?,?)";
-				$nif=$c->getNif();
-				$idComunidad=$c->getIdComunidad();
-				$usuario=$c->getUsuario();
-				$contraseña=$c->getContraseña();
-				$email=$c->getEmail();
-				$trabajador=$c->getTrabajador();
+				$consulta="INSERT INTO personas (id_persona,nif,id_comunidad, usuario, contraseña, email, trabajador) VALUES (null,?,?,?,?,?,?)";
+				$idPersona=$p->getPersona();
+				$nif=$p->getNif();
+				$idComunidad=$p->getIdComunidad();
+				$usuario=$p->getUsuario();
+				$contraseña=$p->getContraseña();
+				$email=$p->getEmail();
+				$trabajador=$p->getTrabajador();
 
 
 				$query=$this->db->preparar($consulta);
-				$query->bindParam(1,$nif);
-				$query->bindParam(2,$idComunidad);
-				$query->bindParam(3,$usuario);
-				$query->bindParam(4,$contraseña);
-				$query->bindParam(5,$email);
-				$query->bindParam(6,$trabajador);
+				$query->bindParam(1,$idPersona);
+				$query->bindParam(2,$nif);
+				$query->bindParam(3,$idComunidad);
+				$query->bindParam(4,$usuario);
+				$query->bindParam(5,$contraseña);
+				$query->bindParam(6,$email);
+				$query->bindParam(7,$trabajador);
 
 				$query->execute(); //ejecuta la consulta
 
 				$insertado=true; //
 				
-				$p->setIdPersona(PDO::lastInsertId());
+			} catch (Exception $e){
+                $insertado = false;
+            }
 
-				
+            return $insertado;
 
-
-			} catch (Exception $e) {
-				//echo "Se ha producido un error";
-				$insertado=false;	
-			}
-			return $insertado;
-		}
+			} 
+		
 
 		public function getPersona(){
 		
@@ -109,19 +106,19 @@ require_once './pojos/persona.php';
 				$query->execute();
 
 				$tPersonas=$query->fetchall(); //array bidimensional
-				$error=1;
+				$error=0;
 			} catch (Exception $e) {
 				$error=1;
 				//echo "Se ha producio un error en getFamiliasProductosTodas";
 			}
 			//Vamos a construir un array de objetos
-			$t=[];
+			$t=array();
 			foreach ($tPersonas as $fila) {
-				$fp=new Cliente($fila[0],$fila[1],$fila[2],$fila[3],$fila[4],$fila[5],$fila[6]);
+				$fp=new Persona($fila[0],$fila[1],$fila[2],$fila[3],$fila[4],$fila[5],$fila[6]);
 				array_push($t, $fp); //mete $fp en $t
 			}
 			return $t; //devolvemos el array de objetos
 		}
+	
 	}
-			
     ?>

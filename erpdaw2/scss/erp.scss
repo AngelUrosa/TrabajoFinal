@@ -1,0 +1,15 @@
+
+// Asigna valores a varias variables.
+
+$body-bg: #000;
+$body-color: #111;
+$enable-rounded: false;
+
+// Colores del tema principal. Vienen como variables.
+$primary: #0074d9;
+$danger: #ff4136;
+
+// Importa bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
