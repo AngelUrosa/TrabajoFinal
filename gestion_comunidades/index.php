@@ -62,26 +62,11 @@
 <body style="background-color: #F8F9CE"> 
 
     <?php 
-    function cargarClasesPojos($nombreClase){
-        if (file_exists("pojos/" . $nombreClase .'.php')) {
-            require_once "pojos/" . $nombreClase .'.php';
-        }
-    }
 
-    function cargarClasesPersistencia($nombreClase){
-        if (file_exists("persistencia/" . $nombreClase .'.php')) {
-            require_once "persistencia/" . $nombreClase .'.php';
-        }
-    }
-
-    spl_autoload_register("cargarClasesPojos");
-    spl_autoload_register("cargarClasesPersistencia");
+require_once "autoload.php";
 
 
-     ?>
-
-
-
+?>
  	<div class="container"> <!--contenedor principal-->
 
 
@@ -98,11 +83,11 @@ https://www.codeply.com/go/ji5ijk6yJ4/bootstrap-4-dropdown-submenu-on-hover-(nav
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                
-                    <a class ="bg-warning" href="Intefaz\listadoPersonas.php"> Personas PHP </a>
+                    <a class ="bg-warning" href="index.php?principal=Intefaz\listadoPersonas.php"> Personas PHP </a>
 
-                    <a class ="bg-warning" href="Intefaz\listadoPersonas.php"> Personas jQuery </a>
+                    <a class ="bg-warning" href="index.php?principal=Intefaz\listadoPersonas.php"> Personas jQuery </a>
 
-                    <a class ="bg-warning" href="Intefaz\listadoPersonasTodos.php"> Personas DOM </a>
+                    <a class ="bg-warning" href="index.php?principal=Intefaz\listadoPersonasTodos.php"> Personas DOM </a>
 
                 
            

@@ -7,12 +7,9 @@
 </head>
 <body>
   <h1 class="text-center">Listado de Personas</h1>
+  <button type="button" class="btn btn-warning"><a class="text-decoration-none fw-bold text-reset"href="index.php?principal=Intefaz\altaPersonas.php">+</a></button>
   <?php
-  
-  
-  require_once "../persistencia/Personas.php";
-  require_once "../pojos/persona.php";
-  require_once "../conexion.php";
+
 
     $tPersonas=Personas::singletonPersonas();
     //Voy a llamar a la persistencia y devolver un array de objetos (Hacer esto en la persistencia)
@@ -41,6 +38,7 @@
       echo "<td>".$p->getContraseña()."</td>";
       echo "<td>".$p->getEmail()."</td>";
       echo "<td>".$p->getTrabajador()."</td>";
+      echo "<td><button><a href='index.php?principal=Intefaz\deletePersonas.php?=".$p->getIdPersona()."'>Borrar</a></button></td>";
     echo "</tr>";
   
   }

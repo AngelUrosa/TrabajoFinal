@@ -23,7 +23,7 @@ class Persona{
 
     public function getIdPersona()
     {
-        return $idPersona->idPersona;
+        return $this->idPersona;
     }
 
     public function setIdPersona($idPersona)
@@ -35,7 +35,7 @@ class Persona{
 
     public function getNif()
     {
-        return $nif->nif;
+        return $this->nif;
     }
 
     public function setNif($nif)
@@ -47,7 +47,7 @@ class Persona{
 
     public function getIdComunidad()
     {
-        return $idComunidad->idComunidad;
+        return $this->idComunidad;
     }
 
     public function setIdComunidad($idComunidad)
@@ -59,7 +59,7 @@ class Persona{
 
     public function getUsuario()
     {
-        return $usuario->usuario;
+        return $this->usuario;
     }
 
     public function setUsuario($usuario)
@@ -71,7 +71,7 @@ class Persona{
 
     public function getContraseña()
     {
-        return $contraseña->contraseña;
+        return $this->contraseña;
     }
 
     public function setContraseña($contraseña)
@@ -83,7 +83,7 @@ class Persona{
 
     public function getEmail()
     {
-        return $email->email;
+        return $this->email;
     }
 
     public function setEmail($email)
@@ -95,7 +95,7 @@ class Persona{
 
     public function getTrabajador()
     {
-        return $trabajador->trabajador;
+        return $this->trabajador;
     }
 
     public function setTrabajador($trabajador)

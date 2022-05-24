@@ -8,8 +8,14 @@
 <body>
 	<h1>Alta de un nueva Persona</h1>	
 
-	<form name="altaPersona" method="POST" action="index.php?principal=Intefaz\altaPersonas.php" novalidate>
+	<form name="altaPersona" method="POST" action="index.php?principal=Intefaz\deletePersonas.php" novalidate>
 		<div class="mx-auto">
+
+		<div class="mb-31">
+  			<label for="idpersona" class="form-label">ID Persona</label>
+  			<input type="text" class="form-control" id="idpersona" name="idpersona">
+		</div>
+
 			<div class="mb-31">
   			<label for="nif" class="form-label">NIF</label>
   			<input type="text" class="form-control" id="nif" name="nif">
@@ -42,7 +48,7 @@
 
 	
 		<br>
-		<button name="alta" type="submit" class="btn btn-primary">Guardar</button>
+		<button name="delete" type="submit" class="btn btn-danger">Borrar</button>
 		<button name="reset" type="reset" class="btn btn-warning">Limpiar Formulario</button>
 	</div>
 </form>
@@ -59,10 +65,10 @@
 
 
 <?php 
-	if (isset($_POST['alta'])){
+	if (isset($_POST['delete'])){
 		//Estos significa que el usuario ha pulsado el botón submit
-
 		$tPersona=Personas::singletonPersonas();
+		$idPersona=$_POST['idpersona'];
 		$nif=$_POST['nif'];
 		$idComunidad=$_POST['idComunidad'];
 		$usuario=$_POST['usuario'];
@@ -72,7 +78,7 @@
 
 //testear que no se repitan nombres de familias
 		//controlar la unicidad de nombres
-		$idPersona=1; //cualquier valor xq lo genera la bd
+		 //cualquier valor xq lo genera la bd
 		// $idEmpleado=1; ///algoritmo que elabore el idFamilia
 		// $idDepartamento=1;
 		// $idUsuario=1;

@@ -1,6 +1,6 @@
 "use strict";
 
-const url = 'ajax/getTablaClientes.php';
+const url = 'ajax/getTablaPersonas.php';
 
 
 // Innicializa el API

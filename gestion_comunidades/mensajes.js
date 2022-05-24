@@ -72,8 +72,8 @@ function monstrarMensajeErrorSelector(mensaje, selector) {
 
 }
 
-monstrarMensajeError('hola',null,MME_ALERT);
+//monstrarMensajeError('hola',null,MME_ALERT);
 
-monstrarMensajeError('error en un div',null,MME_SELECTOR,'#error');
+//monstrarMensajeError('error en un div',null,MME_SELECTOR,'#error');
 
-monstrarMensajeError('error modal',null,MME_MODAL,'#error');
+//monstrarMensajeError('error modal',null,MME_MODAL,'#error');
