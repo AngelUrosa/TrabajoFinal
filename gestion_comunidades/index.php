@@ -47,14 +47,7 @@
 
  	<link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity= "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin= "anonymous" > 
 	
- 	<link rel="stylesheet" href="estilos.css">
 
-     
-
- 	<script src= "node_modules/jquery/dist/jquery.js" defer ></script>
- 	<script src= "node_modules/popper.js/dist/popper.min.js"  defer></script> 
-    <script src= "node_modules/bootstrap/dist/js/bootstrap.min.js" defer></script> 
-    <script src= "node_modules/node-json2html/json2html.js" defer></script>
    
    	<title> Plantilla para la vista del Admin del ERP IES Castelar</title> 
  </head> 

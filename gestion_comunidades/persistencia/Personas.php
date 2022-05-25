@@ -79,6 +79,7 @@
 				$query->bindParam(4,$contraseña);
 				$query->bindParam(5,$email);
 				$query->bindParam(6,$trabajador);
+				
 
 				$query->execute(); //ejecuta la consulta
 
@@ -91,6 +92,42 @@
             return $insertado;
 
 			} 
+
+			public function editUnaPersona(Persona $p){
+				
+				try {
+					$consulta="UPDATE personas SET nif=? ,id_comunidad=? , usuario=? ,contraseña=?, email=?, trabajador=? where id_persona=?";
+
+				
+					$nif=$p->getNif();
+					$idComunidad=$p->getIdComunidad();
+					$usuario=$p->getUsuario();
+					$contraseña=$p->getContraseña();
+					$email=$p->getEmail();
+					$trabajador=$p->getTrabajador();
+					$idPersona=$p->getIdPersona();
+	
+	
+					$query=$this->db->preparar($consulta);
+					$query->bindParam(1,$nif);
+					$query->bindParam(2,$idComunidad);
+					$query->bindParam(3,$usuario);
+					$query->bindParam(4,$contraseña);
+					$query->bindParam(5,$email);
+					$query->bindParam(6,$trabajador);
+					$query->bindParam(7,$idPersona);
+	
+					$query->execute(); //ejecuta la consulta
+	
+					$insertado=true; //
+					
+				} catch (Exception $e){
+					$insertado = false;
+				}
+	
+				return $insertado;
+	
+				} 
 		
 
 		public function getPersona(){
@@ -136,7 +173,7 @@
 
 		public function borrarPersonaPorId($idPersona){
 			try {
-				$consulta="DELETE FROM personas where id = ?";
+				$consulta="DELETE FROM personas where id_persona = ?";
 			
 				$query=$this->db->preparar($consulta);
 				$query->bindParam(1, $idPersona);

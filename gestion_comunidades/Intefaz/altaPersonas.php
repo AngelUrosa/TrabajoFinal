@@ -77,19 +77,23 @@
 		// $idDepartamento=1;
 		// $idUsuario=1;
 		// $activo=1; //constante cada vez que se trate de dar de alta una nueva familia (por defecto)
-		$p=new Persona($idPersona,$nif,$idComunidad,$usuario,$contraseña,$email,$trabajador);
-		//pregunta de Alvaro
 
-		$insertado=$tPersona->addUnaPersona($p);
+		if ($nif == null || $idComunidad == null || $usuario == null || $contraseña==null || $email==null || $trabajador==null) {
+			echo "Tienes que completar los campos";
+		} else {
 
-		if ($insertado){
-			echo "Se ha insertado satisfactoriamente";
+			$p=new Persona($idPersona,$nif,$idComunidad,$usuario,$contraseña,$email,$trabajador);
+			//pregunta de Alvaro
+	
+			$insertado=$tPersona->addUnaPersona($p);
+	
+			if ($insertado){
+				echo "Se ha insertado satisfactoriamente";
+			}
+			else{
+				echo "Ha habido algún error en la inserción del empleado";
+			}
 		}
-		else{
-			echo "Ha habido algún error en la inserción del empleado";
-		}
-
-
 
 	}
 

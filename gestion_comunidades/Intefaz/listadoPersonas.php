@@ -38,12 +38,43 @@
       echo "<td>".$p->getContraseña()."</td>";
       echo "<td>".$p->getEmail()."</td>";
       echo "<td>".$p->getTrabajador()."</td>";
-      echo "<td><button><a href='index.php?principal=Intefaz\deletePersonas.php?=".$p->getIdPersona()."'>Borrar</a></button></td>";
+      echo "<td><form name='delete' method='post' action='index.php?principal=Intefaz\listadoPersonas.php'>
+      <input type='hidden' class='form-control' id='idPersona' name='idPersona' value='".$p->getIdPersona()."'</input>
+      <input type='submit' value='borrar' name='delete' />
+    </form></td>";
+    echo "<td><form name='actualiza' method='post' action='index.php?principal=Intefaz\actualizaPersonas.php'>
+    <input type='hidden' class='form-control' id='idPersona' name='idPersona' value='".$p->getIdPersona()."'</input>
+    <input type='submit' value='editar' name='actualiza' />
+  </form></td>";
     echo "</tr>";
   
   }
     echo "</tbody>";
   echo "</table>";
+
+  if (isset($_POST['delete'])){
+    
+   
+    $tPersona=Personas::singletonPersonas();
+    
+		$idPersona=$_POST['idPersona'];
+
+
+		$insertado=$tPersona->borrarPersonaPorId($idPersona);
+
+		if ($insertado){
+			echo "Se ha insertado satisfactoriamente";
+      header('Location: index.php?principal=Intefaz\listadoPersonas.php');
+		}
+		else{
+			
+		}
+
+
+
+	}
+
+
 
   ?>
   
