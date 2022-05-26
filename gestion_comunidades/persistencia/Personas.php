@@ -186,6 +186,30 @@
 				return $error;
 			}
 		}
+
+		public function getPersonaPorNif($nif){
+			try {
+				$consulta="SELECT id_persona, id_comunidad, usuario, contraseña, email, trabajador FROM personas where nif=?";
+			
+				$query=$this->db->preparar($consulta);
+				$query->bindParam(1,$nif);
+				$query->execute();
+				$tClientes=$query->fetchall();
+	
+			} catch(Exception $e){
+				$error=1;
+				return $error;
+			}
+	
+			$t=array();
+			foreach ($tPersonas as $fila) {
+		
+				$fp=new Cliente($fila[0],$fila[1],$fila[2],$fila[3],$fila[4],$fila[5]);
+				array_push($t, $fp);
+			}
+		
+			return $t;
+		}
 	
 	}
     ?>

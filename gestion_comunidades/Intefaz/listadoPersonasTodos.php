@@ -10,7 +10,7 @@
   </div>
 </form>
 <table  class="table table-bordered table-striped text-center table-light table-hover align-items-center">
-  <thead class="table text-white bg-lightgreen">
+  <thead class="table text-dark bg-lightgreen">
     <tr>
       <th scope="col">ID Persona</th>
       <th scope="col">NIF</th>
@@ -19,7 +19,6 @@
       <th scope="col">Contraseña</th>
       <th scope="col">Email</th>
       <th scope="col">Trabajador</th>
-      <th scope="col"></th>
     </tr>
   </thead>
   <tbody id='resultado'>
@@ -51,10 +50,10 @@
         {'<>': 'td','html': '${contraseña}'},
         {'<>': 'td','html': '${email}'},
         {'<>': 'td','html': '${trabajador}'},
-        {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id}:${usuario}"></button>'}
+        {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id_persona}:${usuario}"></button>'}
 	    ]}
     );
-    //caInicializarBotonesEliminar('resultado', 'ajax.php?script=crudDeleteCliente');
+    // caInicializarBotonesEliminar('resultado', 'ajax.php?script=crudDeleteCliente');
 
     $('#resultado').on('click', '.botonEliminar', (evento) => {
       // Obtengo el valor en el botón
@@ -69,10 +68,10 @@
       const id = valores[0];
       const nombre = valores[1];
       const mensaje = `
-      <p>¿Está seguro de que quiere eliminar la persona ` + usuario + `?</p> (ID: ` + id + `)`;
+      <p>¿Está seguro de que quiere eliminar la persona ` + usuario + `?</p> (ID: ` + idPersona + `)`;
 
       mostrarModalEliminar(mensaje, () => {
-        caEliminarRegistroAjax('ajax.php?script=crudDeletePersona', id, () => {
+        caEliminarRegistroAjax('ajax.php?script=crudDeletePersona', idPersona, () => {
           $(evento.target).parents('#resultado tr').remove();
           mostrarAlert('Se ha eliminado el registro satisfactoriamente');
         },

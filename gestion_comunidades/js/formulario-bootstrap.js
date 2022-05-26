@@ -8,8 +8,8 @@ window.addEventListener("load", function () {
 
 function fInicializarFormulario(formulario) {
     formulario.addEventListener("submit", fValidarFormulario);
-    formulario.querySelectorAll("#"+formulario.id+" [validacion]").forEach((c) => {
-        fInicializarElemento(c);
+    formulario.querySelectorAll("#"+formulario.id+" [validacion]").forEach((p) => {
+        fInicializarElemento(p);
     });
 }
 
@@ -209,7 +209,7 @@ async function validacion_nifCliente(v) {
         nif: v
     };
    
-    const respuesta = await fetch('ajax.php?script=validacion_clienteExiste', {
+    const respuesta = await fetch('ajax.php?script=validacion_personaExiste', {
         
         method: 'POST', 
         body: JSON.stringify(parametros), 
@@ -220,6 +220,6 @@ async function validacion_nifCliente(v) {
     const objeto = await respuesta.json();
 
     if(objeto.resultado) {
-        throw 'El cliente ya existe';
+        throw 'La persona ya existe';
     }
 }

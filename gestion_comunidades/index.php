@@ -78,7 +78,7 @@ https://www.codeply.com/go/ji5ijk6yJ4/bootstrap-4-dropdown-submenu-on-hover-(nav
                
                     <a class ="bg-warning" href="index.php?principal=Intefaz\listadoPersonas.php"> Personas PHP </a>
 
-                    <a class ="bg-warning" href="index.php?principal=Intefaz\listadoPersonas.php"> Personas jQuery </a>
+                    <a class ="bg-warning" href="index.php?principal=Intefaz\jQueryListadoPersonas.html"> Personas jQuery </a>
 
                     <a class ="bg-warning" href="index.php?principal=Intefaz\listadoPersonasTodos.php"> Personas DOM </a>
 
