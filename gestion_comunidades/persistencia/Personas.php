@@ -194,7 +194,7 @@
 				$query=$this->db->preparar($consulta);
 				$query->bindParam(1,$nif);
 				$query->execute();
-				$tClientes=$query->fetchall();
+				$tPersonas=$query->fetchall();
 	
 			} catch(Exception $e){
 				$error=1;
@@ -209,6 +209,32 @@
 			}
 		
 			return $t;
+		}
+
+		public function getPersonaPorId($idPersona){
+			
+			$p = null;
+
+			try {
+				$consulta="SELECT id_persona,nif, id_comunidad, usuario, contraseña, email, trabajador FROM personas where id_persona=?";
+			
+				$query=$this->db->preparar($consulta);
+				$query->bindParam(1,$idPersona);
+				$query->execute();
+				$tPersonas=$query->fetchall();
+
+				if(isset($tPersonas[0])) {
+					$p=new Persona($tPersonas[0][0],$tPersonas[0][1],$tPersonas[0][2],$tPersonas[0][3],$tPersonas[0][4],$tPersonas[0][5],$tPersonas[0][6]);
+				}
+				
+			} catch(Exception $e){
+				echo $e;
+
+				$error=1;
+				return $error;
+			}
+		
+			return $p;
 		}
 	
 	}

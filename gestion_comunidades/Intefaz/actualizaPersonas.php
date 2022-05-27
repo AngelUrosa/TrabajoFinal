@@ -1,3 +1,11 @@
+<?php 
+
+ $tPersonas=Personas::singletonPersonas();
+ //Voy a llamar a la persistencia y devolver un array de objetos (Hacer esto en la persistencia)
+ $p=$tPersonas->getPersonaPorId($_GET["idpersona"]);
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,46 +15,43 @@
 </head>
 <body>
 	<h1>Actualiza de un nueva Persona</h1>	
-
 	<form name="altaPersona" method="POST" action="index.php?principal=Intefaz\actualizaPersonas.php" novalidate>
 		<div class="mx-auto">
 
 		<div class="mb-31">
-  			<label for="idpersona" class="form-label">ID Persona</label>
-  			<input type="text" class="form-control" id="idpersona" name="idpersona">
+  			<label for="idpersona" class="form-label">Id Persona</label>
+  			<input type="text" class="form-control" id="idpersona" name="idpersona" disabled value="<?php echo $p->getIdPersona();  ?>">
 		</div>
 
 			<div class="mb-31">
   			<label for="nif" class="form-label">NIF</label>
-  			<input type="text" class="form-control" id="nif" name="nif">
+  			<input type="text" class="form-control" id="nif" name="nif" value="<?php echo $p->getNif();  ?>">
 		</div>
 		
 		<div class="mb-31">
-  			<label for="idComunidad" class="form-label">Id Comunidad</label>
-  			<input type="text" class="form-control" id="idComunidad" name="idComunidad"></input>
+  			<label for="idComunidad" class="form-label">ID Comunidad</label>
+  			<input type="text" class="form-control" id="idComunidad" name="idComunidad" value="<?php echo $p->getIdComunidad();  ?>"></input>
 		</div>
 
 		<div class="mb-31">
   			<label for="usuario" class="form-label">Usuario</label>
-  			<input type="text" class="form-control" id="usuario" name="usuario"></input>
+  			<input type="text" class="form-control" id="usuario" name="usuario" value="<?php echo $p->getUsuario();  ?>"></input>
 		</div>
 
 		<div class="mb-31">
   			<label for="contraseña" class="form-label">Contraseña</label>
-  			<input type="text" class="form-control" id="contraseña" name="contraseña"></input>
+  			<input type="text" class="form-control" id="contraseña" name="contraseña" value="<?php echo $p->getContraseña();  ?>"></input>
 		</div>
 
 		<div class="mb-31">
   			<label for="email" class="form-label">Email</label>
-  			<input type="text" class="form-control" id="email" name="email"></input>
+  			<input type="text" class="form-control" id="email" name="email" value="<?php echo $p->getEmail();  ?>"></input>
 		</div>
 
 		<div class="mb-31">
-  			<label for="trabajador" class="form-label">Trabajador</label>
-  			<input type="text" class="form-control" id="trabajador" name="trabajador"></input>
+  			<label for="trabajador" class="form-label">Trabajdor</label>
+  			<input type="text" class="form-control" id="trabajador" name="trabajador" value="<?php echo $p->getTrabajador();  ?>"></input>
 		</div>
-
-	
 		<br>
 		<button name="actualiza" type="submit" class="btn btn-info">Actualiza</button>
 		<button name="reset" type="reset" class="btn btn-warning">Limpiar Formulario</button>
@@ -64,48 +69,7 @@
 
 
 
-<?php 
-
- $tPersonas=Personas::singletonPersonas();
- //Voy a llamar a la persistencia y devolver un array de objetos (Hacer esto en la persistencia)
- $tp=$tPersonas->getPersona();
-
- //print_r($tf);
- echo "<table class="."table table-striped".">";
-echo "<thead>";
- echo "<tr>";
-   echo "<th scope="."col".">Id Persona</th>";
-   echo "<th scope="."col".">NIF</th>";
-   echo "<th scope="."col".">ID COMUNIDAD</th>";
-   echo "<th scope="."col".">USUARIO</th>";
-   echo "<th scope="."col".">CONTRASEÑA</th>";
-   echo "<th scope="."col".">EMAIL</th>";
-   echo "<th scope="."col".">TRABAJDOR</th>";
- echo "</tr>";
-echo "</thead>";
-echo "<tbody>";
-foreach ($tp as $p) {
- echo "<tr>";
-   echo "<th scope="."row".">".$p->getIdPersona()."</td>";
-   echo "<td>".$p->getNif()."</td>";
-   echo "<td>".$p->getIdComunidad()."</td>";
-   echo "<td>".$p->getUsuario()."</td>";
-   echo "<td>".$p->getContraseña()."</td>";
-   echo "<td>".$p->getEmail()."</td>";
-   echo "<td>".$p->getTrabajador()."</td>";
-//    echo "<td><form name='delete' method='post' action='index.php?principal=Intefaz\listadoPersonas.php'>
-//    <input type='hidden' class='form-control' id='idPersona' name='idPersona' value='".$p->getIdPersona()."'</input>
-//    <input type='submit' value='borrar' name='delete' />
-//  </form></td>";
-//  echo "<td><form name='actualiza' method='post' action='index.php?principal=Intefaz\actualizaPersonas.php'>
-//  <input type='hidden' class='form-control' id='idPersona' name='idPersona' value='".$p->getIdPersona()."'</input>
-//  <input type='submit' value='editar' name='actualiza' />
-// </form></td>";
- echo "</tr>";
-
-}
- echo "</tbody>";
-echo "</table>";
+<?php
 
 
 ////////////////////////////////////////////

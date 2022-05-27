@@ -42,10 +42,7 @@
       <input type='hidden' class='form-control' id='idPersona' name='idPersona' value='".$p->getIdPersona()."'</input>
       <input type='submit' value='borrar' name='delete' />
     </form></td>";
-    echo "<td><form name='actualiza' method='post' action='index.php?principal=Intefaz\actualizaPersonas.php'>
-    <input type='hidden' class='form-control' id='idPersona' name='idPersona' value='".$p->getIdPersona()."'</input>
-    <input type='submit' value='editar' name='actualiza' />
-  </form></td>";
+    echo "<td><a href='index.php?principal=Intefaz/actualizaPersonas.php&idpersona=".$p->getIdPersona()."'><button>editar</button></a></td>";
     echo "</tr>";
   
   }
