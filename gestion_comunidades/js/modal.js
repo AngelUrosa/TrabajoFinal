@@ -37,6 +37,58 @@ const __MODAL_ELIMINAR = `
   </div>
 </div>
 `;
+const __MODAL_AÑADIR = `
+<div class="modal fade text-black" id="modalAdd" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAddBackdropLabel">Añadir una nueva Persona</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" name="altaContraseña" id="altaContraseña" method="POST" novalidate>
+                    <div class="mx-auto pb-3">
+                        <div class="mb-3">
+                            <label class="form-label">NIF</label>
+                            <input name="nif" type="text" class="form-control has-validation" id="nif" placeholder="nif"  validacion="nif" required>
+                            <div class="form-text invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ID Comunidad</label>
+                            <input name="idComunidad" type="text" class="form-control has-validation" id="idComunidad" placeholder="ID COMUNIDAD"" required>
+                            <div class="form-text invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Usuario</label>
+                            <input name="usuario" type="text" class="form-control has-validation" id="usuario" placeholder="usuario" required>
+                            <div class="form-text invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input name="contraseña" type="password" class="form-control has-validation" id="contraseña" placeholder="Contraseña" maxlength="30" validacion="contraseña" required>
+                            <div class="form-text invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control has-validation" id="email" placeholder="email" validacion="email" required>
+                            <div class="form-text invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Trabajador</label>
+                            <input name="trabajador" type="text" class="form-control has-validation" id="trabajador" placeholder="trabajador" validacion="trabajador" required>
+                            <div class="form-text invalid-feedback"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="botonCancelar" type="button" class="btn btn-lightgrey" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="botonEnviar" type="button" class="btn btn-primary botonEnviar">Añadir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+`;
 
 function mostrarAlert(texto) {
     // Si no tengo insertado el alert lo inserto en el cuerpo
@@ -74,4 +126,18 @@ function mostrarModalEliminar(texto, accion) {
 
   // Muestro el modal
   $('#modalEliminar').modal('show');
+}
+
+function mostrarModalAdd(accion) {
+  if (!$('#modalAdd').length) {
+      $('body').append(__MODAL_AÑADIR);
+  }
+
+  $('#modalAdd #botonEnviar').on('click', () => {
+      accion();
+      $('#modalAdd #botonEnviar').off('click');
+      $('#modalAdd').modal('hide');
+  });
+
+  $('#modalAdd').modal('show');
 }

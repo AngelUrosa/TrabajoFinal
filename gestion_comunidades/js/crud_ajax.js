@@ -43,7 +43,7 @@ function caEliminarRegistro(elemento) {
 
     // Tabla con los parámetros
     const parametros = {
-        id: elemento.value
+        idPersona: elemento.value
     };
 
     fetch(

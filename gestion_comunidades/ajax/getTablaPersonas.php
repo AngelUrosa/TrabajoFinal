@@ -6,7 +6,7 @@
     $objeto = json_decode($json,TRUE);
 
     //Obtiene los valores que vienen en el array asociativo
-    $nombre = $objeto['filtro'];
+    $usuario = $objeto['filtro'];
 
     //pasamos a obtener los clientes de la base de datos
     $tPersonas = Personas::singletonPersonas();

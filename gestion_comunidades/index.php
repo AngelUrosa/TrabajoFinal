@@ -46,8 +46,11 @@
  	<!-- Bootstrap CSS en la web--> 
 
  	<link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity= "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin= "anonymous" > 
-	
-
+     <script src="node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="node_modules/@popperjs/core/dist/umd/popper.min.js" defer></script>
+    <script src="node_modules/node-json2html/json2html.js" defer></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js" defer></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js" defer></script>
    
    	<title> Plantilla para la vista del Admin del ERP IES Castelar</title> 
  </head> 

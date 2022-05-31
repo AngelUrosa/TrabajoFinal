@@ -162,7 +162,7 @@
 				$query=$this->db->preparar($consulta);
 				$query->bindParam(1,$usuario);
 				$query->execute();
-				$tClientes=$query->fetchall();
+				$tPersonas=$query->fetchall();
 	
 			} catch(Exception $e){
 				$error=1;
