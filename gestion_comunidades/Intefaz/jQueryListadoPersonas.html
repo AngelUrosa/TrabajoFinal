@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jqeury</title>
+<meta charset="UTF-8">
+<title>CRUD Ajax PHp y MySQL</title>
+
+<!-- Bootstrap CSS File  -->
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5/css/bootstrap.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 </head>
 <body>
-    
 
-<table id="tabla" class="table table-dark"></table>
+<!-- Content Section --> 
+<!-- crud jquery-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="pull-right">
+        <button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Agregar Observación</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="records_content"></div>
+    </div>
+  </div>
+</div>
+<!-- /Content Section --> 
 
 
+<!-- Jquery JS file --> 
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> 
+<!-- Bootstrap JS file --> 
+<script type="text/javascript" src="bootstrap-3.3.5/js/bootstrap.min.js"></script> 
+<!-- Custom JS file --> 
+<script type="text/javascript" src="js/script.js"></script> 
+<!-- Fin crud jquery-->
 </body>
 </html>
-
-<link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity= "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin= "anonymous" > 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="@popperjs\core\dist\umd\popper.min.js"></script>

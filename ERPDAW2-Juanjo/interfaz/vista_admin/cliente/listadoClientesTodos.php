@@ -45,7 +45,7 @@
       document.getElementById('resultado'),
 
       //URL para descargar los datos
-      'ajax.php?script=getTablaClientes',
+      'ajax.php?script=getTablaPersonas',
       
       //Plantilla
       {'<>': 'tr','html': [
