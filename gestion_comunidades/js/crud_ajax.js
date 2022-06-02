@@ -120,3 +120,64 @@ function caEliminarRegistroAjax(url, id, onOk, onError) {
           }
       });
 }
+
+function caAñadirRegistroAjax(urlTabla, nif, idComunidad, usuario, contraseña, email, trabajador, onOk, onError) {
+    const parametros = {
+        nif: nif,
+        idComunidad: idComunidad,
+        usuario: usuario,
+        contraseña: contraseña,
+        email: email,
+        trabajador: trabajador
+    };
+    
+    fetch(
+        urlTabla,
+        {
+        method: 'POST', 
+        body: JSON.stringify(parametros), 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => {
+        if (response) {
+            onOk();
+        } else {
+            onError();
+        }
+    });
+}
+
+function caEditarRegistroAjax(urlTabla, idPersona , nif, idComunidad, usuario, contraseña, email, trabajador, onOk, onError) {
+    const parametros = {
+        idPersona: idPersona,
+        nif: nif,
+        idComunidad: idComunidad,
+        usuario: usuario,
+        contraseña: contraseña,
+        email: email,
+        trabajador: trabajador
+    };
+    
+    fetch(
+        urlTabla,
+        {
+        method: 'POST', 
+        body: JSON.stringify(parametros), 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => {
+        if (response) {
+            onOk();
+        } else {
+            onError();
+        }
+    });
+}

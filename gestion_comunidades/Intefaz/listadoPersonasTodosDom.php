@@ -56,7 +56,7 @@
         {'<>': 'td','html': '${trabajador}'},
         {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id_persona}:${usuario}">Borrar</button>'},
 		    {'<>':'td','html':'<button class="botonAdd btn btn-succes bi bi-x-circle-fill">Añadir</button>'},
-        {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'}
+        {'<>':'td','html':'<button class="botonEditar btn btn-primary value="${id_persona};${nif};${id_comunidad};${usuario};${contraseña};${email};${trabajador}">Editar</button>'}
         
 	    ]}
     );
@@ -73,7 +73,6 @@
 
       const valores = value.split(':');
       const idPersona = valores[0];
-      console.log("a"+ idPersona);
       const usuario = valores[1];
       const mensaje = `
       <p>¿Está seguro de que quiere eliminar la Persona ` + usuario + `?</p> (ID: ` + idPersona + `)`;
@@ -111,15 +110,13 @@
         $('#resultado').on('click', '.botonEditar', (evento) => {
             const value = evento.target.value
             
-            if (!value) {
-              value = $(evento.target).parent('.botonEditar').val();
-             } 
+            // if (!value) {
+            //     value = $(evento.target).parent('.botonEditar').val();
+            // }
 
-            const valores = value.split(':');
+            const valores = value.split(';');
             const idPersona = valores[0];
-            console.log("ID persona"+ idPersona);
             const nif = valores[1];
-            console.log("ID persona"+ nif);
             const idComunidad = valores[2];
             const usuario = valores[3];
             const contraseña = valores[4];

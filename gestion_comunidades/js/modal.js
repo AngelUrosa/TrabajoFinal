@@ -46,11 +46,11 @@ const __MODAL_AÑADIR = `
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" name="altaContraseña" id="altaContraseña" method="POST" novalidate>
+                <form class="needs-validation" name="altaPersona" id="altaPersona" method="POST" novalidate>
                     <div class="mx-auto pb-3">
                         <div class="mb-3">
                             <label class="form-label">NIF</label>
-                            <input name="nif" type="text" class="form-control has-validation" id="nif" placeholder="nif"  validacion="nif" required>
+                            <input name="nif" type="text" class="form-control has-validation" id="nif" placeholder="nif"  required>
                             <div class="form-text invalid-feedback"></div>
                         </div>
                         <div class="mb-3">
@@ -65,17 +65,17 @@ const __MODAL_AÑADIR = `
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Contraseña</label>
-                            <input name="contraseña" type="password" class="form-control has-validation" id="contraseña" placeholder="Contraseña" maxlength="30" validacion="contraseña" required>
+                            <input name="contraseña" type="password" class="form-control has-validation" id="contraseña" placeholder="Contraseña" required>
                             <div class="form-text invalid-feedback"></div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input name="email" type="email" class="form-control has-validation" id="email" placeholder="email" validacion="email" required>
+                            <input name="email" type="email" class="form-control has-validation" id="email" placeholder="email"  required>
                             <div class="form-text invalid-feedback"></div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Trabajador</label>
-                            <input name="trabajador" type="text" class="form-control has-validation" id="trabajador" placeholder="trabajador" validacion="trabajador" required>
+                            <input name="trabajador" type="text" class="form-control has-validation" id="trabajador" placeholder="trabajador"  required>
                             <div class="form-text invalid-feedback"></div>
                         </div>
                     </div>
@@ -89,18 +89,75 @@ const __MODAL_AÑADIR = `
     </div>
 </div>
 `;
+const __MODAL_EDITAR = `
+<div class="modal fade text-black" id="modalEdit" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditBackdropLabel">Editar un registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" name="editarPersona" id="editarPersona" method="POST" novalidate>
+                <div class="mx-auto pb-3">
+                <div class="mb-3">
+                    <label class="form-label">ID PERSONA</label>
+                    <input name="idPersona2" type="text" class="form-control has-validation" id="idPersona2" placeholder="ID PERSONA" required disabled>
+                    <div class="form-text invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">NIF</label>
+                    <input name="nif2" type="text" class="form-control has-validation" id="nif2" placeholder="nif"  required>
+                    <div class="form-text invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">ID Comunidad</label>
+                    <input name="idComunidad2" type="text" class="form-control has-validation" id="idComunidad2" placeholder="ID COMUNIDAD"" required>
+                    <div class="form-text invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Usuario</label>
+                    <input name="usuario2" type="text" class="form-control has-validation" id="usuario2" placeholder="usuario" required>
+                    <div class="form-text invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input name="contraseña2" type="password" class="form-control has-validation" id="contraseña2" placeholder="Contraseña" required>
+                    <div class="form-text invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input name="email2" type="email" class="form-control has-validation" id="email2" placeholder="email"  required>
+                    <div class="form-text invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Trabajador</label>
+                    <input name="trabajador2" type="text" class="form-control has-validation" id="trabajador2" placeholder="trabajador"  required>
+                    <div class="form-text invalid-feedback"></div>
+                </div>
+            </div>
+        </div>
+                <div class="modal-footer">
+                    <button id="botonCancelar2" type="button" class="btn btn-lightgrey" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="botonEnviar2" type="button" class="btn btn-primary botonEnviar2">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+`;
 
 function mostrarAlert(texto) {
-    // Si no tengo insertado el alert lo inserto en el cuerpo
-    if (!$('#modalAlert').length) {
-        $('body').append(__MODAL_ALERT);
-    }
+  // Si no tengo insertado el alert lo inserto en el cuerpo
+  if (!$('#modalAlert').length) {
+    $('body').append(__MODAL_ALERT);
+  }
 
-    // Asigno el texto recibido como argumento
-    $('#modalAlert .modal-body').html(texto);
+  // Asigno el texto recibido como argumento
+  $('#modalAlert .modal-body').html(texto);
 
-    // Muestro el alert
-    $('#modalAlert').modal('show');
+  // Muestro el alert
+  $('#modalAlert').modal('show');
 }
 
 function mostrarModalEliminar(texto, accion) {
@@ -130,14 +187,40 @@ function mostrarModalEliminar(texto, accion) {
 
 function mostrarModalAdd(accion) {
   if (!$('#modalAdd').length) {
-      $('body').append(__MODAL_AÑADIR);
+    $('body').append(__MODAL_AÑADIR);
   }
 
+  // fInicializarFormulario($("#altaPersona")[0]);
+
   $('#modalAdd #botonEnviar').on('click', () => {
-      accion();
-      $('#modalAdd #botonEnviar').off('click');
-      $('#modalAdd').modal('hide');
+    accion();
+    $('#modalAdd #botonEnviar').off('click');
+    $('#modalAdd').modal('hide');
   });
 
   $('#modalAdd').modal('show');
+}
+
+function mostrarModalEdit(idPersona, nif, idComunidad, usuario, contraseña, email, trabajador, accion) {
+  if (!$('#modalEdit').length) {
+    $('body').append(__MODAL_EDITAR);
+  }
+
+  $('#idPersona2').val(idPersona);
+  $('#nif2').val(nif);
+  $('#idComunidad2').val(idComunidad);
+  $('#usuario2').val(usuario);
+  $('#contraseña2').val(contraseña);
+  $('#email2').val(email);
+  $('#trabajador2').val(trabajador);
+
+  // fInicializarFormulario($("#editarPersona")[0]);
+
+  $('#modalEdit #botonEnviar2').on('click', () => {
+    accion();
+    $('#modalEdit #botonEnviar2').off('click');
+    $('#modalEdit').modal('hide');
+  });
+
+  $('#modalEdit').modal('show');
 }

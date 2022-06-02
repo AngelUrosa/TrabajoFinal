@@ -2,8 +2,7 @@
     $json = file_get_contents('php://input');
     $objeto = json_decode($json, TRUE);
 
-
-    
+    $idPersona = $objeto['idPersona'];
     $nif = $objeto['nif'];
     $idComunidad = $objeto['idComunidad'];
     $usuario = $objeto['usuario'];
@@ -15,7 +14,7 @@
 
     $tPersonas = Personas::singletonPersonas();
     $respuesta = [];
-    $respuesta['resultado'] = $tPersonas->addUnaPersona($p);
+    $respuesta['resultado'] = $tPersonas->editUnaPersona($p);
 
     $respuesta_json = json_encode($respuesta);
     header('Content-Type:application/json');  
