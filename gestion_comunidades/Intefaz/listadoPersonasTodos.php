@@ -10,7 +10,7 @@
 </form>
 <table  class="table table-bordered table-striped text-center table-light table-hover align-items-center">
   <thead class="table text-dark bg-lightgreen">
-  <button class="botonAdd btn btn-success bi bi-x-circle-fill">Añadir</button>
+  
     <tr>
       <th scope="col">ID Persona</th>
       <th scope="col">NIF</th>
@@ -56,7 +56,7 @@
         {'<>': 'td','html': '${trabajador}'},
         {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id_persona}:${usuario}">Borrar</button>'},
 		    {'<>':'td','html':'<button class="botonAdd btn btn-succes bi bi-x-circle-fill">Añadir</button>'},
-        {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'}
+        {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill" value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'}
         
 	    ]}
     );
@@ -109,7 +109,7 @@
         });
         
         $('#resultado').on('click', '.botonEditar', (evento) => {
-            const value = evento.target.value
+            let value = evento.target.value
             
             if (!value) {
               value = $(evento.target).parent('.botonEditar').val();

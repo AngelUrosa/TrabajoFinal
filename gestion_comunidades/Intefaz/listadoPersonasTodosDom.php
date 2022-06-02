@@ -10,7 +10,7 @@
 </form>
 <table  class="table table-bordered table-striped text-center table-light table-hover align-items-center">
   <thead class="table text-dark bg-lightgreen">
-  <button class="botonAdd btn btn-success bi bi-x-circle-fill">Añadir</button>
+  
     <tr>
       <th scope="col">ID Persona</th>
       <th scope="col">NIF</th>
@@ -56,67 +56,76 @@
         {'<>': 'td','html': '${trabajador}'},
         {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id_persona}:${usuario}">Borrar</button>'},
 		    {'<>':'td','html':'<button class="botonAdd btn btn-succes bi bi-x-circle-fill">Añadir</button>'},
-        {'<>':'td','html':'<button class="botonEditar btn btn-primary value="${id_persona};${nif};${id_comunidad};${usuario};${contraseña};${email};${trabajador}">Editar</button>'}
+        {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill" value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'}
         
 	    ]}
     );
     //caInicializarBotonesEliminar('resultado', 'ajax.php?script=crudDeleteCliente');
 
-    $('#resultado').on('click', '.botonEliminar', (evento) => {
-      // Obtengo el valor en el botón
-      const value = evento.target.value
+    document.getElementById('resultado').addEventListener('click', (evento) => {
+      
+      // Comprobar si es el boton eliminar
+      
+      if(evento.target.className.startsWith('botonEliminar')){
+        const value = evento.target.value
 
-      // Si no está definido, busco el botón padre donde sí está
-      if (!value) {
-        value = $(evento.target).parent('.botonEliminar').val();
-      }
+// Si no está definido, busco el botón padre donde sí está
+if (!value) {
+  value = document.getElementById(evento.target).parent('.botonEliminar').value();
+}
 
-      const valores = value.split(':');
-      const idPersona = valores[0];
-      const usuario = valores[1];
-      const mensaje = `
-      <p>¿Está seguro de que quiere eliminar la Persona ` + usuario + `?</p> (ID: ` + idPersona + `)`;
+        const valores = value.split(':');
+        const idPersona = valores[0];
+        console.log("a"+ idPersona);
+        const usuario = valores[1];
+        const mensaje = `
+        <p>¿Está seguro de que quiere eliminar la Persona ` + usuario + `?</p> (ID: ` + idPersona + `)`;
 
-      mostrarModalEliminar(mensaje, () => {
-        caEliminarRegistroAjax('ajax.php?script=crudDeletePersona', idPersona, () => {
-          $(evento.target).parents('#resultado tr').remove();
-          mostrarAlert('Se ha eliminado el registro satisfactoriamente');
-        },
+        mostrarModalEliminar(mensaje, () => {
+          caEliminarRegistroAjax('ajax.php?script=crudDeletePersona', idPersona, () => {
+            document.getElementById(evento.target).parents('resultado tr').remove();
+            mostrarAlert('Se ha eliminado el registro satisfactoriamente');
+          },
 
-        () => {
-          mostrarAlert('Ha habido un error al eliminar el registro');
+          () => {
+            mostrarAlert('Ha habido un error al eliminar el registro');
+          });
         });
-      });
-    });
-
-    $('#resultado').on('click','.botonAdd', () => {
-            mostrarModalAdd(() => {
+      }
+        
+      
+      // Obtengo el valor en el botón
+      if(evento.target.className.startsWith('botonAdd')){
+        mostrarModalAdd(() => {
                 //  const idPersona = $("#id_persona").val().trim();
-                 const nif = $("#nif").val().trim();
-                 const idComunidad = $("#idComunidad").val().trim();
-                 const usuario = $("#usuario").val().trim();
-                 const contraseña = $("#contraseña").val().trim();
-                 const email = $("#email").val().trim();
-                 const trabajador = $("#trabajador").val().trim();
+                 const nif = document.getElementById("nif").value().trim();
+                 const idComunidad = document.getElementById("idComunidad").value().trim();
+                 const usuario = document.getElementById("usuario").value().trim();
+                 const contraseña = document.getElementById("contraseña").value().trim();
+                 const email = document.getElementById("email").value().trim();
+                 const trabajador = document.getElementById("trabajador").value().trim();
                 caAñadirRegistroAjax('ajax.php?script=crudAddPersona', nif, idComunidad, usuario, contraseña, email, trabajador, () => {
-                    enviarFormulario2($(".configuracionTabla")[0], $("#resultado")[0]);
+                    enviarFormulario2(document.getElementById(".configuracionTabla")[0], document.getElementById("resultado")[0]);
                     mostrarAlert('Ha habido un error al añadir el registro');
                 }, () => {
                     mostrarAlert('Se ha añadido el registro satisfactoriamente');
                 });
             });
-        });
-        
-        $('#resultado').on('click', '.botonEditar', (evento) => {
-            const value = evento.target.value
-            
-            // if (!value) {
-            //     value = $(evento.target).parent('.botonEditar').val();
-            // }
 
-            const valores = value.split(';');
+    };
+
+    if(evento.target.className.startsWith('botonEditar')){
+      let value = evento.target.value
+            
+            if (!value) {
+              value = document.getElementById(evento.target).parent('.botonEditar').val();
+             } 
+
+            const valores = value.split(':');
             const idPersona = valores[0];
+            console.log("ID persona"+ idPersona);
             const nif = valores[1];
+            console.log("ID persona"+ nif);
             const idComunidad = valores[2];
             const usuario = valores[3];
             const contraseña = valores[4];
@@ -128,26 +137,28 @@
                 // const nuevaContraseña = $("#contraseña3").val().trim();
                 // const nuevasNotas = $("#notas2").val().trim();
                 
-                 const idPersona = $("#idPersona2").val().trim();
-                 const nif = $("#nif2").val().trim();
-                 const idComunidad = $("#idComunidad2").val().trim();
-                 const usuario = $("#usuario2").val().trim();
-                 const contraseña = $("#contraseña2").val().trim();
-                 const email = $("#email2").val().trim();
-                 const trabajador = $("#trabajador2").val().trim();
+                 const idPersona = document.getElementById("idPersona2").value().trim();
+                 const nif = document.getElementById("nif2").value().trim();
+                 const idComunidad = document.getElementById("idComunidad2").value().trim();
+                 const usuario = document.getElementById("usuario2").value().trim();
+                 const contraseña = document.getElementById("contraseña2").value().trim();
+                 const email = document.getElementById("email2").value().trim();
+                 const trabajador = document.getElementById("trabajador2").value().trim();
 
 
 
                 caEditarRegistroAjax('ajax.php?script=crudEditPersona',idPersona ,nif, idComunidad, usuario, contraseña, email, trabajador, () => {
-                    enviarFormulario2($("#configuracionTabla")[0], $("#resultado")[0]);
+                    enviarFormulario2(document.getElementById("configuracionTabla")[0], document.getElementById("resultado")[0]);
                     mostrarAlert('Se ha editado el registro satisfactoriamente');
                 }, () => {
                     mostrarAlert('Ha habido un error al editar el registro');
                 });
             });
-        });
+
+    }
 
   });
+});
 </script>
 
 
