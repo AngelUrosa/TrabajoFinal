@@ -8,6 +8,12 @@
     <input name="filtro" type="text" class="form-control w-75 bg-darkgrey text-lightgrey" placeholder="Filtro">
   </div>
 </form>
+<div id="holahola">
+<button class="botonHola btn btn-succes bi bi-x-circle-fill">hola</button>
+</div>
+
+
+
 <table  class="table table-bordered table-striped text-center table-light table-hover align-items-center">
   <thead class="table text-dark bg-lightgreen">
   
@@ -53,11 +59,25 @@
         {'<>': 'td class="h5"','html': '${trabajador}'},
         {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id_persona}:${usuario}">Borrar</button>'},
 		    {'<>':'td','html':'<button class="botonAdd btn btn-succes bi bi-x-circle-fill">Añadir</button>'},
-        {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill" value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'}
+        {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill" value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'},
+        {'<>':'td','html':'<button class="botonHola btn btn-succes bi bi-x-circle-fill">hola</button>'}
         
 	    ]}
     );
     //caInicializarBotonesEliminar('resultado', 'ajax.php?script=crudDeleteCliente');
+
+    $('#resultado').on('click', '.botonHola', (evento) => {
+
+      alert("Hola mundo");
+
+  });
+
+
+  $('#holahola').on('click', '.botonHola', (evento) => {
+
+alert("Hola mundo");
+
+});
 
     $('#resultado').on('click', '.botonEliminar', (evento) => {
       // Obtengo el valor en el botón
@@ -68,6 +88,8 @@
         value = $(evento.target).parent('.botonEliminar').val();
       }
 
+
+      alert("Hola mundo");
       const valores = value.split(':');
       const idPersona = valores[0];
       console.log("a"+ idPersona);
@@ -155,25 +177,3 @@
 
 
 
-<!-- <html lang="es">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-theme.css" rel="stylesheet">
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>	
-	</head>
-	
-	<body>
-		<div class="container">
-			<div class="row">
-				<h2 style="text-align:center">Curso de PHP y MySQL</h2>
-			</div>
-			
-			<div class="row">
-				<a href="index.php?principal=Intefaz\nuevo.php" class="btn btn-primary">Nuevo Registro</a>			
-			</div>
-		</div>
-	</body>
-	
-</html> -->
