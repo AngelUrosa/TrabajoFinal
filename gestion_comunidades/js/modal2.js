@@ -147,80 +147,157 @@ const __MODAL_EDITAR = `
 </div>
 `;
 
+// function mostrarAlert(texto) {
+//   // Si no tengo insertado el alert lo inserto en el cuerpo
+//   if (!$('#modalAlert').length) {
+//     $('body').append(__MODAL_ALERT);
+//   }
+
+//   // Asigno el texto recibido como argumento
+//   $('#modalAlert .modal-body').html(texto);
+
+//   // Muestro el alert
+//   $('#modalAlert').modal('show');
+// }
+
+// function mostrarModalEliminar(texto, accion) {
+//   // Si no tengo insertado el alert lo inserto en el cuerpo
+//   if (!$('#modalEliminar').length) {
+//     $('body').append(__MODAL_ELIMINAR);
+//   }
+
+//   // Asigno el texto recibido como argumento
+//   $('#modalEliminar .modal-body').html(texto);
+
+//   // Asigno el evento
+//   $('#modalEliminar #botonBorrar').on('click', (evento) => {
+//     // Llama a la función pasada como argumento en acción
+//     accion();
+
+//     // Desactiva el gestor de eventos. Tendremos que añadirlo la próxima vez
+//     $('#modalEliminar #botonBorrar').off('click');
+
+//     // Oculto el modal
+//     $('#modalEliminar').modal('hide');
+//   });
+
+//   // Muestro el modal
+//   $('#modalEliminar').modal('show');
+// }
+
+// function mostrarModalAdd(accion) {
+//   if (!$('#modalAdd').length) {
+//     $('body').append(__MODAL_AÑADIR);
+//   }
+
+//   // fInicializarFormulario($("#altaPersona")[0]);
+
+//   $('#modalAdd #botonEnviar').on('click', () => {
+//     accion();
+//     $('#modalAdd #botonEnviar').off('click');
+//     $('#modalAdd').modal('hide');
+//   });
+
+//   $('#modalAdd').modal('show');
+// }
+
+// function mostrarModalEdit(idPersona, nif, idComunidad, usuario, contraseña, email, trabajador, accion) {
+//   if (!$('#modalEdit').length) {
+//     $('body').append(__MODAL_EDITAR);
+//   }
+
+//   document.getElementById('idPersona2').value=idPersona;
+//   document.getElementById('nif2').value=nif;
+//   document.getElementById('idComunidad2').value=idComunidad;
+//   document.getElementById('usuario2').value=usuario;
+//   document.getElementById('contraseña2').value=contraseña;
+//   document.getElementById('email2').value=email;
+//   document.getElementById('trabajador2').value=trabajador;
+
+//   // fInicializarFormulario($("#editarPersona")[0]);
+
+//   $('#modalEdit #botonEnviar2').on('click', () => {
+//     accion();
+//     $('#modalEdit #botonEnviar2').off('click');
+//     $('#modalEdit').modal('hide');
+//   });
+
+//   $('#modalEdit').modal('show');
+// }
 function mostrarAlert(texto) {
   // Si no tengo insertado el alert lo inserto en el cuerpo
-  if (!$('#modalAlert').length) {
-    $('body').append(__MODAL_ALERT);
+  if (!document.getElementById('modalAlert').length) {
+    document.getElementById('body').append(__MODAL_ALERT);
   }
 
   // Asigno el texto recibido como argumento
-  $('#modalAlert .modal-body').html(texto);
+  $document.getElementById('modalAlert .modal-body').html(texto);
 
   // Muestro el alert
-  $('#modalAlert').modal('show');
+  document.getElementById('modalAlert').modal('show');
 }
 
 function mostrarModalEliminar(texto, accion) {
-  // Si no tengo insertado el alert lo inserto en el cuerpo
-  if (!$('#modalEliminar').length) {
-    $('body').append(__MODAL_ELIMINAR);
-  }
+    // Si no tengo insertado el alert lo inserto en el cuerpo
+    if (!document.getElementById('modalEliminar').length) {
+        document.getElementById('body').append(__MODAL_ELIMINAR);
+    }
 
-  // Asigno el texto recibido como argumento
-  $('#modalEliminar .modal-body').html(texto);
+    // Asigno el texto recibido como argumento
+    document.getElementById('modalEliminar .modal-body').html(texto);
 
-  // Asigno el evento
-  $('#modalEliminar #botonBorrar').on('click', (evento) => {
-    // Llama a la función pasada como argumento en acción
-    accion();
+    // Asigno el evento
+    document.getElementById('modalEliminar botonBorrar').addEventListener('click', (evento) => {
+        // Llama a la función pasada como argumento en acción
+        accion();
 
-    // Desactiva el gestor de eventos. Tendremos que añadirlo la próxima vez
-    $('#modalEliminar #botonBorrar').off('click');
+        // Desactiva el gestor de eventos. Tendremos que añadirlo la próxima vez
+        document.getElementById('modalEliminar botonBorrar').off('click');
 
-    // Oculto el modal
-    $('#modalEliminar').modal('hide');
-  });
+        // Oculto el modal
+        document.getElementById('modalEliminar').modal('hide');
+    });
 
-  // Muestro el modal
-  $('#modalEliminar').modal('show');
+    // Muestro el modal
+    document.getElementById('modalEliminar').modal('show');
 }
 
 function mostrarModalAdd(accion) {
-  if (!$('#modalAdd').length) {
-    $('body').append(__MODAL_AÑADIR);
-  }
+    if (!document.getElementById('modalAdd').length) {
+        document.getElementById('body').append(__MODAL_AÑADIR);
+    }
 
-  // fInicializarFormulario($("#altaPersona")[0]);
+    //fInicializarFormulario($("#altaPersona")[0]);
 
-  $('#modalAdd #botonEnviar').on('click', () => {
-    accion();
-    $('#modalAdd #botonEnviar').off('click');
-    $('#modalAdd').modal('hide');
-  });
+    document.getElementById('modalAdd botonEnviar').addEventListener('click', () => {
+        accion();
+        document.getElementById('modalAdd botonEnviar').off('click');
+        document.getElementById('modalAdd').modal('hide');
+    });
 
-  $('#modalAdd').modal('show');
+    document.getElementById('modalAdd').modal('show');
 }
 
-function mostrarModalEdit(idPersona, nif, idComunidad, usuario, contraseña, email, trabajador, accion) {
-  if (!$('#modalEdit').length) {
-    $('body').append(__MODAL_EDITAR);
+function mostrarModalEdit(nif, usuario, contraseña, email, accion) {
+  if (!document.getElementById('modalEdit').length) {
+    document.getElementById('body').append(__MODAL_EDITAR);
   }
 
-  document.getElementById('idPersona2').value=idPersona;
-  document.getElementById('nif2').value=nif;
-  document.getElementById('idComunidad2').value=idComunidad;
-  document.getElementById('usuario2').value=usuario;
-  document.getElementById('contraseña2').value=contraseña;
-  document.getElementById('email2').value=email;
-  document.getElementById('trabajador2').value=trabajador;
+   document.getElementById('idPersona2').value=idPersona;
+   document.getElementById('nif2').value=nif;
+   document.getElementById('idComunidad2').value=idComunidad;
+   document.getElementById('usuario2').value=usuario;
+   document.getElementById('contraseña2').value=contraseña;
+   document.getElementById('email2').value=email;
+   document.getElementById('trabajador2').value=trabajador;
 
   // fInicializarFormulario($("#editarPersona")[0]);
 
-  $('#modalEdit #botonEnviar2').on('click', () => {
+  document.getElementById('modalEdit botonEnviar2').addEventListener('click', () => {
     accion();
-    $('#modalEdit #botonEnviar2').off('click');
-    $('#modalEdit').modal('hide');
+    document.getElementById('modalEdit botonEnviar2').off('click');
+    document.getElementById('modalEdit').modal('hide');
   });
 
-  $('#modalEdit').modal('show');
+  document.getElementById('modalEdit').modal('show');
 }
