@@ -12,16 +12,13 @@
   <thead class="table text-dark bg-lightgreen">
   
     <tr>
-      <th scope="col">ID Persona</th>
-      <th scope="col">NIF</th>
-      <th scope="col">ID Comunidad</th>
-      <th scope="col">Usuario</th>
-      <th scope="col">Contraseña</th>
-      <th scope="col">Email</th>
-      <th scope="col">Trabajador</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col" class="h5">ID Persona</th>
+      <th scope="col" class="h5">NIF</th>
+      <th scope="col" class="h5">ID Comunidad</th>
+      <th scope="col" class="h5">Usuario</th>
+      <th scope="col" class="h5">Contraseña</th>
+      <th scope="col" class="h5">Email</th>
+      <th scope="col" class="h5">Trabajador</th>
     </tr>
   </thead>
   <tbody id='resultado'>
@@ -30,7 +27,7 @@
 
 <script src="js/tablas_ajax.js" defer></script>
 <script src="js/crud_ajax.js" defer></script>
-<script src="js/modal.js" defer></script>
+<script src="js/modal2.js" defer></script>
 <!-- <script src="js/formulario-bootstrap.js" defer></script> -->
 <script>
   window.addEventListener('load', function () {
@@ -47,13 +44,13 @@
       
       //Plantilla
       {'<>': 'tr','html': [
-        {'<>': 'td','html': '${id_persona}'},
-        {'<>': 'td','html': '${nif}'},
-        {'<>': 'td','html': '${id_comunidad}'},
-        {'<>': 'td','html': '${usuario}'},
-        {'<>': 'td','html': '${contraseña}'},
-        {'<>': 'td','html': '${email}'},
-        {'<>': 'td','html': '${trabajador}'},
+        {'<>': 'td class="h5"','html': '${id_persona}'},
+        {'<>': 'td class="h5"','html': '${nif}'},
+        {'<>': 'td class="h5"','html': '${id_comunidad}'},
+        {'<>': 'td class="h5"','html': '${usuario}'},
+        {'<>': 'td class="h5"','html': '${contraseña}'},
+        {'<>': 'td class="h5"','html': '${email}'},
+        {'<>': 'td class="h5"','html': '${trabajador}'},
         {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id_persona}:${usuario}">Borrar</button>'},
 		    {'<>':'td','html':'<button class="botonAdd btn btn-succes bi bi-x-circle-fill">Añadir</button>'},
         {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill" value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'}
@@ -83,7 +80,7 @@ if (!value) {
 
         mostrarModalEliminar(mensaje, () => {
           caEliminarRegistroAjax('ajax.php?script=crudDeletePersona', idPersona, () => {
-            document.getElementById(evento.target).parents('resultado tr').remove();
+            // document.getElementById(evento.target).parents('resultado tr').remove();
             mostrarAlert('Se ha eliminado el registro satisfactoriamente');
           },
 
@@ -98,12 +95,12 @@ if (!value) {
       if(evento.target.className.startsWith('botonAdd')){
         mostrarModalAdd(() => {
                 //  const idPersona = $("#id_persona").val().trim();
-                 const nif = document.getElementById("nif").value().trim();
-                 const idComunidad = document.getElementById("idComunidad").value().trim();
-                 const usuario = document.getElementById("usuario").value().trim();
-                 const contraseña = document.getElementById("contraseña").value().trim();
-                 const email = document.getElementById("email").value().trim();
-                 const trabajador = document.getElementById("trabajador").value().trim();
+                 const nif = document.getElementById("nif").value.trim();
+                 const idComunidad = document.getElementById("idComunidad").value.trim();
+                 const usuario = document.getElementById("usuario").value.trim();
+                 const contraseña = document.getElementById("contraseña").value.trim();
+                 const email = document.getElementById("email").value.trim();
+                 const trabajador = document.getElementById("trabajador").value.trim();
                 caAñadirRegistroAjax('ajax.php?script=crudAddPersona', nif, idComunidad, usuario, contraseña, email, trabajador, () => {
                     enviarFormulario2(document.getElementById(".configuracionTabla")[0], document.getElementById("resultado")[0]);
                     mostrarAlert('Ha habido un error al añadir el registro');
@@ -123,9 +120,7 @@ if (!value) {
 
             const valores = value.split(':');
             const idPersona = valores[0];
-            console.log("ID persona"+ idPersona);
             const nif = valores[1];
-            console.log("ID persona"+ nif);
             const idComunidad = valores[2];
             const usuario = valores[3];
             const contraseña = valores[4];
@@ -134,16 +129,15 @@ if (!value) {
             mostrarModalEdit(idPersona, nif, idComunidad, usuario, contraseña, email, trabajador, () => {
 
 
-                // const nuevaContraseña = $("#contraseña3").val().trim();
-                // const nuevasNotas = $("#notas2").val().trim();
+
                 
-                 const idPersona = document.getElementById("idPersona2").value().trim();
-                 const nif = document.getElementById("nif2").value().trim();
-                 const idComunidad = document.getElementById("idComunidad2").value().trim();
-                 const usuario = document.getElementById("usuario2").value().trim();
-                 const contraseña = document.getElementById("contraseña2").value().trim();
-                 const email = document.getElementById("email2").value().trim();
-                 const trabajador = document.getElementById("trabajador2").value().trim();
+                 let idPersona = document.getElementById("idPersona2").value.trim();
+                 let nif = document.getElementById("nif2").value.trim();
+                 let idComunidad = document.getElementById("idComunidad2").value.trim();
+                 let usuario = document.getElementById("usuario2").value.trim();
+                 let contraseña = document.getElementById("contraseña2").value.trim();
+                 let email = document.getElementById("email2").value.trim();
+                 let trabajador = document.getElementById("trabajador2").value.trim();
 
 
 
@@ -165,26 +159,3 @@ if (!value) {
 
 
 
-
-<!-- <html lang="es">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-theme.css" rel="stylesheet">
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>	
-	</head>
-	
-	<body>
-		<div class="container">
-			<div class="row">
-				<h2 style="text-align:center">Curso de PHP y MySQL</h2>
-			</div>
-			
-			<div class="row">
-				<a href="index.php?principal=Intefaz\nuevo.php" class="btn btn-primary">Nuevo Registro</a>			
-			</div>
-		</div>
-	</body>
-	
-</html> -->

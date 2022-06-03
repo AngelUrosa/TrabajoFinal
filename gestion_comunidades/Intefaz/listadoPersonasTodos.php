@@ -12,16 +12,13 @@
   <thead class="table text-dark bg-lightgreen">
   
     <tr>
-      <th scope="col">ID Persona</th>
-      <th scope="col">NIF</th>
-      <th scope="col">ID Comunidad</th>
-      <th scope="col">Usuario</th>
-      <th scope="col">Contraseña</th>
-      <th scope="col">Email</th>
-      <th scope="col">Trabajador</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col" class="h5">ID Persona</th>
+      <th scope="col" class="h5">NIF</th>
+      <th scope="col" class="h5">ID Comunidad</th>
+      <th scope="col" class="h5">Usuario</th>
+      <th scope="col" class="h5">Contraseña</th>
+      <th scope="col" class="h5">Email</th>
+      <th scope="col" class="h5">Trabajador</th>
     </tr>
   </thead>
   <tbody id='resultado'>
@@ -47,13 +44,13 @@
       
       //Plantilla
       {'<>': 'tr','html': [
-        {'<>': 'td','html': '${id_persona}'},
-        {'<>': 'td','html': '${nif}'},
-        {'<>': 'td','html': '${id_comunidad}'},
-        {'<>': 'td','html': '${usuario}'},
-        {'<>': 'td','html': '${contraseña}'},
-        {'<>': 'td','html': '${email}'},
-        {'<>': 'td','html': '${trabajador}'},
+        {'<>': 'td class="h5"','html': '${id_persona}'},
+        {'<>': 'td class="h5"','html': '${nif}'},
+        {'<>': 'td class="h5"','html': '${id_comunidad}'},
+        {'<>': 'td class="h5"','html': '${usuario}'},
+        {'<>': 'td class="h5"','html': '${contraseña}'},
+        {'<>': 'td class="h5"','html': '${email}'},
+        {'<>': 'td class="h5"','html': '${trabajador}'},
         {'<>':'td','html':'<button class="botonEliminar btn btn-danger bi bi-x-circle-fill" value="${id_persona}:${usuario}">Borrar</button>'},
 		    {'<>':'td','html':'<button class="botonAdd btn btn-succes bi bi-x-circle-fill">Añadir</button>'},
         {'<>':'td','html':'<button class="botonEditar btn btn-primary bi bi-x-circle-fill" value="${id_persona}:${nif}:${id_comunidad}:${usuario}:${contraseña}:${email}:${trabajador}">Editar</button>'}
